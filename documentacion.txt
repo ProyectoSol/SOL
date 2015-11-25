@@ -1,0 +1,5 @@
+dependencias
+    npm install --save body-parser    
+    npm install mongoose      
+    npm install -g nodemon
+    npm install mailgun
