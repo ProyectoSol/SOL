@@ -40,38 +40,36 @@ var User = mongoose.model('User', usuarioEsquema);
 /*
 app.post('/insert', function(req, res) {
    console.log(usuariov);
-   res.send('Usu+
-   ario: ' + usuariov+" email: "+emailv+" pass: "+passv+" pass2: "+pass2v);
+   res.send('Usuario: ' + usuariov+" email: "+emailv+" pass: "+passv+" pass2: "+pass2v);
    
 });
 */
-app.post('/insert/usuario', function(req, res){
+app.get('/insert/usuario', function(req, res){
+  /*
     usuariov = req.body.usuario;
     emailv = req.body.email;
     passv = req.body.pass;
     pass2v = req.body.pass2;
-    
-    if(passv == pass2v){
-      var usuarioNuevo = new User({ usuario: usuariov, email: emailv, pass: passv });
-      console.log(usuarioNuevo.usuario);
-    
-      usuarioNuevo.save(function (err, anadirusuario, numberAffected) {
-        if (err) {
-          console.error(err);
-          res.send('Error');
-        } else {
-          console.log('usuario creado:');
-          console.log(anadirusuario);
-          res.json(anadirusuario);
-        }
-      });
-    }else{
-      console.log("las contraseñas deben ser iguales");
-      res.redirect('/index.html');
-    }
+  */
   
-});
+  con
+  
+  /*
+  var usuarioNuevo = new User({ usuario: req.params.usuario, email: req.params.email, pass: req.params.pass });
+  console.log(usuarioNuevo.usuario); // 'Silence'
 
+  usuarioNuevo.save(function (err, anadirusuario, numberAffected) {
+    if (err) {
+      console.error(err);
+      res.send('Error');
+    } else {
+      console.log('usuario creado:');
+      console.log(anadirusuario);
+      res.json(anadirusuario);
+    }
+  });
+  */
+});
 /*
 mg.sendText('deivoz14@gmail.com', ['Recipient 1 <deivoz14@gmail.com>', 'deivoz14@gmail.com'],
   'This is the subject',
