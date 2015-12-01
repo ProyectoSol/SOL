@@ -3,3 +3,9 @@ dependencias
     npm install mongoose      
     npm install -g nodemon
     npm install mailgun
+    
+    //herramientas
+    
+    -Trello
+    -hipchat
+    -

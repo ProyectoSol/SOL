@@ -2,8 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var app = express();
 var bodyParser = require('body-parser');
-//var Mailgun = require('mailgun').Mailgun;
-//var mg = new Mailgun('key-895d8c83afc89fdfe4dbbc0f77914001');
+
 
 // database connection
 mongoose.connect('mongodb://sol:sol@ds053954.mongolab.com:53954/proyectosol');
@@ -37,14 +36,7 @@ var usuarioEsquema = mongoose.Schema({
 
 // model
 var User = mongoose.model('User', usuarioEsquema);
-/*
-app.post('/insert', function(req, res) {
-   console.log(usuariov);
-   res.send('Usu+
-   ario: ' + usuariov+" email: "+emailv+" pass: "+passv+" pass2: "+pass2v);
-   
-});
-*/
+
 app.post('/insert/usuario', function(req, res){
     usuariov = req.body.usuario;
     emailv = req.body.email;
@@ -52,7 +44,7 @@ app.post('/insert/usuario', function(req, res){
     pass2v = req.body.pass2;
     
     if(passv == pass2v){
-      var usuarioNuevo = new User({ usuario: usuariov, email: emailv, pass: passv });
+      var usuarioNuevo = new User({ usuario:usuariov, email: emailv, pass: passv });
       console.log(usuarioNuevo.usuario);
     
       usuarioNuevo.save(function (err, anadirusuario, numberAffected) {
@@ -62,8 +54,23 @@ app.post('/insert/usuario', function(req, res){
         } else {
           console.log('usuario creado:');
           console.log(anadirusuario);
-          res.json(anadirusuario);
-        }
+          res.json(anadirusuario);}
+          //mailgun
+var api_key = 'key-895d8c83afc89fdfe4dbbc0f77914001';
+var domain = 'sandbox8ce7f0bf5daa434f80e058f59c7e5798.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+ 
+var data = {
+  from: 'Sunit <SunBand@zubirimanteo.eus>',
+  to: emailv,
+  subject: 'Es hora de cuidar su piel',
+  text: '(aqui tenemos que hacer lo de la activacion)'
+};
+ 
+mailgun.messages().send(data, function (error, body) {
+  console.log(body);
+});
+          
       });
     }else{
       console.log("las contraseñas deben ser iguales");
@@ -72,16 +79,6 @@ app.post('/insert/usuario', function(req, res){
   
 });
 
-/*
-mg.sendText('deivoz14@gmail.com', ['Recipient 1 <deivoz14@gmail.com>', 'deivoz14@gmail.com'],
-  'This is the subject',
-  'This is the text',
-  'deivoz14@gmail.com', {},
-  function(err) {
-    if (err) console.log('Oh noes: ' + err);
-    else     console.log('Success');
-});
-*/
 var server = app.listen(process.env.PORT || 3000, function(){
     console.log('Listening in port %d', server.address().port);
 });
