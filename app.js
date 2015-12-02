@@ -79,10 +79,12 @@ mailgun.messages().send(data, function (error, body) {
   
 });
 
-var server = app.listen(process.env.PORT ||  process.env.OPENSHIFT_NODEJS_PORT || 3000, function(){
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
+var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1";
+
+var server = app.listen(port, ip, function(){
     console.log('Listening in port %d', server.address().port);
 });
-
 
 
 
