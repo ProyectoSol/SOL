@@ -64,7 +64,7 @@ var data = {
   from: 'Sunit <SunBand@zubirimanteo.eus>',
   to: emailv,
   subject: 'Es hora de cuidar su piel',
-  text: '(aqui tenemos que hacer lo de la activacion)'
+  text: ' (aqui tenemos que hacer lo de la activacion)'
 };
  
 mailgun.messages().send(data, function (error, body) {
