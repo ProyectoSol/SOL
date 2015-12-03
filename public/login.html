@@ -1,72 +1,84 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Thu Dec 03 2015 07:28:45 GMT+0000 (UTC) -->
-<html data-wf-site="56471a46e408ac6a4822c8b2" data-wf-page="56471a46eaf2f36a4835d7b8">
+<!-- Last Published: Thu Dec 03 2015 12:43:06 GMT+0000 (UTC) -->
+<html data-wf-site="5645cad42404c4fe414da2da" data-wf-page="5660040eba246d4834c2d905">
 <head>
   <meta charset="utf-8">
-  <title>radiacionuser</title>
+  <title>login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Webflow">
-  <link rel="stylesheet" type="text/css" href="login/css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="login/css/webflow.css">
-  <link rel="stylesheet" type="text/css" href="login/css/radiacionuser.webflow.css">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/webflow.css">
+  <link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
   <script>
     WebFont.load({
       google: {
-        families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic"]
+        families: ["Varela Round:400","Changa One:400,400italic"]
       }
     });
   </script>
-  <script type="text/javascript" src="login/js/modernizr.js"></script>
+  <script type="text/javascript" src="js/modernizr.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico">
   <link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">
 </head>
-<body>
-  <div class="w-section w-clearfix hero">
-    <div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav nav">
-      <div class="w-container">
-        <a href="#" class="w-nav-brand logo">
-          <div>=D</div>
-        </a>
-        <nav role="navigation" class="w-nav-menu nav-menu"><a href="login.html" class="w-nav-link nav-link">home</a><a href="panel.html" class="w-nav-link nav-link">Panel de control</a><a href="#section2" class="w-nav-link nav-link">estadisticas</a>
-        </nav>
-        <div class="w-nav-button menu-button">
-          <div class="w-icon-nav-menu"></div>
+<body class="body">
+  <div id="Nav" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav navbar">
+    <div class="w-container">
+      <a href="#" class="w-nav-brand"></a>
+      <nav role="navigation" class="w-nav-menu"><a href="#hero" class="w-nav-link">Home</a><a href="panel.html" class="w-nav-link">Panel de Control</a><a href="#sectionEstadisticas" class="w-nav-link">Estadisticas</a>
+      </nav>
+      <div class="w-nav-button">
+        <div class="w-icon-nav-menu"></div>
+      </div>
+    </div>
+  </div>
+  <div id="hero" class="w-section w-clearfix hero">
+    <h4 class="lugar">Donostia, País Vasco/Euskadi</h4>
+    <h1 class="radio">5,5 Vº</h1><img height="100" src="images/flag-468346_960_720.png" class="bandera">
+    <div class="divtiempo"><img src="images/nube.png">
+      <h4>Max 10º</h4>
+      <h5>Min 10º</h5>
+    </div>
+    <h2 class="titulorecomendacion">Recomendación</h2>
+    <h4 class="segundotitulorecomendacion">utiliza una crema de protección</h4>
+    <div class="textrecomendacion">según el nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 20% cada 2 horas.</div>
+  </div>
+  <div id="sectionEstadisticas" class="w-section sectionestadisticas">
+    <div class="w-row estadisticas">
+      <div class="w-col w-col-4 columnaestadistica1">
+        <div class="divestadisticas">
+          <h3 class="tituloestadistica">Día</h3><img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
+        </div>
+      </div>
+      <div class="w-col w-col-4 columnaestadistica2">
+        <div class="divestadisticas">
+          <h3 class="tituloestadistica">Semana</h3><img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
+        </div>
+      </div>
+      <div class="w-col w-col-4 columnaestadistica3">
+        <div class="divestadisticas">
+          <h3 class="tituloestadistica">Año</h3><img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
         </div>
       </div>
     </div>
-    <div class="tiempo"><img src="login/images/1448991237_RainD-A.png" class="lluvia">
-      <h1 class="maxima">Max. 15º</h1>
-      <h1 class="minima">Min. &nbsp;5º</h1>
-    </div>
-    <h6 id="titulonivel" class="nivelderadiaciontitulo">Donostia, &nbsp;PAÍS VASCO /ESUSKAI</h6>
-    <h2 class="nivel">5,5 Vº</h2><img height="100" src="login/images/flag-468346_960_720.png" class="bandera">
-    <h4 class="recomendacion">Recomendación</h4>
-    <h4 class="titulorecomendacion">utiliza una crema de proteción</h4>
-    <p class="texto-recomendacion">según el nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 20% cada 2 horas.</p>
   </div>
-  <div id="section2" class="w-section section2">
-    <div id="estadisticas" class="w-row estadisticas">
-      <div class="w-col w-col-4 dias">
-        <h2 class="dia">Día</h2><img src="login/images/chart.png" class="imagenes">
-      </div>
-      <div class="w-col w-col-4 semanas">
-        <h2 class="semana">Semana</h2><img src="login/images/chart.png" class="imagenes">
-      </div>
-      <div class="w-col w-col-4 anos">
-        <h2 class="ano">Año</h2><img src="login/images/chart.png" class="imagenes">
-      </div>
+  <div class="w-section w-clearfix footer">
+    <div class="w-clearfix numero"><img src="images/1448043780_phone.png" class="number">
+      <div class="tnumero">934-24 25 25</div>
     </div>
-  </div>
-  <div class="w-section footer">
-    <div class="w-container">
-      <div class="footer-logo">Sunit</div>
-      <div>Internet de las cosas para la protección solar</div>
+    <div class="logoss"><img width="50" src="images/1448042051_twitter_circle_gray.png"><img width="50" src="images/1448042092_facebook_circle_gray.png">
+    </div>
+    <div class="w-clearfix divbrujula"><img src="images/1448044040_icon-62-compass.png" class="brujula">
+      <div class="dirccion">Donostia,guipuzkoa</div>
+    </div>
+    <div class="cop">
+      <div class="letras">Xabier Zubiri Manteo&nbsp;© 2016
+        <br>.</div>
     </div>
   </div>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script type="text/javascript" src="login/js/webflow.js"></script>
+  <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
 </html>

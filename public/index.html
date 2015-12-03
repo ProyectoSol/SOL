@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Wed Dec 02 2015 11:59:41 GMT+0000 (UTC) -->
+<!-- Last Published: Thu Dec 03 2015 12:43:06 GMT+0000 (UTC) -->
 <html data-wf-site="5645cad42404c4fe414da2da" data-wf-page="5645cad42404c4fe414da2db">
 <head>
   <meta charset="utf-8">
@@ -14,7 +14,7 @@
   <script>
     WebFont.load({
       google: {
-        families: ["Varela Round:400"]
+        families: ["Varela Round:400","Changa One:400,400italic"]
       }
     });
   </script>
@@ -24,7 +24,7 @@
 </head>
 <body class="body">
   <div data-ix="modal-interaction" class="modal-wrapper">
-    <div class="sing-up-wrapper">
+    <div class="w-clearfix sing-up-wrapper"><a href="#" data-ix="close-interaction" class="closelink">X</a>
       <h2>Registro</h2>
       <div class="w-form">
         <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="POST" action="/insert/usuario">
@@ -32,7 +32,7 @@
           <input id="email-3" type="email" placeholder="Enter your email address" name="email" data-name="email" required="required" class="w-input colorregist">
           <input id="pass" type="password" placeholder="Contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">
           <input id="pass-2" type="password" placeholder="Repetir contraseña" name="pass2" data-name="pass2" required="required" class="w-input colorregist">
-          <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
+          <input type="submit" value="Submit" data-wait="Please wait..." class="w-button sbmit">
         </form>
         <div class="w-form-done">
           <p>Thank you! Your submission has been received!</p>
@@ -40,7 +40,7 @@
         <div class="w-form-fail">
           <p>Oops! Something went wrong while submitting the form</p>
         </div>
-      </div><a href="#" data-ix="close-interaction" class="closelink">Close X</a>
+      </div>
     </div>
   </div>
   <div data-collapse="all" data-animation="over-right" data-duration="400" data-contain="1" data-easing="ease-in-quad" class="w-nav navbar">
@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-  <div id="section2" class="w-section section2">
+  <div id="section2" class="w-section sectionestadisticas">
     <h2 class="nuestrosproduct">Nuestros Productos</h2>
     <div class="w-row catalogo">
       <div class="w-col w-col-4 column1">
@@ -181,10 +181,18 @@
       </div>
     </div>
   </div>
-  <div class="w-section w-clearfix footer"><img src="images/1448042051_twitter_circle_gray.png" class="twitter"><img width="50" height="50" src="images/1448042092_facebook_circle_gray.png" class="facebook"><img src="images/1448043780_phone.png" class="number">
-    <p class="numero">934-24 25 25</p>
-    <p class="dirccion">Calle sagues</p><img width="34" src="images/1448044040_icon-62-compass.png" class="brujula">
-    <p class="copy">Xabier Zubiri Manteo&nbsp;© 2016</p>
+  <div class="w-section w-clearfix footer">
+    <div class="w-clearfix numero"><img src="images/1448043780_phone.png" class="number">
+      <p class="tnumero">934-24 25 25</p>
+    </div>
+    <div class="w-clearfix divbrujula"><img width="34" src="images/1448044040_icon-62-compass.png" class="brujula">
+      <p class="dirccion">Calle sagues</p>
+    </div>
+    <div class="w-clearfix logoss"><img src="images/1448042051_twitter_circle_gray.png" class="twitter"><img width="50" height="50" src="images/1448042092_facebook_circle_gray.png" class="facebook">
+    </div>
+    <div class="cop">
+      <div class="letras">Xabier Zubiri Manteo&nbsp;© 2016</div>
+    </div>
   </div>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>

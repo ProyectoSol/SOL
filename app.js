@@ -1,16 +1,18 @@
 var express = require('express');
+var conexionBD = require('./routes/conexion.js');
 var mongoose = require('mongoose');
 var app = express();
 var bodyParser = require('body-parser');
 
 
-// database connection
-mongoose.connect('mongodb://sol:sol@ds053954.mongolab.com:53954/proyectosol');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback() {
-	console.log('Se ha conectado correctamente con la base de datos :D');
-});
+
+var usuarioEsquema = mongoose.Schema({
+    usuario: String,
+    email: String,
+    pass: String
+},{ collection : 'usuario' });
+
+var User = mongoose.model('User', usuarioEsquema);
 
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
@@ -28,14 +30,10 @@ var emailv;
 var passv;
 var pass2v;
 
-var usuarioEsquema = mongoose.Schema({
-    usuario: String,
-    email: String,
-    pass: String
-},{ collection : 'usuario' });
+
 
 // model
-var User = mongoose.model('User', usuarioEsquema);
+conexionBD.conexion();
 
 app.post('/insert/usuario', function(req, res){
     usuariov = req.body.usuario;
