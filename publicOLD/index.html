@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Wed Dec 09 2015 11:11:43 GMT+0000 (UTC) -->
+<!-- Last Published: Thu Dec 03 2015 12:43:06 GMT+0000 (UTC) -->
 <html data-wf-site="5645cad42404c4fe414da2da" data-wf-page="5645cad42404c4fe414da2db">
 <head>
   <meta charset="utf-8">
@@ -23,34 +23,15 @@
   <link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">
 </head>
 <body class="body">
-  <div data-ix="new-interaction-2" class="modal-wrapper">
+  <div data-ix="modal-interaction" class="modal-wrapper">
     <div class="w-clearfix sing-up-wrapper"><a href="#" data-ix="close-interaction" class="closelink">X</a>
       <h2>Registro</h2>
       <div class="w-form">
-        <form id="email-form-2" name="email-form-2" data-name="Email Form 2"  method="POST" action="/insert/usuario">
+        <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="POST" action="/insert/usuario">
           <input id="usuario" type="text" placeholder="Usuaio" name="usuario" data-name="usuario" class="w-input colorregist">
-          <input id="email-3" type="email" placeholder="email" name="email" data-name="email" required="required" class="w-input colorregist">
+          <input id="email-3" type="email" placeholder="Enter your email address" name="email" data-name="email" required="required" class="w-input colorregist">
           <input id="pass" type="password" placeholder="Contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">
           <input id="pass-2" type="password" placeholder="Repetir contraseña" name="pass2" data-name="pass2" required="required" class="w-input colorregist">
-          <input type="submit" value="Submit" data-wait="Please wait..." class="w-button sbmit">
-        </form>
-        <div class="w-form-done">
-          <p>Thank you! Your submission has been received!</p>
-        </div>
-        <div class="w-form-fail">
-          <p>Oops! Something went wrong while submitting the form</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div data-ix="new-interaction-2" class="modallogin">
-    <div class="login-up-wrapper">
-      <h3 class="h3">Sign In</h3>
-      <div class="w-form">
-        <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="w-clearfix" method="POST" action="/login">
-          <input id="email-4" type="email" placeholder="email" name="email" data-name="Email 4" required="required" class="w-input colorregist">
-          <input id="pass-3" type="password" placeholder="contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">
-          <h1 data-ix="close-interaction-2" class="closesign-in">x</h1>
           <input type="submit" value="Submit" data-wait="Please wait..." class="w-button sbmit">
         </form>
         <div class="w-form-done">
@@ -75,8 +56,8 @@
   <div id="section1" class="w-section section1">
     <h1 class="titulo1">¡Protege tu piel ahora!</h1>
     <h3 class="titulo2">Registrate para empezar a protegerte con esta app</h3>
-    <div class="botones"><a href="mailto:" data-ix="subscribe-interaction" class="w-button botonregistro">Sign Up</a><a href="tel:" data-ix="login-interaction-2" class="w-button loginb">Sign in</a>
-    </div><a href="#" data-ix="login-interaction-2" class="w-button comprab">Más Información</a>
+    <div class="botones"><a href="mailto:" data-ix="subscribe-interaction" class="w-button botonregistro">registrate</a><a href="#section2" class="w-button comprab">Compra</a>
+    </div>
   </div>
   <div class="w-section informacion">
     <div class="w-row in">
@@ -102,12 +83,35 @@
       </div>
     </div>
   </div>
+  <div id="section2" class="w-section sectionestadisticas">
+    <h2 class="nuestrosproduct">Nuestros Productos</h2>
+    <div class="w-row catalogo">
+      <div class="w-col w-col-4 column1">
+        <div class="div1 chulo"><img width="400" height="100" src="images/life_beam_smart_hat.png" class="img1">
+          <h4 class="heading1">Heading</h4>
+          <p class="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p><a href="#" class="w-button compra1">Comprar</a>
+        </div>
+      </div>
+      <div class="w-col w-col-4 colum2 chulo">
+        <div class="div1 chulo"><img width="310" height="100" src="images/sony-smart-tags.png" class="img1">
+          <h4 class="heading1">Heading</h4>
+          <p class="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p><a href="#" class="w-button compra1">Comprar</a>
+        </div>
+      </div>
+      <div class="w-col w-col-4 column3">
+        <div class="div1"><img width="355" height="100" src="images/were.png" class="img1">
+          <h4 class="heading1">Heading</h4>
+          <p class="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p><a href="#" class="w-button compra1">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="w-section productos">
     <div class="w-row">
       <div class="w-col w-col-6 w-clearfix procolum1">
         <div class="prod1 _1">
           <div class="articulo">
-            <div class="foto"><img width="300" src="images/gorra.png" class="foto">
+            <div class="foto"><img width="254" src="images/life_beam_smart_hat.png" class="foto">
             </div>
             <div class="arttext">
               <h3 class="narticulo">Gorra</h3>
@@ -186,7 +190,7 @@
     </div>
     <div class="w-clearfix logoss"><img src="images/1448042051_twitter_circle_gray.png" class="twitter"><img width="50" height="50" src="images/1448042092_facebook_circle_gray.png" class="facebook">
     </div>
-    <div class="w-clearfix cop">
+    <div class="cop">
       <div class="letras">Xabier Zubiri Manteo&nbsp;© 2016</div>
     </div>
   </div>

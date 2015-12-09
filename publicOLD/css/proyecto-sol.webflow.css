@@ -66,8 +66,8 @@
   margin-right: auto;
   margin-left: auto;
   border: 1px none white;
-  border-radius: 10px;
-  background-color: rgba(4, 56, 94, 0.94);
+  border-radius: 0px;
+  background-color: rgba(28, 138, 217, 0.94);
   color: white;
   text-align: center;
   text-transform: capitalize;
@@ -188,12 +188,12 @@
   text-align: center;
 }
 
-.loginb {
+.comprab {
   width: 120px;
   margin-left: 20px;
   border: 1px none white;
-  border-radius: 10px;
-  background-color: rgba(4, 56, 94, 0.94);
+  border-radius: 0px;
+  background-color: #1d8cd9;
   text-align: center;
   text-transform: capitalize;
 }
@@ -492,7 +492,7 @@
 .prod1._1 {
   width: auto;
   height: auto;
-  background-color: rgba(4, 56, 94, 0.94);
+  background-color: #43a3e6;
 }
 
 .prod1._2 {
@@ -561,18 +561,13 @@
 
 .articcompra {
   display: block;
-  width: 165px;
-  height: 30px;
   margin-top: 35px;
   margin-right: auto;
   margin-left: auto;
-  border-bottom: 2px solid white;
   color: white;
   font-size: 20px;
   text-align: center;
-  text-decoration: none;
-  text-indent: 0px;
-  text-transform: capitalize;
+  text-decoration: underline;
 }
 
 .informacion {
@@ -764,9 +759,9 @@
   margin-top: 0px;
   float: none;
   clear: none;
-  background-color: white;
-  background-image: none;
-  background-size: auto;
+  background-image: url('../images/almora-minimalism-gradient-glow-blue-texture.jpg');
+  background-position: 0px 0px;
+  background-size: cover;
 }
 
 .columnaestadistica1 {
@@ -809,21 +804,13 @@
   width: 200px;
 }
 
-.cop {
-  display: block;
-  margin-top: -29px;
-  margin-right: auto;
-  margin-left: auto;
-  float: none;
-}
-
 .letras {
   color: #b8b4b4;
   text-align: center;
 }
 
 .logoss {
-  margin-top: -49px;
+  margin-top: -30px;
   float: right;
 }
 
@@ -885,27 +872,16 @@
   background-color: rgba(0, 87, 145, 0.23);
 }
 
-.tabboton1.w--current {
-  border-radius: 10px;
-  background-color: rgba(4, 56, 94, 0.94);
-}
-
 .tabboton2 {
   margin-left: 10px;
-  border-radius: 10px;
-  background-color: rgba(4, 56, 94, 0.94);
 }
 
 .tabboton3 {
   margin-left: 10px;
-  border-radius: 10px;
-  background-color: rgba(4, 56, 94, 0.94);
 }
 
 .tabboton4 {
   margin-left: 10px;
-  border-radius: 10px;
-  background-color: rgba(4, 56, 94, 0.94);
 }
 
 .tabsmenu {
@@ -913,80 +889,11 @@
   text-align: center;
 }
 
-.text {
-  color: white;
-}
-
 .con {
   margin-top: -6px;
-  border-radius: 10px;
-}
-
-.comprab {
-  display: block;
-  width: 150px;
-  margin-top: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 10px;
-  background-color: rgba(4, 56, 94, 0.94);
-  text-align: center;
-}
-
-.redondeado {
-  border-radius: 10px;
-}
-
-.submit {
-  border-radius: 10px;
-  background-color: rgba(4, 56, 94, 0.94);
-}
-
-.modallogin {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 888;
-  height: 100%;
-  padding-top: 90px;
-  background-color: rgba(0, 0, 0, 0.33);
-}
-
-.login-up-wrapper {
-  display: block;
-  width: 450px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 40px;
-  background-color: white;
-}
-
-.h3 {
-  margin-top: 0px;
-  text-align: center;
-}
-
-.closesign-in {
-  display: inline-block;
-  margin-top: -170px;
-  margin-left: 75px;
-  float: right;
-  color: rgba(51, 51, 51, 0.54);
-  font-size: 30px;
-  text-decoration: none;
 }
 
 html.w-mod-js *[data-ix="modal-interaction"] {
-  display: none;
-  opacity: 0;
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-html.w-mod-js *[data-ix="new-interaction-2"] {
   display: none;
   opacity: 0;
   -webkit-transform: scale(1.1);
@@ -1062,11 +969,6 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
     margin-right: auto;
     margin-left: auto;
   }
-  .send {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-  }
   .formula {
     width: auto;
   }
@@ -1085,17 +987,6 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
   }
   .informacion {
     height: auto;
-  }
-  .letras {
-    display: block;
-    margin-top: 0px;
-    margin-right: auto;
-    margin-left: 53px;
-    float: left;
-    color: #7c7b81;
-  }
-  .logoss {
-    margin-top: -67px;
   }
 }
 
@@ -1240,16 +1131,6 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
   .columnaestadistica3 {
     min-height: auto;
   }
-  .cop {
-    margin-top: 6px;
-    margin-left: 81px;
-    float: left;
-  }
-  .logoss {
-    margin-top: -69px;
-    margin-right: 6px;
-    margin-left: 0px;
-  }
   .tabboton1 {
     display: inline-block;
     width: 25%;
@@ -1283,15 +1164,5 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
   }
   .text {
     text-align: center;
-  }
-  .login-up-wrapper {
-    width: 100%;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  .h3 {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
   }
 }

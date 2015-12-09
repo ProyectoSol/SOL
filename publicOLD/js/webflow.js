@@ -4320,8 +4320,5 @@ Webflow.require('ix').init([
   {"slug":"modal-interaction","name":"Modal Interaction","value":{"style":{"display":"none","opacity":0,"scale":1.1},"triggers":[]}},
   {"slug":"new-interaction","name":"New Interaction","value":{"style":{},"triggers":[]}},
   {"slug":"subscribe-interaction","name":"subscribe interaction","value":{"style":{},"triggers":[{"type":"click","selector":".modal-wrapper","stepsA":[{"display":"block"},{"opacity":1,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","scale":1}],"stepsB":[]}]}},
-  {"slug":"close-interaction","name":"Close interaction","value":{"style":{},"triggers":[{"type":"click","selector":".modal-wrapper","stepsA":[{"opacity":0,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","scale":1.1},{"display":"none"}],"stepsB":[]}]}},
-  {"slug":"new-interaction-2","name":"New Interaction 2","value":{"style":{"display":"none","opacity":0,"scale":1.1},"triggers":[]}},
-  {"slug":"login-interaction-2","name":"login interaction 2","value":{"style":{},"triggers":[{"type":"click","selector":".modallogin","stepsA":[{"display":"block"},{"opacity":1,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","scale":1}],"stepsB":[]}]}},
-  {"slug":"close-interaction-2","name":"close Interaction 2","value":{"style":{},"triggers":[{"type":"click","selector":".modallogin","stepsA":[{"opacity":0,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","scale":1.1},{"display":"none"}],"stepsB":[]}]}}
+  {"slug":"close-interaction","name":"Close interaction","value":{"style":{},"triggers":[{"type":"click","selector":".modal-wrapper","stepsA":[{"opacity":0,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","scale":1.1},{"display":"none"}],"stepsB":[]}]}}
 ]);
