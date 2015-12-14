@@ -6,6 +6,6 @@
   "repository": "",
   "author": "SunIT zubirimanteo <sunit.zubiri@gmail.com>",
   "dependencies": {
-    "express": "~3.2.4"
+    "express": "^3.2.6"
   }
 }
