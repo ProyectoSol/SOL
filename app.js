@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var user = require('./routes/user.js');
-
+var radiacion = require('./routes/radiacion.js');
 
 
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -41,12 +41,19 @@ app.post('/usuario/login', function(req, res){
 });
 
 app.post('/dato', function(req, res){
-  
-
-  
+var uv = req.body.uv;
+radiacion.radiacionSolar(req, res, uv)
   
 });
-app.post('/')
+//app.post('/')
+app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
+  
+  var disp_nombre = req.params.disp_nombre;
+  var uv = req.params.uv;
+  
+  radiacion.insert(req, res, disp_nombre, uv);
+    
+});
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
 var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1";

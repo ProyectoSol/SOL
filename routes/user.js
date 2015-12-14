@@ -2,17 +2,18 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var conexionBD = require('./conexion.js');
+//var handlebars = require('handlebars');
 
-  //---------------------------
+ app.use(express.static(__dirname +'/radiacion'));
+ 
   var session = require("client-sessions");
   app.use(session({
   cookieName: 'session',
-  secret: 'ANTHONY COME PENES :D 8==D ~',
+  secret: 'A22M05D04',
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
 }));
-  //--------------------------
-
+ 
 conexionBD.conexion();
 
 var usuarioEsquema = mongoose.Schema({
@@ -82,6 +83,5 @@ exports.login = function(req, res, emailL, passL){
   
 
   });  
-  
     res.redirect('/login.html');
 }
