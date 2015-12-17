@@ -2,17 +2,21 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var conexionBD = require('./conexion.js');
-//var handlebars = require('handlebars');
+var exphbs  = require('handlebars');
+var session = require('express-session');
+//app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
 
+
+
+app.use(session({ resave: true,
+                  saveUninitialized: true,
+                  secret: 'uwotm8'
+                })
+);
+                
  app.use(express.static(__dirname +'/radiacion'));
- 
-  var session = require("client-sessions");
-  app.use(session({
-  cookieName: 'session',
-  secret: 'A22M05D04',
-  duration: 30 * 60 * 1000,
-  activeDuration: 5 * 60 * 1000,
-}));
+
  
 conexionBD.conexion();
 
@@ -24,6 +28,8 @@ var usuarioEsquema = mongoose.Schema({
 },{ collection : 'usuario' });
 
 var User = mongoose.model('User', usuarioEsquema);
+
+
 
 exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
 
@@ -61,27 +67,40 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
       res.redirect('/index.html');
     }
 };
+
+
+
 exports.login = function(req, res, emailL, passL){
+/* ---------------------------------------------- 
+var users = {};
 
-  User.findOne({'email': emailL, 'pass': passL},function(req, user, err) {
+function getUser(username, callback) {
   
-/*
-    req.session.id = usuario['_id'];
-    
-    req.session.pass = usuario['pass'];
-    req.session.email = usuario['email'];
+        User.findOne({'email': emailL, 'pass': passL},function(req, user) {
+            users[username] = user;
+          
+            callback(user);
+        });
+    };
   
-    console.log(req.session.id);
-*/
-  
-    user.session_state = user;
-    
-    console.log(user.session_state['usuario']);
-    console.log(user.session_state['_id']);
-    console.log(user.session_state['email']);
-    
-  
+---------------------------------------------*/
 
-  });  
-    res.redirect('/login.html');
-}
+
+ User.findOne({'email': emailL, 'pass': passL},function(req, user) {
+   //  res.json(user.usuario);
+  //   console.log(res.json(user.usuario))
+
+
+  var name = user.usuario;
+  session.a = name;
+ //
+ 
+ //res.json(session.a);
+ 
+
+  });
+console.log(session.a)
+ res.redirect('/hello');
+
+  
+};

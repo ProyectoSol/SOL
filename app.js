@@ -6,6 +6,12 @@ var bodyParser = require('body-parser');
 var user = require('./routes/user.js');
 var radiacion = require('./routes/radiacion.js');
 
+var session = require('express-session');
+app.use(session({ resave: true,
+                  saveUninitialized: true,
+                  secret: 'uwotm8' }));
+
+
 
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
@@ -33,18 +39,25 @@ app.post('/usuario/registro', function(req, res){
 
 
 app.post('/usuario/login', function(req, res){
-
+  
   var emailL = req.body.email;
   var passL = req.body.pass;
   
+ /* req.session.eml = emailL;
+  console.log(req.session.eml);*/
   user.login(req, res, emailL, passL);
-});
-
-app.post('/dato', function(req, res){
-var uv = req.body.uv;
-radiacion.radiacionSolar(req, res, uv)
   
 });
+//---------------------------prueba session
+
+app.get('/hello', function(req, res) {
+	console.log(session.a);
+    res.send('Hello =D ' + session.a);
+});
+//----------------------------fin prueba session
+
+
+
 //app.post('/')
 app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
   
