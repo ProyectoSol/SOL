@@ -2,13 +2,17 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var conexionBD = require('./conexion.js');
-var exphbs  = require('handlebars');
+
 var session = require('express-session');
-//app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
 
+//------------------------------------------------handlebars
+/*
+var exphbs  = require('express-handlebars');
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');*/
+//------------------------------------------------handlebars
 
-
+app.use(express.cookieParser());
 app.use(session({ resave: true,
                   saveUninitialized: true,
                   secret: 'uwotm8'
@@ -71,36 +75,27 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
 
 
 exports.login = function(req, res, emailL, passL){
-/* ---------------------------------------------- 
-var users = {};
 
-function getUser(username, callback) {
+
+
+ User.findOne({'email': emailL, 'pass': passL},function(err, user) {
   
-        User.findOne({'email': emailL, 'pass': passL},function(req, user) {
-            users[username] = user;
-          
-            callback(user);
-        });
-    };
+   if (err) {
+        console.error(err);
+        res.send('Error');
+      }
+      
+      else {
+        req.session.a = user.usuario;
+        console.log(req.session.a);
+        res.redirect('/hello');
+       
+      } 
   
----------------------------------------------*/
+   
+ });
+  
 
-
- User.findOne({'email': emailL, 'pass': passL},function(req, user) {
-   //  res.json(user.usuario);
-  //   console.log(res.json(user.usuario))
-
-
-  var name = user.usuario;
-  session.a = name;
- //
- 
- //res.json(session.a);
- 
-
-  });
-console.log(session.a)
- res.redirect('/hello');
 
   
 };

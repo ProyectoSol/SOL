@@ -32,7 +32,7 @@ exports.insert = function(req, res, disp_nombre, uv){
           res.json(anadirUv);
         }
     });
-}
+};
 /*
 function mostrar() {
  radiacion.findOne({'_id': '566eb24df1cdc3092d4dbb68'},'uv',function(req, uv, err) {
@@ -40,3 +40,13 @@ function mostrar() {
  });
 }
 */
+
+exports.mostrar = function(req, res){
+  //db.foo.find().sort({_id:1});
+    radiacion.findOne({},function(err, Ruv) {
+     global.nivel;
+     global.nivel = Ruv.uv;
+       //module.exports = new nivel();
+     
+ }).sort({_id:-1}); 
+};

@@ -10,6 +10,15 @@ var session = require('express-session');
 app.use(session({ resave: true,
                   saveUninitialized: true,
                   secret: 'uwotm8' }));
+                  
+//------------------------------------------------handlebars
+
+var exphbs  = require('express-handlebars');
+
+app.engine('handlebars',  exphbs());
+app.set('view engine', 'handlebars');
+
+//------------------------------------------------handlebars
 
 
 
@@ -18,7 +27,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 app.use(express.urlencoded()); // to support URL-encoded bodies
 
-app.use(express.static(__dirname +'/public'));
+app.use(express.static(__dirname +'/views'));
 
 app.get('/', function(req, res) {
     res.redirect('index.html');
@@ -51,8 +60,19 @@ app.post('/usuario/login', function(req, res){
 //---------------------------prueba session
 
 app.get('/hello', function(req, res) {
-	console.log(session.a);
-    res.send('Hello =D ' + session.a);
+//	console.log(session.a);
+   // res.send('Hello =D ' + req.session.a);
+   
+ // logger('barfoo'); 
+  
+    radiacion.mostrar(req, res);
+  var nivelfinal = global.nivel;
+     
+     res.render('login', {User: req.session.a,
+                          Uv: nivelfinal
+                            });
+   // res.render('login', {UV: res.Ruv});
+    
 });
 //----------------------------fin prueba session
 
@@ -74,4 +94,3 @@ var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1";
 var server = app.listen(port, ip, function(){
     console.log('Listening in port %d', server.address().port);
 });
-
