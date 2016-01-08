@@ -65,7 +65,18 @@ app.get('/hello', function(req, res) {
   
 });
 //----------------------------fin prueba session
-
+app.post('/fototipo',function(req, res) {
+    
+    
+     var pelo = req.body.cabello;
+     var ojos = req.body.ojos;
+     var piel = req.body.piel;
+     var pecas = req.body.pecas;
+     var rojo = req.body.eritema;
+     var bronceado = req.body.bronceado;
+    user.fototipo(req, res, pelo, ojos, piel, pecas, rojo, bronceado);
+    
+});
 
 
 //app.post('/')

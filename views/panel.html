@@ -19,8 +19,8 @@
     });
   </script>
   <script type="text/javascript" src="js/modernizr.js"></script>
-  <link rel="shortcut icon" type="image/x-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico">
-  <link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">
+  <link rel="shortcut icon" type="image/x-icon" href="images/solicon.png">
+  <link rel="apple-touch-icon" href="images/solicon.png">
 </head>
 <body class="body">
   <div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav navbar">
@@ -78,48 +78,54 @@
           </div>
           <div data-w-tab="Tab 2" class="w-tab-pane formwrapper">
             <div class="w-form">
-              <form id="email-form-2" name="email-form-2" data-name="Email Form 2">
+              <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="POST" action="/fototipo">
                 <label for="field">Color del cabello</label>
-                <select id="field" name="field" class="w-select redondeado">
-                  <option value="">Select one...</option>
-                  <option value="First">First Choice</option>
-                  <option value="Second">Second Choice</option>
-                  <option value="Third">Third Choice</option>
+                <select id="cabello" name="cabello" class="w-select redondeado">
+                  <option value="">selecciona uno</option>
+                  <option value="1">rubio/pelirrojo</option>
+                  <option value="2">castaño</option>
+                  <option value="3">moreno</option>
+                  <option value="4">negro</option>
                 </select>
                 <label for="field-2">Color de ojos</label>
-                <select id="field-2" name="field-2" data-name="Field 2" class="w-select redondeado">
-                  <option value="">Select one...</option>
-                  <option value="First">First Choice</option>
-                  <option value="Second">Second Choice</option>
-                  <option value="Third">Third Choice</option>
+                <select id="ojos" name="ojos" data-name="Field 2" class="w-select redondeado">
+                  <option value="">selecciona uno</option>
+                  <option value="1">azules/verdes claros</option>
+                  <option value="2">azules/verdes oscuros</option>
+                  <option value="3">marrones</option>
+                  <option value="4">negros</option>
                 </select>
                 <label for="field-3">Tono de piel</label>
-                <select id="field-3" name="field-3" data-name="Field 3" class="w-select redondeado">
-                  <option value="">Select one...</option>
-                  <option value="First">First Choice</option>
-                  <option value="Second">Second Choice</option>
-                  <option value="Third">Third Choice</option>
+                <select id="piel" name="piel" data-name="Field 3" class="w-select redondeado">
+                  <option value="">selecciona uno</option>
+                  <option value="1">blanca o muy blanca</option>
+                  <option value="2">dorada</option>
+                  <option value="3">morena</option>
+                  <option value="4">muy morena</option>
                 </select>
                 <label for="field-4">Pecas/lunares</label>
-                <select id="field-4" name="field-4" data-name="Field 4" class="w-select redondeado">
-                  <option value="">Select one...</option>
-                  <option value="First">First Choice</option>
-                  <option value="Second">Second Choice</option>
-                  <option value="Third">Third Choice</option>
+                <select id="pecas" name="pecas" data-name="Field 4" class="w-select redondeado">
+                  <option value="">selecciona uno</option>
+                  <option value="1">muchos</option>
+                  <option value="2">bastantes</option>
+                  <option value="3">algunos</option>
+                   <option value="4">nunguno</option>
                 </select>
                 <label for="field-5">Eritema/Enrojecimiento</label>
-                <select id="field-5" name="field-5" data-name="Field 5" class="w-select redondeado">
-                  <option value="">Select one...</option>
-                  <option value="First">First Choice</option>
-                  <option value="Second">Second Choice</option>
-                  <option value="Third">Third Choice</option>
+                <select id="eritema" name="eritema" data-name="Field 5" class="w-select redondeado">
+                  <option value="">selecciona uno</option>
+                  <option value="1">casi siempre</option>
+                  <option value="2">a veces</option>
+                  <option value="3">casi nunca</option>
+                  <option value="4">nunca</option>
                 </select>
                 <label for="field-6">Bronceado</label>
-                <select id="field-6" name="field-6" data-name="Field 6" class="w-select redondeado">
-                  <option value="">Select one...</option>
-                  <option value="First">First Choice</option>
-                  <option value="Second">Second Choice</option>
-                  <option value="Third">Third Choice</option>
+                <select id="bronceado" name="bronceado" data-name="Field 6" class="w-select redondeado">
+                  <option value="">selecciona uno</option>
+                  <option value="1">nunca</option>
+                  <option value="2">casi nunca</option>
+                  <option value="3">a veces</option>
+                  <option value="4">siempre</option>
                 </select>
                 <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
               </form>

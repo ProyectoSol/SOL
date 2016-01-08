@@ -23,7 +23,15 @@ var usuarioEsquema = mongoose.Schema({
     usuario: String,
     email: String,
     pass: String,
-    confirmado: String
+    confirmado: String,
+    //añadimos el fototipo
+    pelo: String,
+    ojos: String,
+    piel: String,
+    pecas: String,
+    rojo: String,
+    bronceado: String,
+    fototipo: String
 },{ collection : 'usuario' });
 
 var User = mongoose.model('User', usuarioEsquema);
@@ -89,8 +97,23 @@ exports.login = function(req, res, emailL, passL){
   
    
  });
+ 
   
+};
+exports.fototipo = function(req, res, peloF, ojosF, pielF, pecasF, rojoF, bronceadoF){
+console.log(peloF + ojosF + pielF + pecasF + rojoF + bronceadoF);
+
+ var ResultadoFototipo = (parseInt(peloF) + parseInt(ojosF) + parseInt(pielF) + parseInt(pecasF) + parseInt(rojoF) + parseInt(bronceadoF)) / 6;
 
 
+ console.log("tu fototipo es "+ ResultadoFototipo);
+ 
+User.update({usuario: req.session.a ,pelo: peloF,ojos: ojosF,piel: pielF,pecas: pecasF, rojo: rojoF,bronceado: bronceadoF,fototipo: ResultadoFototipo}, function(user) {
+   res.redirect('/hello');
+   
+   console.log("usuario actualizado");
+});
+
+ 
   
 };
