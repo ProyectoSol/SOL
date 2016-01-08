@@ -60,9 +60,11 @@ app.post('/usuario/login', function(req, res){
 //---------------------------prueba session
 
 app.get('/hello', function(req, res) {
-
-    radiacion.mostrar(req, res);
-  
+    if (!req.session.a){
+         res.redirect('index.html');
+    }else{
+        radiacion.mostrar(req, res);
+    }
 });
 //----------------------------fin prueba session
 app.post('/fototipo',function(req, res) {

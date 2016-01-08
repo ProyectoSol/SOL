@@ -1,11 +1,7 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
-
 var session = require('express-session');
-
-
-//------------------------------------------------handlebars
 
 app.use(express.cookieParser());
 app.use(session({ resave: true,
@@ -15,10 +11,6 @@ app.use(session({ resave: true,
 );
                 
  app.use(express.static(__dirname +'/radiacion'));
-
- 
-//conexionBD.conexion();
-
 var usuarioEsquema = mongoose.Schema({
     usuario: String,
     email: String,
