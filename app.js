@@ -1,6 +1,7 @@
 var express = require('express');
-//var conexionBD = require('./routes/conexion.js');
+var conexionBD = require('./routes/conexion.js');
 //var mongoose = require('mongoose');
+conexionBD.conexion();
 var app = express();
 var bodyParser = require('body-parser');
 var user = require('./routes/user.js');
@@ -52,27 +53,16 @@ app.post('/usuario/login', function(req, res){
   var emailL = req.body.email;
   var passL = req.body.pass;
   
- /* req.session.eml = emailL;
-  console.log(req.session.eml);*/
+
   user.login(req, res, emailL, passL);
   
 });
 //---------------------------prueba session
 
 app.get('/hello', function(req, res) {
-//	console.log(session.a);
-   // res.send('Hello =D ' + req.session.a);
-   
- // logger('barfoo'); 
-  
+
     radiacion.mostrar(req, res);
-  var nivelfinal = global.nivel;
-     
-     res.render('login', {User: req.session.a,
-                          Uv: nivelfinal
-                            });
-   // res.render('login', {UV: res.Ruv});
-    
+  
 });
 //----------------------------fin prueba session
 

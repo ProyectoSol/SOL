@@ -1,7 +1,5 @@
 var express = require('express');
 var app = express();
-var conexionBD = require('./conexion.js');
-conexionBD.conexion();
 var mongoose = require('mongoose');
 
 var radiacionEsquema = mongoose.Schema({
@@ -33,20 +31,25 @@ exports.insert = function(req, res, disp_nombre, uv){
         }
     });
 };
-/*
-function mostrar() {
- radiacion.findOne({'_id': '566eb24df1cdc3092d4dbb68'},'uv',function(req, uv, err) {
-   console.log(uv);
- });
-}
-*/
 
+//---------------coger ultimo indice de radiacion--------
 exports.mostrar = function(req, res){
-  //db.foo.find().sort({_id:1});
+    
     radiacion.findOne({},function(err, Ruv) {
-     global.nivel;
-     global.nivel = Ruv.uv;
-       //module.exports = new nivel();
+    
+    if (err) {
+        console.error(err);
+        res.send('Error');
+    } else {
+        global.nivel;
+        global.nivel = Ruv.uv;
      
+        var nivelfinal = global.nivel;
+     
+     //handlebars mostrar el usuario y el nivel de radiacion (ultimo añadido)
+        res.render('login', {User: req.session.a,
+                            Uv: nivelfinal
+                            });
+    }
  }).sort({_id:-1}); 
 };

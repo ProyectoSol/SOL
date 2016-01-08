@@ -1,15 +1,10 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
-var conexionBD = require('./conexion.js');
 
 var session = require('express-session');
 
-//------------------------------------------------handlebars
-/*
-var exphbs  = require('express-handlebars');
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');*/
+
 //------------------------------------------------handlebars
 
 app.use(express.cookieParser());
@@ -22,7 +17,7 @@ app.use(session({ resave: true,
  app.use(express.static(__dirname +'/radiacion'));
 
  
-conexionBD.conexion();
+//conexionBD.conexion();
 
 var usuarioEsquema = mongoose.Schema({
     usuario: String,
