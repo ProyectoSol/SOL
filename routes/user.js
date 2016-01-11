@@ -18,6 +18,11 @@ var usuarioEsquema = mongoose.Schema({
     pass: String,
     codigo: String,
     confirmado: String,
+    //añadimos informacion adicional del usuario
+    nombre: String,
+    apellido: String,
+    fecha: String,
+    sexo: String,
     //añadimos el fototipo
     pelo: String,
     ojos: String,
@@ -120,7 +125,7 @@ exports.login = function(req, res, emailL, passL){
         if(user.confirmado == '1'){
           req.session.a = user.usuario;
           console.log(req.session.a);
-          res.redirect('/hello');
+          res.redirect('/home');
         }
         else{
           console.log('no confirmado');
@@ -147,7 +152,22 @@ console.log(peloF + ojosF + pielF + pecasF + rojoF + bronceadoF);
  console.log("tu fototipo es "+ ResultadoFototipo);
  
 User.update({usuario: req.session.a}, {pelo: peloF,ojos: ojosF,piel: pielF,pecas: pecasF, rojo: rojoF,bronceado: bronceadoF,fototipo: ResultadoFototipo}, function(user) {
-   res.redirect('/hello');
+   res.redirect('/home');
+   
+   console.log("Usuario actualizado");
+});
+
+ 
+  
+};
+
+exports.info = function(req, res, nombre, apellido, fecha, sexo){
+console.log(nombre + apellido + fecha + sexo);
+
+ 
+ 
+User.update({usuario: req.session.a}, {nombre: nombre, apellido: apellido, fecha: fecha, sexo: sexo}, function(user) {
+   res.redirect('/home');
    
    console.log("Usuario actualizado");
 });

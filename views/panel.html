@@ -4,7 +4,7 @@
 <html data-wf-site="5645cad42404c4fe414da2da" data-wf-page="5660154353fc7d877ec2b727">
 <head>
   <meta charset="utf-8">
-  <title>pandel</title>
+  <title>Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Webflow">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -26,7 +26,7 @@
   <div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav navbar">
     <div class="w-container con">
       <a href="#" class="w-nav-brand"></a>
-      <nav role="navigation" class="w-nav-menu"><a href="/hello" class="w-nav-link">Home</a><a href="#" class="w-nav-link">Panel De Control</a><a href="login.html" class="w-nav-link">Estadísticas</a>
+      <nav role="navigation" class="w-nav-menu"><a href="/home" class="w-nav-link">Home</a><a href="#" class="w-nav-link">Panel De Control</a><a href="login.html" class="w-nav-link">Estadísticas</a>
       </nav>
       <div class="w-nav-button">
         <div class="w-icon-nav-menu"></div>
@@ -47,21 +47,23 @@
             <div class="text">Alertas</div>
           </a>
           <a data-w-tab="Tab 4" class="w-tab-link w-inline-block tabboton4">
-            <div class="text">Estadistica</div>
+            <div class="text">Estadísticas</div>
           </a>
         </div>
         <div class="w-tab-content">
           <div data-w-tab="Tab 1" class="w-tab-pane">
             <div class="w-form formwrapper">
-              <form id="email-form" name="email-form" data-name="Email Form">
+              <form id="email-form" name="email-form" data-name="Email Form" method="POST" action="/informacion">
                 <input id="name" type="text" placeholder="Nombre" name="name" data-name="Name" class="w-input redondeado">
                 <input id="apellidos" type="text" placeholder="Apellidos" name="apellidos" data-name="apellidos" class="w-input redondeado">
-                <input id="fecha" type="text" placeholder="fecha de nacimiento" name="fecha" data-name="fecha" class="w-input fecha redondeado">
+                <input id="fecha" type="date" placeholder="fecha de nacimiento" name="fecha" data-name="fecha" class="w-input fecha redondeado">
                 <select id="sexo" name="sexo" data-name="sexo" class="w-select sexo redondeado">
-                  <option value="mujer">mujer</option>
-                  <option value="hombre">hombre</option>
+                  <option value="mujer">Mujer</option>
+                  <option value="hombre">Hombre</option>
                 </select>
-                <input id="email" type="email" placeholder="Email" name="email" data-name="email" class="w-input redondeado">
+                 <input type="submit" value="Submit" data-wait="Please wait..." class="w-button submit">
+              </form>
+                 <form id="cambiocontraseña" name="cambiocontraseña" data-name="Email Form">
                 <h3 class="contra">Contraseña</h3>
                 <input id="passAnterior" type="password" placeholder="contraseña anterior" name="passAnterior" data-name="passAnterior" class="w-input redondeado">
                 <input id="passnew" type="password" placeholder="contraseña Nueva" name="passnew" data-name="passnew" class="w-input redondeado">
@@ -69,10 +71,10 @@
                 <input type="submit" value="Submit" data-wait="Please wait..." class="w-button submit">
               </form>
               <div class="w-form-done">
-                <p>Thank you! Your submission has been received!</p>
+                <p>Los cambios se han guardado correctamente.</p>
               </div>
               <div class="w-form-fail">
-                <p>Oops! Something went wrong while submitting the form</p>
+                <p>Error al realizar los cambios.</p>
               </div>
             </div>
           </div>
@@ -157,10 +159,10 @@
                 <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
               </form>
               <div class="w-form-done">
-                <p>Thank you! Your submission has been received!</p>
+                <p>Los cambios se han guardado correctamente.</p>
               </div>
               <div class="w-form-fail">
-                <p>Oops! Something went wrong while submitting the form</p>
+                <p>Error al realizar los cambios.</p>
               </div>
             </div>
           </div>

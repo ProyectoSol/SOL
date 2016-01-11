@@ -4,7 +4,7 @@
 <html data-wf-site="5645cad42404c4fe414da2da" data-wf-page="5645cad42404c4fe414da2db">
 <head>
   <meta charset="utf-8">
-  <title>Proyecto Sol</title>
+  <title>Inicio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Webflow">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -37,17 +37,17 @@
           <input type="submit" value="Registrarse" data-wait="Please wait..." class="w-button sbmit">
         </form>
         <div class="w-form-done">
-          <p>Thank you! Your submission has been received!</p>
+          <p>¡Gracias! Te has registrado correctamente.</p>
         </div>
         <div class="w-form-fail">
-          <p>Oops! Something went wrong while submitting the form</p>
+          <p>Ha habido un error en el registro.</p>
         </div>
       </div>
     </div>
   </div>
   <div data-ix="new-interaction-2" class="modallogin">
     <div class="login-up-wrapper">
-      <h3 class="h3">Sign In</h3>
+      <h3 class="h3">Iniciar sesión</h3>
       <div class="w-form">
         <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="w-clearfix" method="POST" action="/usuario/login">
           <input id="email-4" type="email" placeholder="email" name="email" data-name="Email 4" required="required" class="w-input colorregist">
@@ -56,10 +56,10 @@
           <input type="submit" value="Entrar" data-wait="Please wait..." class="w-button sbmit">
         </form>
         <div class="w-form-done">
-          <p>Thank you! Your submission has been received!</p>
+          <p>Has iniciado sesión correctamente.</p>
         </div>
         <div class="w-form-fail">
-          <p>Oops! Something went wrong while submitting the form</p>
+          <p>Error al iniciar sesión.</p>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@
   <div data-collapse="all" data-animation="over-right" data-duration="400" data-contain="1" data-easing="ease-in-quad" class="w-nav navbar">
     <div class="w-container navcontainer">
       <nav role="navigation" class="w-nav-menu navmenu"><a href="#section1" class="w-nav-link linkhome">Home</a>
-                                                        <a href="#section2" target="_blank" class="w-nav-link linkcomprar">Nuestros Productos</a>
+                                                        <a href="#productos" target="_blank" class="w-nav-link linkcomprar">Nuestros Productos</a>
                                                         <a href="#formu" class="w-nav-link linkdescripcion">Contáctanos</a>
       </nav>
       <div class="w-nav-button w-clearfix menu">
@@ -79,7 +79,7 @@
   <div id="section1" class="w-section section1">
     <h1 class="titulo1">¡Protege tu piel ahora!</h1>
     <h3 class="titulo2">Registrate para empezar a protegerte con esta app</h3>
-    <div class="botones"><a  data-ix="subscribe-interaction" class="w-button botonregistro">Sign Up</a><a href="tel:" data-ix="login-interaction-2" class="w-button loginb">Sign in</a>
+    <div class="botones"><a  data-ix="subscribe-interaction" class="w-button botonregistro">Registrarse</a><a href="tel:" data-ix="login-interaction-2" class="w-button loginb">Iniciar sesión</a>
     </div><a href="#" data-ix="login-interaction-2" class="w-button comprab">Más Información</a>
   </div>
   <div class="w-section informacion">
@@ -88,25 +88,25 @@
         <div class="reco">
           <div class="fotoreco"><img src="images/1448671987_Heart.png" class="fotoreco1">
           </div>
-          <h1 class="header1">Cuidate</h1>
-          <p class="reco1">Recuerda que no podes cuidar tu piel por ti pero si podemos ayudate en ello. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
+          <h1 class="header1">Cuídate</h1>
+          <p class="reco1">Recuerda que no podemos cuidar tu piel por ti, pero podemos ayudarte. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
         </div>
       </div>
       <div class="w-col w-col-4">
         <div class="reco"><img src="images/1448672026_apple-04.png" class="fotoreco1 _2">
           <h1 class="header1">Moderno</h1>
-          <p class="reco1">Recuerda que no podes cuidar tu piel por ti pero si podemos ayudate en ello. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
+          <p class="reco1">Recuerda que no podemos cuidar tu piel por ti, pero podemos ayudarte. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
         </div>
       </div>
       <div class="w-col w-col-4">
         <div class="reco"><img src="images/1448672561_Beach.png" class="fotoreco1 _3">
           <h1 class="header1">¡Relájate!</h1>
-          <p class="reco1">Recuerda que no podes cuidar tu piel por ti pero si podemos ayudate en ello. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
+          <p class="reco1">Recuerda que no podemos cuidar tu piel por ti, pero podemos ayudarte. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="w-section productos">
+  <div id="productos" class="w-section productos">
     <div class="w-row">
       <div class="w-col w-col-6 w-clearfix procolum1">
         <div class="prod1 _1">
@@ -115,7 +115,7 @@
             </div>
             <div class="arttext">
               <h3 class="narticulo">Gorra</h3>
-              <p class="info">Protegete con la primera gorra con inteligencia. no olvides que la salud es lo primero y que tienes que mantener la piel sana.</p><a href="#" class="articcompra">COMPRA AHORA</a>
+              <p class="info">Protegete con la primera gorra con inteligencia. No olvides que la salud es lo primero y que tienes que mantener la piel sana.</p><a href="#" class="articcompra">COMPRA AHORA</a>
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
             </div>
             <div class="arttext">
               <h3 class="narticulo">Chapa</h3>
-              <p class="info">Protegete con la primera gorra con inteligencia. no olvides que la salud es lo primero y que tienes que mantener la piel sana.</p><a href="#" class="articcompra">COMPRA AHORA</a>
+              <p class="info">Protegete con la primera gorra con inteligencia. No olvides que la salud es lo primero y que tienes que mantener la piel sana.</p><a href="#" class="articcompra">COMPRA AHORA</a>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@
             </div>
             <div class="arttext">
               <h3 class="narticulo">Wearable</h3>
-              <p class="info">Protegete con la primera gorra con inteligencia. no olvides que la salud es lo primero y que tienes que mantener la piel sana.</p><a href="#" class="articcompra">COMPRA AHORA</a>
+              <p class="info">Protegete con la primera gorra con inteligencia. No olvides que la salud es lo primero y que tienes que mantener la piel sana.</p><a href="#" class="articcompra">COMPRA AHORA</a>
             </div>
           </div>
         </div>
@@ -152,8 +152,8 @@
             <div class="foto"><img width="457" src="images/imagenpulsera.png" class="foto _3">
             </div>
             <div class="arttext">
-              <h3 class="narticulo">¿Mas Articulos?</h3>
-              <p class="info">Protegete con la primera gorra con inteligencia. no olvides que la salud es lo primero y que tienes que mantener la piel sana.</p><a href="#" class="articcompra">TIENDA ONLINE</a>
+              <h3 class="narticulo">¿Mas Artículos?</h3>
+              <p class="info">Protegete con la primera gorra con inteligencia. No olvides que la salud es lo primero y que tienes que mantener la piel sana.</p><a href="#" class="articcompra">TIENDA ONLINE</a>
             </div>
           </div>
         </div>
@@ -165,17 +165,17 @@
       <h1 class="tituloform">Contáctanos</h1>
       <div class="divform">
         <div class="w-form formwrapper">
-          <form id="email-form" name="email-form" data-name="Email Form" class="formula">
-            <input id="name" type="text" placeholder="Name" name="name" data-name="Name" class="w-input textfield">
+          <form id="contactanosF" name="contactanosF" data-name="Email Form" class="formula" method="POST" action="/consulta">
             <input id="email" type="email" placeholder="Email" name="email" data-name="Email" required="required" class="w-input textfield">
-            <textarea id="field" placeholder="Message" name="field" class="w-input textarea"></textarea>
-            <input type="submit" value="Send Message" data-wait="Send Message" wait="Send Message" class="w-button send">
+            <input id="asunto" type="text" placeholder="Asunto" name="asunto" data-name="Name" class="w-input textfield">
+            <textarea id="field" placeholder="Mensaje" name="field" class="w-input textarea"></textarea>
+            <input type="submit" value="Enviar" data-wait="Send Message" wait="Send Message" class="w-button send">
           </form>
           <div class="w-form-done">
-            <p>Thank you! Your submission has been received!</p>
+            <p>¡Gracias! Tu mensaje se ha enviado correctamente.</p>
           </div>
           <div class="w-form-fail">
-            <p>Oops! Something went wrong while submitting the form</p>
+            <p>Ha habido un error al enviar el mensaje.</p>
           </div>
         </div>
       </div>

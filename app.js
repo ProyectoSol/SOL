@@ -6,7 +6,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var user = require('./routes/user.js');
 var radiacion = require('./routes/radiacion.js');
-
+var contacto = require('./routes/contacto.js');
 var session = require('express-session');
 app.use(session({ resave: true,
                   saveUninitialized: true,
@@ -59,7 +59,7 @@ app.post('/usuario/login', function(req, res){
 });
 //---------------------------prueba session
 
-app.get('/hello', function(req, res) {
+app.get('/home', function(req, res) {
     if (!req.session.a){
          res.redirect('index.html');
     }else{
@@ -79,6 +79,32 @@ app.post('/fototipo',function(req, res) {
     user.fototipo(req, res, pelo, ojos, piel, pecas, rojo, bronceado);
     
 });
+app.post('/informacion',function(req, res) {
+    
+    
+     var nombre = req.body.name;
+     var apellidos = req.body.apellidos;
+     var fecha = req.body.fecha;
+     var sexo  = req.body.sexo;
+     
+    user.info(req, res, nombre, apellidos, fecha, sexo);
+    
+});
+//----------------consulta----------------------
+app.post('/consulta',function(req, res) {
+      var asunto = req.body.asunto;
+      var email = req.body.email;
+      var mensaje = req.body.field;
+    //  console.log(asunto,email,mensaje)
+      
+      
+      
+    contacto.consulta(req, res, email, asunto, mensaje);
+    
+});
+
+
+
 app.get('/activacion/:codigo', function(req, res) {
     user.activacion(req,  res, req.params.codigo);
 });
