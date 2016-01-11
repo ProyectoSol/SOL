@@ -68,7 +68,7 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
                     from: 'Sunit <SunBand@zubirimanteo.eus>',
                     to: emailv,
                     subject: 'Es hora de cuidar su piel',
-                    text: 'Activación de la cuenta: https://sol-anthonyprz.c9users.io/activacion/'+codigov
+                    text: 'Activación de la cuenta: http://sunit.zubirimanteoweb.com/activacion/'+codigov
                   };
                    
                   mailgun.messages().send(data, function (error, body) {
