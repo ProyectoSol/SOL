@@ -134,7 +134,7 @@ exports.login = function(req, res, emailL, passL){
 
 exports.logout = function(req, res){
   req.session.destroy();
-  console.log("session destruida");
+  console.log("Sesión destruida");
   res.redirect('/');
 };
 
@@ -149,7 +149,7 @@ console.log(peloF + ojosF + pielF + pecasF + rojoF + bronceadoF);
 User.update({usuario: req.session.a}, {pelo: peloF,ojos: ojosF,piel: pielF,pecas: pecasF, rojo: rojoF,bronceado: bronceadoF,fototipo: ResultadoFototipo}, function(user) {
    res.redirect('/hello');
    
-   console.log("usuario actualizado");
+   console.log("Usuario actualizado");
 });
 
  

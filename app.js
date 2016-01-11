@@ -84,9 +84,8 @@ app.get('/activacion/:codigo', function(req, res) {
 });
 //-------------- LogOut
 
-app.post('/usuario/logout', function(req, res) {
-    user.logout(req,  res);
-});
+app.get('/logout', function(req, res) { user.logout(req,  res);});
+
 
 //app.post('/')
 app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
