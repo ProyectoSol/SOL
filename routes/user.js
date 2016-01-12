@@ -11,7 +11,8 @@ app.use(session({ resave: true,
                 })
 );
                 
- app.use(express.static(__dirname +'/radiacion'));
+app.use(express.static(__dirname +'/radiacion'));
+
 var usuarioEsquema = mongoose.Schema({
     usuario: String,
     email: String,
@@ -105,7 +106,7 @@ exports.activacion = function(req, res, codigo){
    res.redirect('/');
    
    console.log("cuenta activada");
-});
+  });
 };
 
 
@@ -144,14 +145,14 @@ exports.logout = function(req, res){
 };
 
 exports.fototipo = function(req, res, peloF, ojosF, pielF, pecasF, rojoF, bronceadoF){
-console.log(peloF + ojosF + pielF + pecasF + rojoF + bronceadoF);
+  console.log(peloF + ojosF + pielF + pecasF + rojoF + bronceadoF);
 
- var ResultadoFototipo = (parseInt(peloF) + parseInt(ojosF) + parseInt(pielF) + parseInt(pecasF) + parseInt(rojoF) + parseInt(bronceadoF)) / 6;
+  var ResultadoFototipo = (parseInt(peloF) + parseInt(ojosF) + parseInt(pielF) + parseInt(pecasF) + parseInt(rojoF) + parseInt(bronceadoF)) / 6;
 
 
- console.log("tu fototipo es "+ ResultadoFototipo);
+  console.log("tu fototipo es "+ ResultadoFototipo);
  
-User.update({usuario: req.session.a}, {pelo: peloF,ojos: ojosF,piel: pielF,pecas: pecasF, rojo: rojoF,bronceado: bronceadoF,fototipo: ResultadoFototipo}, function(user) {
+  User.update({usuario: req.session.a}, {pelo: peloF,ojos: ojosF,piel: pielF,pecas: pecasF, rojo: rojoF,bronceado: bronceadoF,fototipo: ResultadoFototipo}, function(user) {
    res.redirect('/home');
    
    console.log("Usuario actualizado");
@@ -162,16 +163,12 @@ User.update({usuario: req.session.a}, {pelo: peloF,ojos: ojosF,piel: pielF,pecas
 };
 
 exports.info = function(req, res, nombre, apellido, fecha, sexo){
-console.log(nombre + apellido + fecha + sexo);
-
- 
- 
-User.update({usuario: req.session.a}, {nombre: nombre, apellido: apellido, fecha: fecha, sexo: sexo}, function(user) {
+  console.log(nombre + apellido + fecha + sexo);
+  
+  User.update({usuario: req.session.a}, {nombre: nombre, apellido: apellido, fecha: fecha, sexo: sexo}, function(user) {
    res.redirect('/home');
    
    console.log("Usuario actualizado");
-});
+  });
 
- 
-  
 };

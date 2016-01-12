@@ -97,8 +97,6 @@ app.post('/consulta',function(req, res) {
       var mensaje = req.body.field;
     //  console.log(asunto,email,mensaje)
       
-      
-      
     contacto.consulta(req, res, email, asunto, mensaje);
     
 });
