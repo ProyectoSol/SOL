@@ -12,6 +12,7 @@ var historialEsquema = mongoose.Schema({
     uv: String,
     fecha: String,
     hora: String,
+    diaSemana: String
 },{ collection : 'historial' });
 
 var radiacion = mongoose.model('uv', radiacionEsquema);
@@ -25,6 +26,7 @@ exports.insert = function(req, res, disp_nombre, uv){
     
     radiacion.findOne({'dispositivo': disp_nombre},function(err, disp){
         if(!disp){
+            
             //insertar dispositivo nuevo y radiacion
             var uvNuevo = new radiacion({dispositivo: disp_nombre, uv: uv });
             console.log(uvNuevo.uv);
@@ -50,7 +52,7 @@ exports.insert = function(req, res, disp_nombre, uv){
         };
         //-------------------------insertar en el historial
         
-         var historialNuevo = new historial({dispositivo:disp_nombre, uv: uv, fecha: getFecha(), hora: getHora() });
+         var historialNuevo = new historial({dispositivo:disp_nombre, uv: uv, fecha: getFecha(), hora: getHora(), diaSemana: getDiaSemana()});
        
         historialNuevo.save(function (err, anadirHistorial, numberAffected) {
                   if (err) {
@@ -82,11 +84,31 @@ exports.mostrar = function(req, res){
         global.nivel = Ruv.uv;
      
         var nivelfinal = global.nivel;
-     
+        historial.find({'dispositivo' : 'lol'},function(err, historia) {
+
+            if (!historia) {
+                console.error("no existe ese dispositivo :D");
+            }
+              
+            else {
+                var radiacion = [];
+                
+                for(var i= 0; i<historia.length; i++){
+                
+                    radiacion.push(historia[i].uv);
+                 
+                } 
+        
+            }  
+            res.render('login', {User: req.session.a,
+                        Uv: nivelfinal,
+                        Estadistica: radiacion
+                        
+                         });
+        });
+    
      //handlebars mostrar el usuario y el nivel de radiacion (ultimo añadido)
-        res.render('login', {User: req.session.a,
-                            Uv: nivelfinal
-                            });
+        
     }
  }).sort({_id:-1}); 
 };
@@ -101,6 +123,13 @@ function getFecha() {
     var fechaCompleta = dia+"/"+mes+"/"+ano;
 
     return(fechaCompleta);
+}
+
+function getDiaSemana() {
+    var fecha = new Date();
+    var diaSem = fecha.getDay();
+    
+    return(diaSem);
 }
 
 function getHora() {

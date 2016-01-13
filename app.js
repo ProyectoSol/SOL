@@ -65,6 +65,7 @@ app.get('/home', function(req, res) {
     }else{
         radiacion.mostrar(req, res);
     }
+
 });
 //----------------------------fin prueba session
 app.post('/fototipo',function(req, res) {
@@ -120,6 +121,8 @@ app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
   radiacion.insert(req, res, disp_nombre, uv);
     
 });
+
+
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
 var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1";

@@ -11,6 +11,9 @@
   <link rel="stylesheet" type="text/css" href="css/webflow.css">
   <link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="js/Chart.js"></script>
+  <script src="js/jquery-1.11.3.min.js"></script>
+ 
   <script>
     WebFont.load({
       google: {
@@ -18,6 +21,7 @@
       }
     });
   </script>
+  
   <script type="text/javascript" src="js/modernizr.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="images/solicon.png">
   <link rel="apple-touch-icon" href="images/solicon.png">
@@ -51,12 +55,49 @@
     <div class="w-row estadisticas">
       <div class="w-col w-col-4 columnaestadistica1">
         <div class="divestadisticas">
-          <h3 class="tituloestadistica">Día</h3><img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
+          <h3 class="tituloestadistica">Día</h3>
+      <img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
         </div>
-      </div>
+     </div>
       <div class="w-col w-col-4 columnaestadistica2">
         <div class="divestadisticas">
-          <h3 class="tituloestadistica">Semana</h3><img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
+          <h3 class="tituloestadistica">Semana</h3>
+             <!--    <div>-->
+     <div id="radioA" hidden>{{Estadistica}}</div>
+  
+      <canvas id="mycanvas2" class="imagenestadistica">
+       <script type="text/javascript">
+           $(document).ready(function(){
+            
+          var radiacion=  document.getElementById("radioA").innerHTML;
+        
+          var array = radiacion.split(",");
+          
+               var ctx = $("#mycanvas2").get(0).getContext("2d");
+               
+               
+               var data = {
+    labels: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgb(51, 173, 255)", // "rgba(220,220,220,0.2)"
+            strokeColor: "rgb(0, 204, 255)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data : array
+        }
+    ]
+};
+                 var myLineChart = new Chart(ctx).Line(data);
+
+           })
+        </script>
+      </canvas> 
+    
+  <!-- </div>-->
         </div>
       </div>
       <div class="w-col w-col-4 columnaestadistica3">
@@ -64,6 +105,7 @@
           <h3 class="tituloestadistica">Año</h3><img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
         </div>
       </div>
+      <canvas id="mycanvas" width="400" height="400"></canvas>
     </div>
   </div>
   <div class="w-section w-clearfix footer">
@@ -83,5 +125,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+  
+   
 </body>
 </html>

@@ -16,5 +16,7 @@ exports.consulta =  function(req, res, email, asunto, mensaje){
      
     mailgun.messages().send(data, function (error, body) {
       console.log(body);
+    
     });
+    res.redirect('/');
 };
