@@ -1,0 +1,141 @@
+
+.hamburgerMenu span, .hamburgerMenu::before, .hamburgerMenu::after {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background: #fff;
+  position: absolute;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  
+}
+
+
+.hamburgerMenu {
+  height: 30px;
+  width: 30px;
+  margin: 20px;
+  position: fixed;
+  right: 0;
+  z-index: 99;
+  
+}
+.hamburgerMenu span {
+  top: 13px;
+  right: 0;
+  
+}
+.hamburgerMenu::before, .hamburgerMenu::after {
+  content: "";
+}
+.hamburgerMenu::before {
+  top: 4px;
+  margin-bottom: 4px;
+  
+}
+.hamburgerMenu::after {
+  bottom: 4px;
+  margin-top: 4px;
+}
+.hamburgerMenu:hover {
+  cursor: pointer;
+}
+.hamburgerMenu.open span {
+  opacity: 0;
+   z-index:900;
+}
+.hamburgerMenu.open::before {
+  width: 38px;
+  top: 50%;
+  margin-left: -4px;
+  margin-top: -2px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  
+}
+.hamburgerMenu.open::after {
+  width: 38px;
+  bottom: 50%;
+  margin-left: -4px;
+  margin-bottom: -2px;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+ 
+}
+
+.menu {
+   position: fixed;
+  right: -15px;
+  top: 70px;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+   z-index:900;
+}
+.menu span {
+  display: block;
+  color: #fff;
+  text-align: right;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  position: relative;
+  right: -120px;
+  background: rgba(100, 100, 100, 0.7);
+  margin-bottom: 5px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+.menu span:nth-of-type(1) {
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.menu span:nth-of-type(2) {
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.menu span:nth-of-type(3) {
+  -moz-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+.menu span:hover {
+  font-size: 1.5em;
+  background: #646464;
+  cursor: pointer;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.menu.open span {
+  right: 0px;
+}
+
+.sindeco
+{
+  text-decoration:none;
+  color: white;
+}
+.sindeco:hover{
+   text-decoration:none;
+}
+.sindeco:active{
+   text-decoration:none;
+  
+}

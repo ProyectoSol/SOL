@@ -10,7 +10,14 @@
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/webflow.css">
   <link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/menu.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+
   <script>
     WebFont.load({
       google: {
@@ -24,6 +31,9 @@
 </head>
 <body class="body">
   
+  
+
+
   
   <div data-ix="new-interaction-2" class="modal-wrapper">
     <div class="w-clearfix sing-up-wrapper"><a href="#" data-ix="close-interaction" class="closelink">X</a>
@@ -54,6 +64,8 @@
           <input id="pass-3" type="password" placeholder="contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">
           <h1 data-ix="close-interaction-2" class="closesign-in">x</h1>
           <input type="submit" value="Entrar" data-wait="Please wait..." class="w-button sbmit">
+          <a  data-toggle="modal" id="cambiopass" data-target="#myModal" data-ix="close-interaction-2">¿Has olvidado tu contraseña?</a>
+
         </form>
         <div class="w-form-done">
           <p>Has iniciado sesión correctamente.</p>
@@ -64,7 +76,31 @@
       </div>
     </div>
   </div>
-  <div data-collapse="all" data-animation="over-right" data-duration="400" data-contain="1" data-easing="ease-in-quad" class="w-nav navbar">
+  <div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cambio de contraseña</h4>
+        </div>
+        <div class="modal-body">
+          <form id="recuperarpass" name="recuperarpass" data-name="Email Form 3"  method="POST" action="/recuperacion">
+            <input type="email" placeholder="Introduce tu e-mail" name="email" id="email"/>
+            <input type="submit" value="Enviar" id="submit">
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+  <!--<div data-collapse="all" data-animation="over-right" data-duration="400" data-contain="1" data-easing="ease-in-quad" class="w-nav navbar">
     <div class="w-container navcontainer">
       <nav role="navigation" class="w-nav-menu navmenu"><a href="#section1" class="w-nav-link linkhome">Home</a>
                                                         <a href="#productos" target="_blank" class="w-nav-link linkcomprar">Nuestros Productos</a>
@@ -74,34 +110,42 @@
         <div class="w-icon-nav-menu icono"></div>
       </div>
     </div>
-  </div>
+  </div>  -->
   <div class="capa"></div>
+  <div class="hamburgerMenu"><span></span></div>
+<div class="menu">
+  <span><a href="#section1" class="sindeco">Home</a></span>
+  <span><a href="#informacion"  class="sindeco">Informacion</a></span>
+  <span><a href="#formu" class="sindeco">contactanos</a></span>
+</div>
   <div id="section1" class="w-section section1">
+    
     <h1 class="titulo1">¡Protege tu piel ahora!</h1>
     <h3 class="titulo2">Registrate para empezar a protegerte con esta app</h3>
-    <div class="botones"><a  data-ix="subscribe-interaction" class="w-button botonregistro">Registrarse</a><a href="tel:" data-ix="login-interaction-2" class="w-button loginb">Iniciar sesión</a>
-    </div><a href="#" data-ix="login-interaction-2" class="w-button comprab">Más Información</a>
+    <div class="botones">
+      <a  data-ix="subscribe-interaction" class="w-button botonregistro">Registrarse</a><a  data-ix="login-interaction-2" class="w-button loginb">Iniciar sesión</a>
+    </div><a href="#informacion"  class="w-button comprab">Más Información</a>
   </div>
-  <div class="w-section informacion">
+  <div class="w-section informacion" id="informacion">
     <div class="w-row in">
       <div class="w-col w-col-4">
         <div class="reco">
           <div class="fotoreco"><img src="images/1448671987_Heart.png" class="fotoreco1">
           </div>
           <h1 class="header1">Cuídate</h1>
-          <p class="reco1">Recuerda que no podemos cuidar tu piel por ti, pero podemos ayudarte. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
+          <p class="reco1">Puedes cuidar tu piel por ti mismo,pero  podemos ayudarte a mejorar ese cuidado. utilizando nuestra herramienta no tendrás mas problemas de piel.</p>
         </div>
       </div>
       <div class="w-col w-col-4">
         <div class="reco"><img src="images/1448672026_apple-04.png" class="fotoreco1 _2">
           <h1 class="header1">Moderno</h1>
-          <p class="reco1">Recuerda que no podemos cuidar tu piel por ti, pero podemos ayudarte. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
+          <p class="reco1">Nuestros dispositivos tienen un diseño muy moderno y ergonómico, y funcionales ayudará a cuidar tu piel en todo momento.</p>
         </div>
       </div>
       <div class="w-col w-col-4">
         <div class="reco"><img src="images/1448672561_Beach.png" class="fotoreco1 _3">
           <h1 class="header1">¡Relájate!</h1>
-          <p class="reco1">Recuerda que no podemos cuidar tu piel por ti, pero podemos ayudarte. Si utilizas nuestra herramienta adecuadamente no tendras mas problemas :D</p>
+          <p class="reco1">Te enviaremos alertas, según el nivel de radiación y tu fototipo para que tu puedas decidir lo que es mas conveniente para tu piel.</p>
         </div>
       </div>
     </div>
@@ -159,7 +203,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   </div>
   <div class="w-section sectionformu">
     <div id="formu" class="w-container formu">
@@ -182,6 +226,7 @@
       </div>
     </div>
   </div>
+  
   <div class="w-section w-clearfix footer">
     <div class="w-clearfix numero"><img src="images/1448043780_phone.png" class="number">
       <p class="tnumero">934-24 25 25</p>
@@ -198,5 +243,6 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+ 
 </body>
 </html>

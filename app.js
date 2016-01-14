@@ -102,7 +102,33 @@ app.post('/consulta',function(req, res) {
     
 });
 
+app.post('/recuperacion',function(req, res) {
+     
+      var email = req.body.email;
+      
+    //  console.log(asunto,email,mensaje)
+      
+    user.recuperacion(req, res, email);
+    
+});
 
+app.get('/cambiopass/:codigo', function(req,res){
+   
+    var codigo = req.params.codigo;
+    
+    user.cambiopass(req,res,codigo);
+});
+
+app.post('/updatenueva', function(req,res){
+    var pass1 = req.body.pass;
+    var pass2 = req.body.pass2;
+    
+    if(pass1==pass2){
+        user.updatenueva(req, res, pass1);
+    }else{
+        console.log('Las contraseñas no coinciden');
+    }
+});
 
 app.get('/activacion/:codigo', function(req, res) {
     user.activacion(req,  res, req.params.codigo);

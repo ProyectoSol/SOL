@@ -83,10 +83,6 @@ html.w-mod-touch * {
   cursor: pointer;
   border-radius: 0;
 }
-.w-button:hover {
-  text-decoration: none;
-}
-
 input.w-button {
   -webkit-appearance: button;
 }

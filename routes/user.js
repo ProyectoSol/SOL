@@ -36,7 +36,9 @@ var usuarioEsquema = mongoose.Schema({
 
 var User = mongoose.model('User', usuarioEsquema);
 
-
+var api_key = 'key-895d8c83afc89fdfe4dbbc0f77914001';
+var domain = 'sandbox8ce7f0bf5daa434f80e058f59c7e5798.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
   //---------------------------------------- controlar usuarios
@@ -65,11 +67,6 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
                     console.log(anadirusuario);
                   }
                   
-                    //mailgun
-                  var api_key = 'key-895d8c83afc89fdfe4dbbc0f77914001';
-                  var domain = 'sandbox8ce7f0bf5daa434f80e058f59c7e5798.mailgun.org';
-                  var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-                   
                   var data = {
                     from: 'Sunit <SunBand@zubirimanteo.eus>',
                     to: emailv,
@@ -172,3 +169,48 @@ exports.info = function(req, res, nombre, apellido, fecha, sexo){
   });
 
 };
+
+exports.recuperacion = function(req, res,email){
+  console.log(email);
+ 
+ User.findOne({'email': email},function(err, user) {
+
+   if (!user) {
+        console.error("email no existe :D");
+        
+      }
+      
+      else {
+        
+        var data = {
+                      from: 'Sunit <SunBand@zubirimanteo.eus>',
+                      to: email,
+                      subject: 'Cambio de contraseña',
+                      text: 'Cambio de contraseña de sunit: http://sunit.zubirimanteoweb.com/cambiopass/'+user.codigo
+                    };
+         
+        mailgun.messages().send(data, function (error, body) {
+          console.log(body);
+        });
+        res.redirect('/');
+       
+      }
+ });
+};
+
+exports.cambiopass = function(req, res,codigo){
+  
+  req.session.code = codigo;
+  res.redirect('/recuperar.html');
+
+};
+exports.updatenueva =function(req, res, pass1){
+  
+  User.update({codigo: req.session.code}, {pass: pass1}, function(user) {
+    req.session.destroy();
+    res.redirect('/');
+   
+    console.log("Contraseña actualizada");
+  });
+};
+
