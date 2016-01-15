@@ -2,12 +2,12 @@
   margin-left: 239px;
 }
 
-.navmenu {
+/*.navmenu {
   margin-top: 50px;
   background-color: rgba(0, 0, 0, 0.71);
   color: white;
   text-align: left;
-}
+}*/
 
 .section1 {
   position: relative;
@@ -324,7 +324,7 @@
   color: #1d8cd9;
   font-size: 40px;
 }
-
+/*
 .menu {
   margin-right: 0px;
   margin-left: 0px;
@@ -334,7 +334,7 @@
 .menu.w--open {
   background-color: transparent;
 }
-
+*/
 .divform {
   width: auto;
   height: auto;
@@ -844,7 +844,7 @@
 }
 
 .logoss {
-  margin-top: -35px;
+  margin-top: -65px;
   float: right;
 }
 
@@ -1079,10 +1079,10 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
     color: #1d8cd9;
     font-size: 55px;
   }
-  .menu {
+ /* .menu {
     margin-left: -63px;
     float: right;
-  }
+  }*/
   .formula {
     margin-right: auto;
     margin-left: auto;

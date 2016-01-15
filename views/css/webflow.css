@@ -22,9 +22,9 @@
 .w-icon-slider-left:before {
   content: "\e601";
 }
-.w-icon-nav-menu:before {
+/*.w-icon-nav-menu:before {
   content: "\e602";
-}
+}*/
 .w-icon-arrow-down:before,
 .w-icon-dropdown-toggle:before {
   content: "\e603";
@@ -1768,7 +1768,7 @@ textarea.w-select {
 .w-nav-link.w--current {
   color: #0082f3;
 }
-.w-nav-menu {
+/*.w-nav-menu {
   position: relative;
   float: right;
 }
@@ -1816,7 +1816,7 @@ textarea.w-select {
   left: auto;
   z-index: 1;
   top: 0;
-}
+}*/
 .w-nav-button {
   position: relative;
   float: right;
@@ -1830,7 +1830,7 @@ textarea.w-select {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
+}/*
 .w-nav-button.w--open {
   background-color: #C8C8C8;
   color: white;
@@ -1840,7 +1840,8 @@ textarea.w-select {
 }
 .w-nav[data-collapse="all"] .w-nav-button {
   display: block;
-}
+}*/
+/*
 @media screen and (max-width: 991px) {
   .w-nav[data-collapse="medium"] .w-nav-menu {
     display: none;
@@ -1867,7 +1868,7 @@ textarea.w-select {
   .w-nav[data-collapse="tiny"] .w-nav-button {
     display: block;
   }
-}
+}*/
 .w-tabs {
   position: relative;
 }
@@ -1879,9 +1880,9 @@ textarea.w-select {
 .w-tabs:after {
   clear: both;
 }
-.w-tab-menu {
+/*.w-tab-menu {
   position: relative;
-}
+}*/
 .w-tab-link {
   position: relative;
   display: inline-block;

@@ -10,12 +10,13 @@
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/webflow.css">
   <link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-  <script src="js/Chart.js"></script>
+  <link rel="stylesheet" href="css/style1.css">
   <script src="js/jquery-1.11.3.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
- 
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="js/index.js"></script>
+   <script src="js/Chart.js"></script>
+  <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+ <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
   <script>
     WebFont.load({
       google: {
@@ -29,20 +30,28 @@
   <link rel="apple-touch-icon" href="images/solicon.png">
 </head>
 <body class="body">
-  <div id="Nav" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav navbar">
+  <!-- <div id="Nav" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav navbar">
     <div class="w-container">
-      <a href="#" class="w-nav-brand"></a>
+     <a href="#" class="w-nav-brand"></a>
       <nav role="navigation" class="w-nav-menu"><a href="#hero" class="w-nav-link">Home</a>
                                                 <a href="panel.html" class="w-nav-link">Panel de Control</a>
                                                 <a href="#sectionEstadisticas" class="w-nav-link">Estadisticas</a>
                                                  <a href="/logout" class="w-nav-link">Cerrar sesión</a>
-      </nav>
-      <div class="w-nav-button">
+      </nav>-->
+<div class="hamburgerMenu"><span></span></div>
+<div class="menu">
+  <span><a href="#section1" class="sindeco">Home</a></span>
+  <span><a href="panel.html"  class="sindeco">Panel de control</a></span>
+  <span><a href="#sectionEstadisticas" class="sindeco">Estadisticas</a></span>
+  <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
+</div>
+    <!--  <div class="w-nav-button">
         <div class="w-icon-nav-menu"></div>
       </div>
     </div>
-  </div>
+  </div>-->
   <div id="hero" class="w-section w-clearfix hero">
+    
     <h4 class="lugar">Donostia, País Vasco/Euskadi</h4>
     <h1 class="radio">{{Uv}} Vº</h1><img height="100" src="images/flag-468346_960_720.png" class="bandera">
     <div class="divtiempo"><img src="images/nube.png">

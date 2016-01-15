@@ -10,7 +10,11 @@
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/webflow.css">
   <link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">
+  <link rel="stylesheet" href="css/style1.css">
+  <script src="js/jquery-1.11.3.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="js/index.js"></script>
+  
   <script>
     WebFont.load({
       google: {
@@ -23,16 +27,14 @@
   <link rel="apple-touch-icon" href="images/solicon.png">
 </head>
 <body class="body">
-  <div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav navbar">
-    <div class="w-container con">
-      <a href="#" class="w-nav-brand"></a>
-      <nav role="navigation" class="w-nav-menu"><a href="/home" class="w-nav-link">Home</a><a href="#" class="w-nav-link">Panel De Control</a><a href="login.html" class="w-nav-link">Estadísticas</a>
-      </nav>
-      <div class="w-nav-button">
-        <div class="w-icon-nav-menu"></div>
+  <!--<div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav navbar">-->
+      <div class="hamburgerMenu"><span></span></div>
+        <div class="menu">
+          <span><a href="/home" class="sindeco">Home</a></span>
+          <span><a href="panel.html"  class="sindeco">Panel de control</a></span>
+          <span><a href="/home#sectionEstadisticas" class="sindeco">Estadisticas</a></span>
+          <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
       </div>
-    </div>
-  </div>
   <div class="w-section hero">
     <div class="perfil">
       <div data-duration-in="300" data-duration-out="100" class="w-tabs tabss">

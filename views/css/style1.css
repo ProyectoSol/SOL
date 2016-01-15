@@ -12,7 +12,6 @@
   -o-transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  
 }
 
 
@@ -28,6 +27,7 @@
 .hamburgerMenu span {
   top: 13px;
   right: 0;
+  
   
 }
 .hamburgerMenu::before, .hamburgerMenu::after {
@@ -48,6 +48,7 @@
 .hamburgerMenu.open span {
   opacity: 0;
    z-index:900;
+   
 }
 .hamburgerMenu.open::before {
   width: 38px;
@@ -74,7 +75,7 @@
 
 .menu {
    position: fixed;
-  right: -20px;
+  right: -30px;
   top: 70px;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -95,6 +96,7 @@
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+  
 }
 .menu span:nth-of-type(1) {
   -moz-transition: all 0.2s ease;
@@ -124,7 +126,7 @@
   transition: all 0.2s ease;
 }
 .menu.open span {
-  right: 10px;
+  right: 20px;
 }
 
 .sindeco
@@ -138,7 +140,4 @@
 .sindeco:active{
    text-decoration:none;
   
-}
-.sindeco:visited{
-  text-decoration:none;
 }
