@@ -5,6 +5,7 @@ conexionBD.conexion();
 var app = express();
 var bodyParser = require('body-parser');
 var user = require('./routes/user.js');
+var tiempo = require('./routes/tiempo.js');
 var radiacion = require('./routes/radiacion.js');
 var contacto = require('./routes/contacto.js');
 var session = require('express-session');
@@ -53,8 +54,9 @@ app.post('/usuario/login', function(req, res){
   var emailL = req.body.email;
   var passL = req.body.pass;
   
-
+  tiempo.recogertiempo(req, res);
   user.login(req, res, emailL, passL);
+ 
   
 });
 //---------------------------prueba session

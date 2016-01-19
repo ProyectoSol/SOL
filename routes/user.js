@@ -3,6 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 var session = require('express-session');
 var randomstring = require('randomstring');
+var bcrypt = require('bcrypt-nodejs');
 
 app.use(express.cookieParser());
 app.use(session({ resave: true,
@@ -20,7 +21,7 @@ var usuarioEsquema = mongoose.Schema({
     codigo: String,
     confirmado: String,
     //añadimos informacion adicional del usuario
-    nombre: String,
+    nombre: String,  
     apellido: String,
     fecha: String,
     sexo: String,
@@ -55,7 +56,9 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
               var codigov = randomstring.generate(10);
 
                 if(passv == pass2v){
-                  var usuarioNuevo = new User({ usuario:usuariov, email: emailv, pass: passv, codigo: codigov, confirmado: 0});
+                  
+                  var hashP = bcrypt.hashSync(passv);
+                  var usuarioNuevo = new User({ usuario:usuariov, email: emailv, pass: hashP, codigo: codigov, confirmado: 0});
                   console.log(usuarioNuevo.usuario);
                 
                   usuarioNuevo.save(function (err, anadirusuario, numberAffected) {
@@ -111,7 +114,7 @@ exports.login = function(req, res, emailL, passL){
 
 
 
- User.findOne({'email': emailL, 'pass': passL},function(err, user) {
+ User.findOne({'email': emailL},function(err, user) {
 
    if (!user) {
         console.error("email no existe :D");

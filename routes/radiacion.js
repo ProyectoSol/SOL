@@ -102,7 +102,10 @@ exports.mostrar = function(req, res){
             }  
             res.render('login', {User: req.session.a,
                         Uv: nivelfinal,
-                        Estadistica: radiacion
+                        max: global.max,
+                        min: global.min,
+                        meteo: global.datodia,
+                        Esemana: radiacion
                         
                          });
         });

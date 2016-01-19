@@ -16,7 +16,7 @@
   padding-top: 20%;
   background-color: rgba(194, 24, 217, 0.7);
   background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.56) 0%), url('../images/Galenica_Protector_solar_01.jpg');
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.56) 0%), url('../images/Galenica_Protector_solar_01.jpg');
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0) 0%), url('../images/giphy.gif');
   background-position: 0px 0px, 50% 50%;
   background-size: auto, cover;
 }
@@ -779,7 +779,7 @@
   margin-bottom: 0px;
   float: none;
   clear: none;
-  background-color: white;
+  background-color: #EFEFEF;
   background-image: none;
   background-size: auto;
 }
@@ -844,7 +844,7 @@
 }
 
 .logoss {
-  margin-top: -65px;
+  margin-top: -40px;
   float: right;
 }
 
@@ -969,7 +969,7 @@
   top: 0px;
   right: 0px;
   bottom: 0px;
-  z-index: 888;
+  z-index: 999;
   height: 100%;
   padding-top: 90px;
   background-color: rgba(0, 0, 0, 0.33);

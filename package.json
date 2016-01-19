@@ -6,6 +6,8 @@
   "repository": "",
   "author": "SunIT zubirimanteo <sunit.zubiri@gmail.com>",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.3.0",
     "chart.js": "^1.0.2",
     "express": "^3.2.6",
     "handlebars": "^4.0.5"

@@ -32,6 +32,7 @@
 }
 .hamburgerMenu::before, .hamburgerMenu::after {
   content: "";
+  
 }
 .hamburgerMenu::before {
   top: 4px;
@@ -140,4 +141,7 @@
 .sindeco:active{
    text-decoration:none;
   
+}
+option:disabled{
+  color: gray;
 }

@@ -15,6 +15,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/menu.js"></script>
+  <script src="js/validator.js"></script>
   <script src="./js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
 
@@ -39,12 +40,36 @@
     <div class="w-clearfix sing-up-wrapper"><a href="#" data-ix="close-interaction" class="closelink">X</a>
       <h2>Registro</h2>
       <div class="w-form">
-        <form id="email-form-2" name="email-form-2" data-name="Email Form 2"  method="POST" action="/usuario/registro">
-          <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="usuario" class="w-input colorregist">
+        <form id="email-form-2" name="email-form-2" data-toggle="validator" data-name="Email Form 2"  method="POST" action="/usuario/registro">
+          <div class="form-group">
+              <input type="text" class="form-control" id="inputName" placeholder="Nombre" name="usuario" required>
+          </div>
+      <div class="form-group">
+        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+        <div class="help-block with-errors"></div>
+      </div>
+       <div class="form-group">
+        
+          <input type="password" data-minlength="6" class="form-control" id="inputPassword" name="pass" placeholder="contraseña" required>
+         
+        
+        
+          
+        
+    </div>
+     <div class="form-group">
+       <input type="password" class="form-control" id="inputPasswordConfirm" name="pass2" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirmación" required>
+          <div class="help-block with-errors"></div>
+     </div>
+      <div class="form-group">
+     <input type="submit" value="Entrar" data-wait="Please wait..." class="w-button sbmit">
+  </div>
+          
+          <!--<input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="usuario" class="w-input colorregist">
           <input id="email-3" type="email" placeholder="email" name="email" data-name="email" required="required" class="w-input colorregist">
           <input id="pass" type="password" placeholder="Contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">
           <input id="pass-2" type="password" placeholder="Repetir contraseña" name="pass2" data-name="pass2" required="required" class="w-input colorregist">
-          <input type="submit" value="Registrarse" data-wait="Please wait..." class="w-button sbmit">
+          <input type="submit" value="Registrarse" data-wait="Please wait..." class="w-button sbmit">-->
         </form>
         <div class="w-form-done">
           <p>¡Gracias! Te has registrado correctamente.</p>
@@ -59,8 +84,11 @@
     <div class="login-up-wrapper">
       <h3 class="h3">Iniciar sesión</h3>
       <div class="w-form">
-        <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="w-clearfix" method="POST" action="/usuario/login">
-          <input id="email-4" type="email" placeholder="email" name="email" data-name="Email 4" required="required" class="w-input colorregist">
+        <form id="email-form-3" name="email-form-3" data-toggle="validator" data-name="Email Form 3" class="w-clearfix" method="POST" action="/usuario/login">
+          <div class="form-group">
+        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+        <div class="help-block with-errors"></div>
+      </div>
           <input id="pass-3" type="password" placeholder="contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">
           <h1 data-ix="close-interaction-2" class="closesign-in">x</h1>
           <input type="submit" value="Entrar" data-wait="Please wait..." class="w-button sbmit">
@@ -227,16 +255,16 @@
     </div>
   </div>
   
-  <div class="w-section w-clearfix footer">
+ <div class="w-section w-clearfix footer">
     <div class="w-clearfix numero"><img src="images/1448043780_phone.png" class="number">
-      <p class="tnumero">934-24 25 25</p>
+      <div class="tnumero">934-24 25 25</div>
     </div>
-    <div class="w-clearfix divbrujula"><img width="34" src="images/1448044040_icon-62-compass.png" class="brujula">
-      <p class="dirccion">Calle sagues</p>
+    <div class="logoss"><img width="50" src="images/1448042051_twitter_circle_gray.png"><img width="50" src="images/1448042092_facebook_circle_gray.png">
     </div>
-    <div class="w-clearfix logoss"><img src="images/1448042051_twitter_circle_gray.png" class="twitter"><img width="50" height="50" src="images/1448042092_facebook_circle_gray.png" class="facebook">
+    <div class="w-clearfix divbrujula"><img src="images/1448044040_icon-62-compass.png" class="brujula">
+      <div class="dirccion">Donostia, Gipuzkoa</div>
     </div>
-    <div class="w-clearfix cop">
+    <div class="cop">
       <div class="letras">Xabier Zubiri Manteo&nbsp;© 2016</div>
     </div>
   </div>
