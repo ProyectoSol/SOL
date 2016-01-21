@@ -9,7 +9,7 @@
   <meta name="generator" content="Webflow">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/webflow.css">
-<link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">
+<!--<link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">-->
   <link rel="stylesheet" href="css/style1.css">
   <link rel="stylesheet" href="./css/bootstrap.css">
  
@@ -60,6 +60,7 @@
 
        <!-- formulario de perfil------------class="col-md-2 col-md-offset-5"------------>
        <div class="col-lg-8 col-md-offset-2">
+         <br>
               <form  id="email-form" name="email-form" data-name="Email Form" method="POST" action="/informacion">
                 <input id="name" type="text" placeholder="Nombre" name="name" data-name="Name" class="w-input redondeado">
                 <input id="apellidos" type="text" placeholder="Apellidos" name="apellidos" data-name="apellidos" class="w-input redondeado">
@@ -68,8 +69,8 @@
                   <option value="mujer">Mujer</option>
                   <option value="hombre">Hombre</option>
                 </select>
-                  <input disabled="true" id="tlf" type="number" placeholder="numero de telefono" name="tlf" data-name="tlf" class="w-input fecha redondeado">
-                 <input type="submit" value="Submit" data-wait="Please wait..." class="btn btn-primary">
+                  <input disabled="true" id="tlf" type="number" placeholder="Número de telefono" name="tlf" data-name="tlf" class="w-input fecha redondeado">
+                 <input type="submit" value="Enviar" data-wait="Please wait..." class="btn btn-primary">
               </form>
                
 
@@ -88,7 +89,7 @@
               <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="POST" action="/fototipo">
                 <label for="field">Color del cabello</label>
                 <select id="cabello" name="cabello" class="w-select redondeado">
-                  <option value="">selecciona uno</option>
+                  <option value="0">selecciona uno</option>
                   <option value="1">rubio/pelirrojo</option>
                   <option value="2">castaño</option>
                   <option value="3">moreno</option>
@@ -134,7 +135,7 @@
                   <option value="3">a veces</option>
                   <option value="4">siempre</option>
                 </select>
-                <input type="submit" value="Submit" data-wait="Please wait..." class="btn btn-primary">
+                <input type="submit" value="Enviar" data-wait="Please wait..." class="btn btn-primary">
               </form>
             </div>
                </div>
@@ -161,7 +162,7 @@
                 <label for="field-8">Si has comprado un dispositivo añade su Codigo</label>
                <input id="idDispositivo" type="text" placeholder="Codigo Dispositivo" name="idDispositivo" data-name="idDispositivo" class="w-input redondeado">
                
-                <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
+                <input type="submit" value="enviar" data-wait="Please wait..." class="w-button">
               </form>
            </div>
         </div>

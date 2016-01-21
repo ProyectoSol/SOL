@@ -10,6 +10,8 @@
     "bcryptjs": "^2.3.0",
     "chart.js": "^1.0.2",
     "express": "^3.2.6",
-    "handlebars": "^4.0.5"
+    "handlebars": "^4.0.5",
+    "md5": "^2.0.0",
+    "request-ip": "^1.1.4"
   }
 }

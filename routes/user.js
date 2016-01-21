@@ -3,7 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 var session = require('express-session');
 var randomstring = require('randomstring');
-var bcrypt = require('bcrypt-nodejs');
+var md5 = require('md5');
 
 app.use(express.cookieParser());
 app.use(session({ resave: true,
@@ -57,8 +57,8 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
 
                 if(passv == pass2v){
                   
-                  var hashP = bcrypt.hashSync(passv);
-                  var usuarioNuevo = new User({ usuario:usuariov, email: emailv, pass: hashP, codigo: codigov, confirmado: 0});
+                  var passH =md5(passv);
+                  var usuarioNuevo = new User({ usuario:usuariov, email: emailv, pass: passH, codigo: codigov, confirmado: 0});
                   console.log(usuarioNuevo.usuario);
                 
                   usuarioNuevo.save(function (err, anadirusuario, numberAffected) {
@@ -112,28 +112,28 @@ exports.activacion = function(req, res, codigo){
 
 exports.login = function(req, res, emailL, passL){
 
+  var passh2 = md5(passL);
+  
 
+  User.findOne({'email': emailL, 'pass':passh2},function(err, user) {
 
- User.findOne({'email': emailL},function(err, user) {
-
-   if (!user) {
-        console.error("email no existe :D");
+    if (!user) {
+        console.error("email o contraseña incorrecta :D");
         
-      }
+    }
+    else {
       
-      else {
-        
-        if(user.confirmado == '1'){
-          req.session.a = user.usuario;
-          console.log(req.session.a);
-          res.redirect('/home');
-        }
-        else{
-          console.log('no confirmado');
-          res.redirect('/');
-        }
-       
-      } 
+      if(user.confirmado == '1'){
+        req.session.a = user.usuario;
+        console.log(req.session.a);
+        res.redirect('/home');
+      }
+      else{
+        console.log('no confirmado');
+        res.redirect('/');
+      }
+     
+    } 
  });
  
 };
@@ -209,7 +209,9 @@ exports.cambiopass = function(req, res,codigo){
 };
 exports.updatenueva =function(req, res, pass1){
   
-  User.update({codigo: req.session.code}, {pass: pass1}, function(user) {
+  var passn = md5(pass1);
+  
+  User.update({codigo: req.session.code}, {pass: passn}, function(user) {
     req.session.destroy();
     res.redirect('/');
    

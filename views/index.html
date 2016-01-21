@@ -37,7 +37,7 @@
 
   
   <div data-ix="new-interaction-2" class="modal-wrapper">
-    <div class="w-clearfix sing-up-wrapper"><a href="#" data-ix="close-interaction" class="closelink">X</a>
+    <div class="w-clearfix sing-up-wrapper"><button type="button" class="close" data-ix="close-interaction" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h2>Registro</h2>
       <div class="w-form">
         <form id="email-form-2" name="email-form-2" data-toggle="validator" data-name="Email Form 2"  method="POST" action="/usuario/registro">
@@ -82,6 +82,7 @@
   </div>
   <div data-ix="new-interaction-2" class="modallogin">
     <div class="login-up-wrapper">
+      <button type="button" class="close" data-ix="close-interaction-2" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h3 class="h3">Iniciar sesión</h3>
       <div class="w-form">
         <form id="email-form-3" name="email-form-3" data-toggle="validator" data-name="Email Form 3" class="w-clearfix" method="POST" action="/usuario/login">
@@ -90,7 +91,6 @@
         <div class="help-block with-errors"></div>
       </div>
           <input id="pass-3" type="password" placeholder="contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">
-          <h1 data-ix="close-interaction-2" class="closesign-in">x</h1>
           <input type="submit" value="Entrar" data-wait="Please wait..." class="w-button sbmit">
           <a  data-toggle="modal" id="cambiopass" data-target="#myModal" data-ix="close-interaction-2">¿Has olvidado tu contraseña?</a>
 
