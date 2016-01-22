@@ -5,13 +5,15 @@ var session = require('express-session');
 var randomstring = require('randomstring');
 var md5 = require('md5');
 
+
+
 app.use(express.cookieParser());
 app.use(session({ resave: true,
                   saveUninitialized: true,
                   secret: 'uwotm8'
                 })
 );
-                
+        
 app.use(express.static(__dirname +'/radiacion'));
 
 var usuarioEsquema = mongoose.Schema({
@@ -26,12 +28,13 @@ var usuarioEsquema = mongoose.Schema({
     fecha: String,
     sexo: String,
     //añadimos el fototipo
+    ArrayFototipo:{
     pelo: String,
     ojos: String,
     piel: String,
     pecas: String,
     rojo: String,
-    bronceado: String,
+    bronceado: String},
     fototipo: String
 },{ collection : 'usuario' });
 
@@ -96,6 +99,7 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
       }
     else {
       console.log(" El email ya existe "+err);
+      
     } 
   });
  
@@ -119,7 +123,7 @@ exports.login = function(req, res, emailL, passL){
 
     if (!user) {
         console.error("email o contraseña incorrecta :D");
-        
+       
     }
     else {
       
@@ -152,7 +156,7 @@ exports.fototipo = function(req, res, peloF, ojosF, pielF, pecasF, rojoF, bronce
 
   console.log("tu fototipo es "+ ResultadoFototipo);
  
-  User.update({usuario: req.session.a}, {pelo: peloF,ojos: ojosF,piel: pielF,pecas: pecasF, rojo: rojoF,bronceado: bronceadoF,fototipo: ResultadoFototipo}, function(user) {
+  User.update({usuario: req.session.a}, {ArrayFototipo: {pelo: peloF,ojos: ojosF,piel: pielF,pecas: pecasF, rojo: rojoF,bronceado: bronceadoF},fototipo: ResultadoFototipo}, function(user) {
    res.redirect('/home');
    
    console.log("Usuario actualizado");

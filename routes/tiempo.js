@@ -8,7 +8,7 @@ var requestIp = require('request-ip');
 
 exports.recogertiempo = function(req, res){
 	var clientIp = requestIp.getClientIp(req);
-
+console.log(clientIp)
 					
 	satelize.satelize({ip: clientIp}, function(err,payload) {
  
