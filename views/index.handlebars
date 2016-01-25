@@ -7,16 +7,16 @@
   <title>Inicio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Webflow">
-  <link rel="stylesheet" type="text/css" href="css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="css/webflow.css">
-  <link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">
-  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/webflow.css">
+  <link rel="stylesheet" type="text/css" href="/css/proyecto-sol.webflow.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/menu.js"></script>
-  <script src="js/validator.js"></script>
-  <script src="./js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/menu.js"></script>
+  <script src="/js/validator.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
 
   <script>
@@ -26,16 +26,19 @@
       }
     });
   </script>
-  <script type="text/javascript" src="js/modernizr.js"></script>
-  <link rel="shortcut icon" type="image/x-icon" href="images/solicon.png">
-  <link rel="apple-touch-icon" href="images/solicon.png">
+  <script type="text/javascript" src="/js/modernizr.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
+  <link rel="apple-touch-icon" href="/images/solicon.png">
 </head>
 <body class="body">
-  
-  
-
-
-  
+ <!-- 
+ {{#if author}}
+    <h1>{{firstName}} {{lastName}}</h1>
+  {{/if}} -->
+  {{error1}}
+  {{error2}}
+ 
+ 
   <div data-ix="new-interaction-2" class="modal-wrapper">
     <div class="w-clearfix sing-up-wrapper"><button type="button" class="close" data-ix="close-interaction" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h2>Registro</h2>
@@ -46,6 +49,7 @@
           </div>
       <div class="form-group">
         <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+        
         <div class="help-block with-errors"></div>
       </div>
        <div class="form-group">
@@ -77,6 +81,7 @@
       </div>
     </div>
   </div>
+  
   <div data-ix="new-interaction-2" class="modallogin">
     <div class="login-up-wrapper">
       <button type="button" class="close" data-ix="close-interaction-2" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -102,6 +107,7 @@
     </div>
   </div>
   <div class="container">
+
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -144,9 +150,11 @@
   <span><a href="#formu" class="sindeco">Contáctanos</a></span>
 </div>
   <div id="section1" class="w-section section1">
+        
     
     <h1 class="titulo1">¡Protege tu piel ahora!</h1>
     <h3 class="titulo2">Registrate para empezar a protegerte con esta app</h3>
+   
     <div class="botones">
       <a  data-ix="subscribe-interaction" class="w-button botonregistro">Registrarse</a><a  data-ix="login-interaction-2" class="w-button loginb">Iniciar sesión</a>
     </div><a href="#informacion"  class="w-button comprab">Más Información</a>
@@ -155,20 +163,20 @@
     <div class="w-row in">
       <div class="w-col w-col-4">
         <div class="reco">
-          <div class="fotoreco"><img src="images/1448671987_Heart.png" class="fotoreco1">
+          <div class="fotoreco"><img src="/images/1448671987_Heart.png" class="fotoreco1">
           </div>
           <h1 class="header1">Cuídate</h1>
           <p class="reco1">Puedes cuidar tu piel por ti mismo,pero  podemos ayudarte a mejorar ese cuidado. utilizando nuestra herramienta no tendrás mas problemas de piel.</p>
         </div>
       </div>
       <div class="w-col w-col-4">
-        <div class="reco"><img src="images/1448672026_apple-04.png" class="fotoreco1 _2">
+        <div class="reco"><img src="/images/1448672026_apple-04.png" class="fotoreco1 _2">
           <h1 class="header1">Moderno</h1>
           <p class="reco1">Nuestros dispositivos tienen un diseño muy moderno y ergonómico, y funcionales ayudará a cuidar tu piel en todo momento.</p>
         </div>
       </div>
       <div class="w-col w-col-4">
-        <div class="reco"><img src="images/1448672561_Beach.png" class="fotoreco1 _3">
+        <div class="reco"><img src="/images/1448672561_Beach.png" class="fotoreco1 _3">
           <h1 class="header1">¡Relájate!</h1>
           <p class="reco1">Te enviaremos alertas, según el nivel de radiación y tu fototipo para que tu puedas decidir lo que es mas conveniente para tu piel.</p>
         </div>
@@ -180,7 +188,7 @@
       <div class="w-col w-col-6 w-clearfix procolum1">
         <div class="prod1 _1">
           <div class="articulo">
-            <div class="foto"><img width="300" src="images/gorra.png" class="foto">
+            <div class="foto"><img width="300" src="/images/gorra.png" class="foto">
             </div>
             <div class="arttext">
               <h3 class="narticulo">Gorra</h3>
@@ -192,7 +200,7 @@
       <div class="w-col w-col-6 w-clearfix procolum1">
         <div class="prod1 _2">
           <div class="articulo">
-            <div class="foto"><img width="310" src="images/sony-smart-tags.png" class="foto _2">
+            <div class="foto"><img width="310" src="/images/sony-smart-tags.png" class="foto _2">
             </div>
             <div class="arttext">
               <h3 class="narticulo">Chapa</h3>
@@ -207,7 +215,7 @@
       <div class="w-col w-col-6 w-clearfix procolum1">
         <div class="prod1 _3">
           <div class="articulo _3">
-            <div class="foto"><img width="355" src="images/were.png" class="foto _3">
+            <div class="foto"><img width="355" src="/images/were.png" class="foto _3">
             </div>
             <div class="arttext">
               <h3 class="narticulo">Wearable</h3>
@@ -219,7 +227,7 @@
       <div class="w-col w-col-6 w-clearfix procolum1">
         <div class="prod1 _4">
           <div class="articulo _3">
-            <div class="foto"><img width="457" src="images/imagenpulsera.png" class="foto _3">
+            <div class="foto"><img width="457" src="/images/imagenpulsera.png" class="foto _3">
             </div>
             <div class="arttext">
               <h3 class="narticulo">¿Mas Artículos?</h3>
@@ -253,12 +261,12 @@
   </div>
   
  <div class="w-section w-clearfix footer">
-    <div class="w-clearfix numero"><img src="images/1448043780_phone.png" class="number">
+    <div class="w-clearfix numero"><img src="/images/1448043780_phone.png" class="number">
       <div class="tnumero">934-24 25 25</div>
     </div>
-    <div class="logoss"><img width="50" src="images/1448042051_twitter_circle_gray.png"><img width="50" src="images/1448042092_facebook_circle_gray.png">
+    <div class="logoss"><img width="50" src="/images/1448042051_twitter_circle_gray.png"><img width="50" src="/images/1448042092_facebook_circle_gray.png">
     </div>
-    <div class="w-clearfix divbrujula"><img src="images/1448044040_icon-62-compass.png" class="brujula">
+    <div class="w-clearfix divbrujula"><img src="/images/1448044040_icon-62-compass.png" class="brujula">
       <div class="dirccion">Donostia, Gipuzkoa</div>
     </div>
     <div class="cop">
@@ -266,7 +274,7 @@
     </div>
   </div>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/webflow.js"></script>
+  <script type="text/javascript" src="/js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
  
 </body>

@@ -90,50 +90,50 @@
                 <label for="field">Color del cabello</label>
                 <select id="cabello" name="cabello" class="w-select redondeado">
                   <option value="0">selecciona uno</option>
-                  <option value="1">rubio/pelirrojo</option>
-                  <option value="2">castaño</option>
-                  <option value="3">moreno</option>
-                  <option value="4">negro</option>
+                  <option value="1">Rubio/pelirrojo</option>
+                  <option value="2">Castaño</option>
+                  <option value="3">Moreno</option>
+                  <option value="4">Negro</option>
                 </select>
                 <label for="field-2">Color de ojos</label>
                 <select id="ojos" name="ojos" data-name="Field 2" class="w-select redondeado">
-                  <option value="">selecciona uno</option>
-                  <option value="1">azules/verdes claros</option>
-                  <option value="2">azules/verdes oscuros</option>
-                  <option value="3">marrones</option>
-                  <option value="4">negros</option>
+                  <option value="">Selecciona uno</option>
+                  <option value="1">Azules/verdes claros</option>
+                  <option value="2">Azules/verdes oscuros</option>
+                  <option value="3">Marrones</option>
+                  <option value="4">Negros</option>
                 </select>
                 <label for="field-3">Tono de piel</label>
                 <select id="piel" name="piel" data-name="Field 3" class="w-select redondeado">
                   <option value="">selecciona uno</option>
-                  <option value="1">blanca o muy blanca</option>
-                  <option value="2">dorada</option>
-                  <option value="3">morena</option>
-                  <option value="4">muy morena</option>
+                  <option value="1">Blanca o muy blanca</option>
+                  <option value="2">Dorada</option>
+                  <option value="3">Morena</option>
+                  <option value="4">Muy morena</option>
                 </select>
                 <label for="field-4">Pecas/lunares</label>
                 <select id="pecas" name="pecas" data-name="Field 4" class="w-select redondeado">
                   <option value="">selecciona uno</option>
-                  <option value="1">muchos</option>
-                  <option value="2">bastantes</option>
-                  <option value="3">algunos</option>
-                   <option value="4">nunguno</option>
+                  <option value="1">Muchos</option>
+                  <option value="2">Bastantes</option>
+                  <option value="3">Algunos</option>
+                   <option value="4">Ninguno</option>
                 </select>
                 <label for="field-5">Eritema/Enrojecimiento</label>
                 <select id="eritema" name="eritema" data-name="Field 5" class="w-select redondeado">
                   <option value="">selecciona uno</option>
-                  <option value="1">casi siempre</option>
-                  <option value="2">a veces</option>
-                  <option value="3">casi nunca</option>
-                  <option value="4">nunca</option>
+                  <option value="1">Casi siempre</option>
+                  <option value="2">A veces</option>
+                  <option value="3">Casi nunca</option>
+                  <option value="4">Nunca</option>
                 </select>
                 <label for="field-6">Bronceado</label>
                 <select id="bronceado" name="bronceado" data-name="Field 6" class="w-select redondeado">
                   <option value="">selecciona uno</option>
-                  <option value="1">nunca</option>
-                  <option value="2">casi nunca</option>
-                  <option value="3">a veces</option>
-                  <option value="4">siempre</option>
+                  <option value="1">Nunca</option>
+                  <option value="2">Casi nunca</option>
+                  <option value="3">A veces</option>
+                  <option value="4">Siempre</option>
                 </select>
                 <input type="submit" value="Enviar" data-wait="Please wait..." class="btn btn-primary">
               </form>
@@ -144,25 +144,26 @@
      <div id="configuracion" class="tab-pane fade">  
      <div class="col-lg-8 col-md-offset-2">
          <div class="w-form">
-            <form id="email-form-3" name="email-form-3" data-name="Email Form 3">
+            <form id="email-form-3" name="email-form-3" data-name="Email Form 3" method="POST" action="/configuracion">
                 <label for="field-7">¿Como quieres recibir las alertas?</label>
-                <select id="field-7" name="field-7" class="w-select redondeado">
+                <select id="alertas" name="alertas" class="w-select redondeado">
                   <option value="">selecciona uno</option>
                   <option value="email">Email</option>
                   <option value="sms">sms</option>
                 </select>
                 <label for="field-8">¿Cada cuanto quiere recibir las alertas?</label>
-                <select id="field-8" name="field-8" class="w-select redondeado">
+                <select id="tiempoAlertas" name="tiempoAlertas" class="w-select redondeado">
                   <option value="">selecciona uno</option>
-                  <option value="1">cada 20 minutos</option>
-                  <option value="2">cada 40 minutos</option>
-                  <option value="3">cada hora</option>
-                   <option value="4">cada 2 horas</option>
+                  <option value="20">cada 20 minutos</option>
+                  <option value="40">cada 40 minutos</option>
+                  <option value="1">cada hora</option>
+                   <option value="2">cada 2 horas</option>
+                   <option value="0">nunca</option>
                 </select>
                 <label for="field-8">Si has comprado un dispositivo añade su Codigo</label>
                <input id="idDispositivo" type="text" placeholder="Codigo Dispositivo" name="idDispositivo" data-name="idDispositivo" class="w-input redondeado">
                
-                <input type="submit" value="enviar" data-wait="Please wait..." class="w-button">
+                <input type="submit" value="Enviar" data-wait="Please wait..." class="w-button">
               </form>
            </div>
         </div>

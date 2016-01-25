@@ -4,9 +4,9 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var randomstring = require('randomstring');
 var md5 = require('md5');
+var flash = require('express-flash');
 
-
-
+app.use(flash());
 app.use(express.cookieParser());
 app.use(session({ resave: true,
                   saveUninitialized: true,
@@ -87,20 +87,28 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
             
                 }else{
                   console.log("las contraseñas deben ser iguales");
+                  
                 }  res.redirect('/');
           
           }
           else {
               
-              console.log(" El usuario ya existe "+err);
+            console.log(" El usuario ya existe "+err);
+           res.render('index', {error1: "El usuario ya existe"
+                        
+                     });
          
           } 
         });
       }
-    else {
-      console.log(" El email ya existe "+err);
-      
-    } 
+      else {
+              console.log(" El email ya existe "+err);
+               res.render('index', {error2: "El email ya existe"
+                                
+                                 });
+                 
+              
+            } 
   });
  
 };
@@ -116,20 +124,22 @@ exports.activacion = function(req, res, codigo){
 
 exports.login = function(req, res, emailL, passL){
 
-  var passh2 = md5(passL);
+
+var passh2 = md5(passL);
   
 
   User.findOne({'email': emailL, 'pass':passh2},function(err, user) {
 
     if (!user) {
         console.error("email o contraseña incorrecta :D");
+     //   req.flash('info', 'Flash Message Added');
        
     }
     else {
       
       if(user.confirmado == '1'){
-        req.session.a = user.usuario;
-        console.log(req.session.a);
+       req.session.a = user.usuario;
+       console.log(req.session.a);
         res.redirect('/home');
       }
       else{
@@ -222,4 +232,3 @@ exports.updatenueva =function(req, res, pass1){
     console.log("Contraseña actualizada");
   });
 };
-

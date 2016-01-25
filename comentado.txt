@@ -102,3 +102,33 @@ var server = app.listen(process.env.PORT || 3000, function(){
 
 
 
+
+
+
+
+
+
+
+exports.configuracion = function (req, res, alertas, tiempoAlertas, idDispositivo) {
+  
+User.update({usuario: req.session.a}, {modoAlertas: alertas, tiempoDeAlertas: tiempoAlertas, dispositivo: idDispositivo}, function(user) {
+   res.redirect('/home');
+   
+   console.log("configuracion actualizado");
+});
+}
+
+
+//---------------------comprobar si el usuario tiene un dispositivo 
+              /*  User.findOne({'email': emailL, 'pass':passh2, 'usuario': req.session.a},function(err, dispo) {
+                  
+                 if(!dispo.dispositivo){
+                   global.IDdipositivo = 'ML8511';
+                   
+                 }
+                 else{
+                   global.IDdipositivo = dispo.dispositivo;
+                 }
+                });
+               */
+  //---------------------comprobar si el usuario tiene un dispositivo fin

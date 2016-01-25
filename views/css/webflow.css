@@ -1937,3 +1937,9 @@ textarea.w-select {
   padding: 10px;
   background-color: #dddddd;
 }
+#error{
+  position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 15;
+}

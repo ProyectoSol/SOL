@@ -32,7 +32,14 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(express.static(__dirname +'/views'));
 
 app.get('/', function(req, res) {
-    res.redirect('index.html');
+    res.render('index', {eusuario: "",
+                        eemail: "",
+                        epass: "",
+                        epassb: ""
+                        
+                         });
+    //res.redirect('index.handlebars');
+    
 });
 
 // model
@@ -60,16 +67,21 @@ app.post('/usuario/login', function(req, res){
   
 });
 //---------------------------prueba session
-
+ 
 app.get('/home', function(req, res) {
+        console.log("/home")
     if (!req.session.a){
-         res.redirect('index.html');
+        console.log("sesion fallida")
+         res.redirect('/');
     }else{
+        console.log(":S")
         radiacion.mostrar(req, res);
     }
 
 });
 //----------------------------fin prueba session
+
+
 app.post('/fototipo',function(req, res) {
     
     
@@ -91,6 +103,15 @@ app.post('/informacion',function(req, res) {
      var sexo  = req.body.sexo;
      
     user.info(req, res, nombre, apellidos, fecha, sexo);
+    
+});
+app.post('/configuracion',function(req, res) {
+    
+     var alertas = req.body.alertas;
+     var tiempoAlertas = req.body.tiempoAlertas;
+     var idDispositivo = req.body.idDispositivo;
+    
+    user.configuracion(req, res, alertas, tiempoAlertas, idDispositivo);
     
 });
 //----------------consulta----------------------

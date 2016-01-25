@@ -27,7 +27,8 @@ console.log(clientIp)
             global.min =  Math.round(body.main.temp_min -273);
              console.log("tiempo "+global.max+" "+global.min+" "+global.datodia);
 		} else {
-			res.json({error:"request error"});
+		//	res.json({error:"request error"});
+		console.log("error con el tiempo")
 		}
 	});
 	});
