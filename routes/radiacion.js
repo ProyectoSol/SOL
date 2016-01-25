@@ -75,7 +75,6 @@ exports.insert = function(req, res, disp_nombre, uv){
 exports.mostrar = function(req, res){
     
     radiacion.findOne({'dispositivo': req.session.dispositivo},function(err, Ruv) {
-    
     if (err) {
         console.error(err);
         res.send('Error');
