@@ -257,7 +257,7 @@ exports.updatenueva =function(req, res, pass1){
     console.log("Contraseña actualizada");
   });
 };
-
+/*
 exports.alertas1 = function(){
   
   User.find({'alertas': '30'},function(error, usera) {
@@ -282,3 +282,4 @@ exports.alertas1 = function(){
   });
     
 };
+*/
