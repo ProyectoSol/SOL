@@ -35,7 +35,9 @@ var usuarioEsquema = mongoose.Schema({
     pecas: String,
     rojo: String,
     bronceado: String},
-    fototipo: String
+    fototipo: String,
+    alertas: String,
+    dispositivo: String
 },{ collection : 'usuario' });
 
 var User = mongoose.model('User', usuarioEsquema);
@@ -61,7 +63,7 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
                 if(passv == pass2v){
                   
                   var passH =md5(passv);
-                  var usuarioNuevo = new User({ usuario:usuariov, email: emailv, pass: passH, codigo: codigov, confirmado: 0});
+                  var usuarioNuevo = new User({ usuario:usuariov, email: emailv, pass: passH, codigo: codigov, confirmado: 0 , dispositivo: ""});
                   console.log(usuarioNuevo.usuario);
                 
                   usuarioNuevo.save(function (err, anadirusuario, numberAffected) {
@@ -74,7 +76,7 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
                   }
                   
                   var data = {
-                    from: 'Sunit <SunBand@zubirimanteo.eus>',
+                    from: 'Sunit <SunBand@zubirimanteo.com>',
                     to: emailv,
                     subject: 'Es hora de cuidar su piel',
                     text: 'Activación de la cuenta: http://sunit.zubirimanteoweb.com/activacion/'+codigov
@@ -132,19 +134,42 @@ var passh2 = md5(passL);
 
     if (!user) {
         console.error("email o contraseña incorrecta :D");
-     //   req.flash('info', 'Flash Message Added');
+        res.render('index', {error4: "email o contraseña incorrecta :D"
+                                
+                                 });
+        //req.flash('info', 'Flash Message Added');
        
     }
     else {
       
       if(user.confirmado == '1'){
-       req.session.a = user.usuario;
-       console.log(req.session.a);
-        res.redirect('/home');
+        
+      req.session.a = user.usuario;
+      global.fototipo = user.fototipo;
+      console.log(global.fototipo);
+      console.log(req.session.a);
+        //dispositivo del usuario
+       
+       
+
+    
+         if(user.dispositivo == null || user.dispositivo == ""){
+          req.session.dispositivo = "ML8511";
+           console.log("dispositivo estandar "+req.session.dispositivo);
+        }
+        else{
+           req.session.dispositivo = user.dispositivo;
+          console.log("dispositivo personal "+req.session.dispositivo);
+        } 
+      res.redirect('/home');
       }
+      
+      
       else{
         console.log('no confirmado');
-        res.redirect('/');
+        res.render('index', {error3: "confirma el emailaso"
+                                
+                                 });
       }
      
     } 
@@ -200,7 +225,7 @@ exports.recuperacion = function(req, res,email){
       else {
         
         var data = {
-                      from: 'Sunit <SunBand@zubirimanteo.eus>',
+                      from: 'Sunit <SunBand@zubirimanteo.com>',
                       to: email,
                       subject: 'Cambio de contraseña',
                       text: 'Cambio de contraseña de sunit: http://sunit.zubirimanteoweb.com/cambiopass/'+user.codigo
@@ -231,4 +256,29 @@ exports.updatenueva =function(req, res, pass1){
    
     console.log("Contraseña actualizada");
   });
+};
+
+exports.alertas1 = function(){
+  
+  User.find({'alertas': '30'},function(error, usera) {
+    var emailAlertas = [];
+    
+    for(var i=0; i<usera.length;i++){
+      emailAlertas[i] = usera[i].email;
+    }
+    
+    console.log(emailAlertas);
+    var data = {
+                      from: 'Sunit <SunBand@zubirimanteo.com>',
+                      to: emailAlertas,
+                      subject: 'Protege tu piel',
+                      text: 'alerta de 30'
+                    };
+         
+        mailgun.messages().send(data, function (error, body) {
+          console.log(body);
+        });
+       // console.log('emails '+usera);
+  });
+    
 };

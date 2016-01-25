@@ -8,16 +8,16 @@ var requestIp = require('request-ip');
 
 exports.recogertiempo = function(req, res){
 	var clientIp = requestIp.getClientIp(req);
-console.log(clientIp)
+//console.log(clientIp)
 					
 	satelize.satelize({ip: clientIp}, function(err,payload) {
  
   		var lat = payload.latitude;
   		var lon = payload.longitude;
-  		console.log(lat+" "+lon);
-  		console.log(payload);
+  		//console.log(lat+" "+lon);
+  	//	console.log(payload);
   
-  	var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=2de143494c0b295cca9337e1e96b00e0';
+  	var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=59de9afd3d5dda5070edadb7cc16e771';
 
 	request({url:url, json:"true"}, function (error, response, body) {
 		if (!error && response.statusCode == 200) {

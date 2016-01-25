@@ -25,21 +25,23 @@
         families: ["Varela Round:400","Changa One:400,400italic"]
       }
     });
+    
+$(document).keypress(function(e) { 
+    if (e.keyCode == 27) { 
+        $("#puto").fadeOut(500);
+        
+    } 
+});
   </script>
   <script type="text/javascript" src="/js/modernizr.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
   <link rel="apple-touch-icon" href="/images/solicon.png">
 </head>
 <body class="body">
- <!-- 
- {{#if author}}
-    <h1>{{firstName}} {{lastName}}</h1>
-  {{/if}} -->
-  {{error1}}
-  {{error2}}
  
- 
-  <div data-ix="new-interaction-2" class="modal-wrapper">
+
+
+  <div id="puto" data-ix="new-interaction-2" class="modal-wrapper">
     <div class="w-clearfix sing-up-wrapper"><button type="button" class="close" data-ix="close-interaction" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h2>Registro</h2>
       <div class="w-form">
@@ -81,7 +83,7 @@
       </div>
     </div>
   </div>
-  
+ 
   <div data-ix="new-interaction-2" class="modallogin">
     <div class="login-up-wrapper">
       <button type="button" class="close" data-ix="close-interaction-2" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -131,33 +133,54 @@
   
 </div>
 
-  <!--<div data-collapse="all" data-animation="over-right" data-duration="400" data-contain="1" data-easing="ease-in-quad" class="w-nav navbar">
-    <div class="w-container navcontainer">
-      <nav role="navigation" class="w-nav-menu navmenu"><a href="#section1" class="w-nav-link linkhome">Home</a>
-                                                        <a href="#productos" target="_blank" class="w-nav-link linkcomprar">Nuestros Productos</a>
-                                                        <a href="#formu" class="w-nav-link linkdescripcion">Contáctanos</a>
-      </nav>
-      <div class="w-nav-button w-clearfix menu">
-        <div class="w-icon-nav-menu icono"></div>
-      </div>
-    </div>
-  </div>  -->
   <div class="capa"></div>
   <div class="hamburgerMenu"><span></span></div>
 <div class="menu">
+
   <span><a href="#section1" class="sindeco">Home</a></span>
   <span><a href="#informacion"  class="sindeco">Información</a></span>
   <span><a href="#formu" class="sindeco">Contáctanos</a></span>
 </div>
+
   <div id="section1" class="w-section section1">
         
-    
+     
     <h1 class="titulo1">¡Protege tu piel ahora!</h1>
     <h3 class="titulo2">Registrate para empezar a protegerte con esta app</h3>
    
     <div class="botones">
+  {{#if error2}}
+
+     <div data-ix="error-1" class="alert alert-danger" >
+      <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Este email ya existe !</strong> 
+      </div>
+  {{/if}} 
+   {{#if error1}}
+
+     <div data-ix="error-1" class="alert alert-danger" >
+      <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Este Usuario ya existe !</strong> 
+      </div>
+  {{/if}} 
+  {{#if error3}}
+
+     <div data-ix="error-1" class="alert alert-danger" >
+      <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Confirma tu email PUTO!</strong> 
+      </div>
+  {{/if}} 
+    {{#if error4}}
+
+     <div data-ix="error-1" class="alert alert-danger" >
+      <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>email o contraseña incorrecta</strong> 
+      </div>
+  {{/if}} 
       <a  data-ix="subscribe-interaction" class="w-button botonregistro">Registrarse</a><a  data-ix="login-interaction-2" class="w-button loginb">Iniciar sesión</a>
+      
     </div><a href="#informacion"  class="w-button comprab">Más Información</a>
+    
   </div>
   <div class="w-section informacion" id="informacion">
     <div class="w-row in">

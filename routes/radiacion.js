@@ -74,7 +74,7 @@ exports.insert = function(req, res, disp_nombre, uv){
 //---------------coger ultimo indice de radiacion--------
 exports.mostrar = function(req, res){
     
-    radiacion.findOne({},function(err, Ruv) {
+    radiacion.findOne({'dispositivo': req.session.dispositivo},function(err, Ruv) {
     
     if (err) {
         console.error(err);
@@ -105,7 +105,8 @@ exports.mostrar = function(req, res){
                         max: global.max,
                         min: global.min,
                         meteo: global.datodia,
-                        Esemana: radiacion
+                        Esemana: radiacion,
+                        Fototipo: global.fototipo
                         
                          });
         });

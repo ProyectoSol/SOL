@@ -69,12 +69,12 @@ app.post('/usuario/login', function(req, res){
 //---------------------------prueba session
  
 app.get('/home', function(req, res) {
-        console.log("/home")
+    
     if (!req.session.a){
         console.log("sesion fallida")
          res.redirect('/');
     }else{
-        console.log(":S")
+        
         radiacion.mostrar(req, res);
     }
 
@@ -171,6 +171,7 @@ app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
     
 });
 
+//setInterval(user.alertas1, 1800000);
 
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
