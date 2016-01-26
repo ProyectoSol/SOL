@@ -171,7 +171,11 @@ app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
     
 });
 
-//setInterval(user.alertas1, 1800000);
+
+
+setInterval(user.alertas1, 1800000);
+setInterval(user.alertas2, 3600000);
+setInterval(user.alertas3, 7200000);
 
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;

@@ -39,7 +39,7 @@ exports.insert = function(req, res, disp_nombre, uv){
                   else {
                           console.log('Radiación registrada');
                           console.log(anadirUv);
-                          res.json(anadirUv);
+                         // res.json(anadirUv);
                 }
             });
             
@@ -73,7 +73,7 @@ exports.insert = function(req, res, disp_nombre, uv){
 
 //---------------coger ultimo indice de radiacion--------
 exports.mostrar = function(req, res){
-    
+    //console.log("lol "+getFecha())
     radiacion.findOne({'dispositivo': req.session.dispositivo},function(err, Ruv) {
     if (err) {
         console.error(err);
@@ -83,18 +83,21 @@ exports.mostrar = function(req, res){
         global.nivel = Ruv.uv;
      
         var nivelfinal = global.nivel;
-        historial.find({'dispositivo' : 'lol'},function(err, historia) {
-
+        historial.find({'dispositivo' : req.session.dispositivo, "fecha" : {"$lte" : getFecha(),"$gte": (getFecha()-7)}},function(err, historia) {
+console.log(historia)
             if (!historia) {
                 console.error("no existe ese dispositivo :D");
             }
               
             else {
                 var radiacion = [];
+                 var fecha = [];
                 
                 for(var i= 0; i<historia.length; i++){
                 
                     radiacion.push(historia[i].uv);
+                     fecha.push(historia[i].fecha);
+                    
                  
                 } 
         
@@ -113,7 +116,7 @@ exports.mostrar = function(req, res){
      //handlebars mostrar el usuario y el nivel de radiacion (ultimo añadido)
         
     }
- }).sort({_id:-1}); 
+ })//.sort({_id:-1}); 
 };
 
 
@@ -123,9 +126,10 @@ function getFecha() {
     var mes = fecha.getMonth() + 1;
     var dia = fecha.getUTCDate();
     
-    var fechaCompleta = dia+"/"+mes+"/"+ano;
-
-    return(fechaCompleta);
+    var fechaCompleta = mes+"/"+dia+"/"+ano;
+    
+    var fechaFinal= new Date(fechaCompleta);
+    return(fechaFinal);
 }
 
 function getDiaSemana() {

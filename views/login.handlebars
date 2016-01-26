@@ -79,29 +79,72 @@
       <canvas id="mycanvas2" class="imagenestadistica">
        <script type="text/javascript">
            $(document).ready(function(){
-            
+             //-----------------------fecha
+            function getFecha() {
+              
+              var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+              var fecha = new Date();
+              var dia = diasSemana[fecha.getDay()]
+              
+               var diasSemanaF;
+                if (dia == "lunes"){
+                  diasSemanaF = ["Martes","Miércoles","Jueves","Viernes","Sábado","Domingo","Lunes"];
+                }
+                else if (dia == "Martes"){
+                  diasSemanaF = ["Miércoles","Jueves","Viernes","Sábado","Domingo","Lunes","Martes"];
+                }
+                else if (dia == "Miércoles"){
+                  diasSemanaF = ["Jueves","Viernes","Sábado","Domingo","Lunes","Martes","Miércoles"];
+                }
+                 else if (dia == "Jueves"){
+                  diasSemanaF = ["Viernes","Sábado","Domingo","Lunes","Martes","Miércoles","Jueves"];
+                }
+                
+               else if (dia == "Viernes"){
+                  diasSemanaF = ["Sábado","Domingo","Lunes","Martes","Miércoles","Jueves","Viernes"];
+                }
+                 else if (dia == "Sábado"){
+                  diasSemanaF = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+                }
+                 else if (dia == "Domingo"){
+                  diasSemanaF = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+                }
+               
+               
+                return(diasSemanaF);
+              }
+             
+
+          
           var radiacion=  document.getElementById("radioA").innerHTML;
-        
           var semana = radiacion.split(",");
           
+          
+        
+            
+          var invertido = semana.sort(function(a, b){return a,b});
+         
+
+
+       
                var ctx = $("#mycanvas2").get(0).getContext("2d");
                
                
                var data = {
-    labels: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgb(51, 173, 255)", // "rgba(220,220,220,0.2)"
-            strokeColor: "rgb(0, 204, 255)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data : semana
-        }
-    ]
-};
+                  labels: getFecha(),
+                  datasets: [
+                      {
+                          label: "My First dataset",
+                          fillColor: "rgb(51, 173, 255)", // "rgba(220,220,220,0.2)"
+                          strokeColor: "rgb(0, 204, 255)",
+                          pointColor: "rgba(220,220,220,1)",
+                          pointStrokeColor: "#fff",
+                          pointHighlightFill: "#fff",
+                          pointHighlightStroke: "rgba(220,220,220,1)",
+                          data : invertido
+                      }
+                  ]
+              };
                  var myLineChart = new Chart(ctx).Line(data);
 
           

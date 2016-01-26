@@ -158,6 +158,7 @@ var passh2 = md5(passL);
            console.log("dispositivo estandar "+req.session.dispositivo);
         }
         else{
+          
            req.session.dispositivo = user.dispositivo;
           console.log("dispositivo personal "+req.session.dispositivo);
         } 
@@ -257,29 +258,88 @@ exports.updatenueva =function(req, res, pass1){
     console.log("Contraseña actualizada");
   });
 };
-/*
+
 exports.alertas1 = function(){
   
-  User.find({'alertas': '30'},function(error, usera) {
+  User.find({'alertas': '1'}, 'email',function(error, usera) {
     var emailAlertas = [];
     
     for(var i=0; i<usera.length;i++){
       emailAlertas[i] = usera[i].email;
     }
-    
-    console.log(emailAlertas);
+    ;
     var data = {
                       from: 'Sunit <SunBand@zubirimanteo.com>',
                       to: emailAlertas,
                       subject: 'Protege tu piel',
-                      text: 'alerta de 30'
+                      text: 'alerta de 10'
                     };
          
         mailgun.messages().send(data, function (error, body) {
           console.log(body);
         });
-       // console.log('emails '+usera);
+        console.log('emails '+emailAlertas);
   });
     
 };
-*/
+
+exports.alertas2 = function(){
+  
+  User.find({'alertas': '2'}, 'email',function(error, usera2) {
+    var emailAlertas2 = [];
+    
+    for(var i=0; i<usera2.length;i++){
+      emailAlertas2[i] = usera2[i].email;
+    }
+    ;
+    var data = {
+                      from: 'Sunit <SunBand@zubirimanteo.com>',
+                      to: emailAlertas2,
+                      subject: 'Protege tu piel',
+                      text: 'alerta de 20'
+                    };
+         
+         mailgun.messages().send(data, function (error, body) {
+          console.log(body);
+        });
+        console.log('emails 2: '+emailAlertas2);
+  });
+    
+};
+exports.alertas3 = function(){
+  
+  User.find({'alertas': '3'}, 'email',function(error, usera3) {
+    var emailAlertas3 = [];
+    
+    for(var i=0; i<usera3.length;i++){
+      emailAlertas3[i] = usera3[i].email;
+    }
+    ;
+    var data = {
+                      from: 'Sunit <SunBand@zubirimanteo.com>',
+                      to: emailAlertas3,
+                      subject: 'Protege tu piel',
+                      text: 'alerta de 30'
+                    };
+         
+         mailgun.messages().send(data, function (error, body) {
+          console.log(body);
+        });
+        console.log('emails 3: '+emailAlertas3);
+  });
+    
+};
+
+exports.configuracion = function (req, res, alertas, tiempoAlertas, idDispositivo) {
+  
+User.update({usuario: req.session.a}, {modoAlertas: alertas, tiempoDeAlertas: tiempoAlertas, dispositivo: idDispositivo}, function(user) {
+  
+   
+   req.session.dispositivo = idDispositivo;
+    res.redirect("/home");
+   
+   console.log("configuracion actualizado");
+});
+}
+
+
