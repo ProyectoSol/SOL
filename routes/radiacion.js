@@ -84,7 +84,7 @@ exports.mostrar = function(req, res){
      
         var nivelfinal = global.nivel;
         historial.find({'dispositivo' : req.session.dispositivo, "fecha" : {"$lte" : getFecha(),"$gte": (getFecha()-7)}},function(err, historia) {
-console.log(historia)
+//console.log(historia)
             if (!historia) {
                 console.error("no existe ese dispositivo :D");
             }
@@ -116,7 +116,7 @@ console.log(historia)
      //handlebars mostrar el usuario y el nivel de radiacion (ultimo añadido)
         
     }
- })//.sort({_id:-1}); 
+ }).sort({_id:-1}); 
 };
 
 
