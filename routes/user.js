@@ -332,7 +332,7 @@ exports.alertas3 = function(){
 
 exports.configuracion = function (req, res, alertas, tiempoAlertas, idDispositivo) {
   
-User.update({usuario: req.session.a}, {modoAlertas: alertas, tiempoDeAlertas: tiempoAlertas, dispositivo: idDispositivo}, function(user) {
+User.update({usuario: req.session.a}, {alertas: alertas, tiempoDeAlertas: tiempoAlertas, dispositivo: idDispositivo}, function(user) {
   
    
    req.session.dispositivo = idDispositivo;
