@@ -103,7 +103,7 @@ exports.mostrar = function(req, res){
             }
               
             else {
-                var radiacion = [];
+                var radiacion =[];
                  var fecha = [];
                 
                 for(var i= 0; i<historia.length; i++){
