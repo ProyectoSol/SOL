@@ -4,9 +4,8 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var randomstring = require('randomstring');
 var md5 = require('md5');
-var flash = require('express-flash');
 
-app.use(flash());
+
 app.use(express.cookieParser());
 app.use(session({ resave: true,
                   saveUninitialized: true,
@@ -29,14 +28,16 @@ var usuarioEsquema = mongoose.Schema({
     sexo: String,
     //añadimos el fototipo
     ArrayFototipo:{
-    pelo: String,
-    ojos: String,
-    piel: String,
-    pecas: String,
-    rojo: String,
-    bronceado: String},
+      pelo: String,
+      ojos: String,
+      piel: String,
+      pecas: String,
+      rojo: String,
+      bronceado: String
+    },
     fototipo: String,
     alertas: String,
+    admin: String,
     dispositivo: String
 },{ collection : 'usuario' });
 
@@ -143,6 +144,12 @@ var passh2 = md5(passL);
     else {
       
       if(user.confirmado == '1'){
+       if(user.admin == "1"){
+        console.log("admin entrando...");
+        req.session.a = user.usuario;
+         res.redirect('/admin');
+       }
+          else{
         
       req.session.a = user.usuario;
       global.fototipo = user.fototipo;
@@ -150,9 +157,6 @@ var passh2 = md5(passL);
       console.log(req.session.a);
         //dispositivo del usuario
        
-       
-
-    
          if(user.dispositivo == null || user.dispositivo == ""){
           req.session.dispositivo = "ML8511";
            console.log("dispositivo estandar "+req.session.dispositivo);
@@ -163,6 +167,7 @@ var passh2 = md5(passL);
           console.log("dispositivo personal "+req.session.dispositivo);
         } 
       res.redirect('/home');
+          }
       }
       
       

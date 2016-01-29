@@ -5,6 +5,20 @@ var satelize = require('satelize');
 var requestIp = require('request-ip');
 // **********************************************
 
+function getHora(fecha) {
+    var f = new Date(fecha*1000);
+    var hora = f.getHours();
+    var min = f.getMinutes();
+    
+    if (min < 10) {
+        min = "0" + min;
+    }
+    
+    var horaCompleta = hora+":"+min;
+    
+    return(horaCompleta);
+}
+
 
 exports.recogertiempo = function(req, res){
 	var clientIp = requestIp.getClientIp(req);
@@ -14,7 +28,7 @@ exports.recogertiempo = function(req, res){
  
   		var lat = payload.latitude;
   		var lon = payload.longitude;
-  		//console.log(lat+" "+lon);
+  		console.log(lat+" "+lon);
   	//	console.log(payload);
   
   	var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=59de9afd3d5dda5070edadb7cc16e771';
@@ -25,7 +39,14 @@ exports.recogertiempo = function(req, res){
             global.datodia = body.weather[0].main;
             global.max = Math.round(body.main.temp_max -273);
             global.min =  Math.round(body.main.temp_min -273);
-             console.log("tiempo "+global.max+" "+global.min+" "+global.datodia);
+            var sunrise = body.sys.sunrise;
+            var sunset = body.sys.sunset;
+            
+            global.sunrise = getHora(sunrise);
+            global.sunset = getHora(sunset);
+            
+            console.log("Sunrise y sunset: " + global.sunrise + global.sunset);
+            console.log("Tiempo: "+global.max+" "+global.min+" "+global.datodia);
 		} else {
 		//	res.json({error:"request error"});
 		console.log("error con el tiempo")

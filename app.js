@@ -8,6 +8,7 @@ var user = require('./routes/user.js');
 var tiempo = require('./routes/tiempo.js');
 var radiacion = require('./routes/radiacion.js');
 var contacto = require('./routes/contacto.js');
+var admin = require('./routes/admin.js');
 var session = require('express-session');
 app.use(session({ resave: true,
                   saveUninitialized: true,
@@ -156,7 +157,9 @@ app.post('/updatenueva', function(req,res){
 app.get('/activacion/:codigo', function(req, res) {
     user.activacion(req,  res, req.params.codigo);
 });
+//--------------Admin
 //-------------- LogOut
+
 
 app.get('/logout', function(req, res) { user.logout(req,  res);});
 
@@ -171,11 +174,38 @@ app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
     
 });
 
+app.get('/admin', function(req,res){
+  
+   admin.verUsuarios(req, res); 
+});
+
+
+
 
 
 setInterval(user.alertas1, 1800000);
 setInterval(user.alertas2, 3600000);
 setInterval(user.alertas3, 7200000);
+//setInterval(radiacion.media, )
+
+
+
+
+
+//-----------------prueba Estadistica con aggregate avg
+var estadistica = require("./routes/estadistica.js");
+app.get('/estadistica',function(req, res) {
+     
+   // var estadistica = require("./routes/estadistica.js");
+    console.log("ejecutado estadistica.js")
+    estadistica.mostrar(req, res);
+    
+});//-----------------prueba Estadistica con aggregate avg
+
+
+
+
+
 
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;

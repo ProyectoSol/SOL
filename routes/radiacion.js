@@ -9,11 +9,13 @@ var radiacionEsquema = mongoose.Schema({
 
 var historialEsquema = mongoose.Schema({
     dispositivo: String,
-    uv: String,
-    fecha: String,
+    uv: Number,
+    fecha: Date,
     hora: String,
     diaSemana: String
 },{ collection : 'historial' });
+
+
 
 var radiacion = mongoose.model('uv', radiacionEsquema);
 var historial = mongoose.model('historial', historialEsquema);
@@ -22,13 +24,12 @@ var historial = mongoose.model('historial', historialEsquema);
 exports.insert = function(req, res, disp_nombre, uv){
    //------------------------------------------comprobar existencia del dispositivo y update
     
-
     
     radiacion.findOne({'dispositivo': disp_nombre},function(err, disp){
         if(!disp){
             
             //insertar dispositivo nuevo y radiacion
-            var uvNuevo = new radiacion({dispositivo: disp_nombre, uv: uv });
+            var uvNuevo = new radiacion({dispositivo: disp_nombre, uv: uv});
             console.log(uvNuevo.uv);
     
              uvNuevo.save(function (err, anadirUv, numberAffected) {
@@ -51,8 +52,10 @@ exports.insert = function(req, res, disp_nombre, uv){
             });
         };
         //-------------------------insertar en el historial
-        
-         var historialNuevo = new historial({dispositivo:disp_nombre, uv: uv, fecha: getFecha(), hora: getHora(), diaSemana: getDiaSemana()});
+        var fecha = new Date();
+       //fecha.setDate(fecha.getDate() -7);
+        console.log(fecha)
+         var historialNuevo = new historial({dispositivo:disp_nombre, uv: uv, fecha:  fecha, hora: getHora(), diaSemana: getDiaSemana()});
        
         historialNuevo.save(function (err, anadirHistorial, numberAffected) {
                   if (err) {
@@ -74,6 +77,7 @@ exports.insert = function(req, res, disp_nombre, uv){
 //---------------coger ultimo indice de radiacion--------
 exports.mostrar = function(req, res){
     //console.log("lol "+getFecha())
+   
     radiacion.findOne({'dispositivo': req.session.dispositivo},function(err, Ruv) {
     if (err) {
         console.error(err);
@@ -83,7 +87,16 @@ exports.mostrar = function(req, res){
         global.nivel = Ruv.uv;
      
         var nivelfinal = global.nivel;
-        historial.find({'dispositivo' : req.session.dispositivo, "fecha" : {"$lte" : getFecha(),"$gte": (getFecha()-7)}},function(err, historia) {
+        //{ $avg: <expression> }
+        //                                                               antes de la fecha actual  / despues de hace 7 dias
+          var fecha = new Date();
+     var Hace7Dias = new Date();
+  
+    Hace7Dias.setDate(fecha.getDate() -7)
+    console.log(Hace7Dias)
+    
+ historial.aggregate([{ $match : {fecha : { $gte : Hace7Dias, $lte : fecha}, dispositivo : req.session.dispositivo} },
+                     { $group: { _id: {day: { $dayOfYear: "$fecha" }}, media: { $avg: "$uv" } } }] ,function(err, historia) {
 //console.log(historia)
             if (!historia) {
                 console.error("no existe ese dispositivo :D");
@@ -94,12 +107,13 @@ exports.mostrar = function(req, res){
                  var fecha = [];
                 
                 for(var i= 0; i<historia.length; i++){
-                
-                    radiacion.push(historia[i].uv);
-                     fecha.push(historia[i].fecha);
+               
+                    radiacion.push(historia[i].media);
+                     fecha.push(historia[i]._id);
                     
                  
                 } 
+               console.log("dfdfdfdfdf "+radiacion)
         
             }  
             res.render('login', {User: req.session.a,
@@ -127,9 +141,8 @@ function getFecha() {
     var dia = fecha.getUTCDate();
     
     var fechaCompleta = mes+"/"+dia+"/"+ano;
-    
-    var fechaFinal= new Date(fechaCompleta);
-    return(fechaFinal);
+
+    return(fechaCompleta);
 }
 
 function getDiaSemana() {

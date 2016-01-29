@@ -5,9 +5,11 @@
 <head>
   <meta charset="utf-8">
   <title>Inicio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
   <meta name="generator" content="Webflow">
   <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/boton.css">
   <link rel="stylesheet" type="text/css" href="/css/webflow.css">
   <link rel="stylesheet" type="text/css" href="/css/proyecto-sol.webflow.css">
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -160,25 +162,25 @@ $(document).keypress(function(e) {
 
      <div data-ix="error-1" class="alert alert-danger" >
       <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Este Usuario ya existe !</strong> 
+  <strong>¡Este Usuario ya existe!</strong> 
       </div>
   {{/if}} 
   {{#if error3}}
 
      <div data-ix="error-1" class="alert alert-danger" >
       <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Confirma tu email PUTO!</strong> 
+  <strong>Confirma tu email</strong> 
       </div>
   {{/if}} 
     {{#if error4}}
 
      <div data-ix="error-1" class="alert alert-danger" >
       <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>email o contraseña incorrecta</strong> 
+  <strong>Email o contraseña incorrecta</strong> 
       </div>
   {{/if}} 
       <a  data-ix="subscribe-interaction" class="w-button botonregistro">Registrarse</a><a  data-ix="login-interaction-2" class="w-button loginb">Iniciar sesión</a>
-      
+       
     </div><a href="#informacion"  class="w-button comprab">Más Información</a>
     
   </div>
