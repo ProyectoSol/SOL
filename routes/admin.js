@@ -3,6 +3,9 @@ var mongoose = require("mongoose");
 
 var user1 = mongoose.model('User1', user.userModel())
 exports.verUsuarios = function(req, res){
+    
+    
+    
     user1.find(function(error, listaUsuarios) {
         var arrayUsu = [];   
         for(var i=0;i<listaUsuarios.length;i++){

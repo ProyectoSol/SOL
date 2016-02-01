@@ -54,7 +54,7 @@ exports.insert = function(req, res){
         };
         //-------------------------insertar en el historial
         var fecha = new Date();
-       //fecha.setDate(fecha.getDate() -7);
+       //fecha.setDate(fecha.getDate() -3);
         console.log(fecha)
          var historialNuevo = new historial({dispositivo:disp_nombre, uv: uv, fecha:  fecha, hora: getHora(), diaSemana: getDiaSemana()});
        
@@ -123,7 +123,7 @@ exports.mostrar = function(req, res){
                     
                  
                 } 
-               console.log("dfdfdfdfdf "+radiacion)
+               console.log("radiaciones "+radiacion)
         
             }  
             res.render('login', {User: req.session.a,

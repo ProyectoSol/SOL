@@ -39,7 +39,7 @@ app.post('/configuracion', user.configuracion);
 app.post('/fototipo', user.fototipo);
 app.post('/consulta', contacto.consulta);
 app.post('/recuperacion', user.recuperacion);
-app.post('/admin', admin.verUsuarios);
+app.get('/admin', admin.verUsuarios);
 app.post('/informacion', user.info);
 app.post('logout', user.logout);
 app.get('/radiacion/insert/:disp_nombre/:uv', radiacion.insert);
