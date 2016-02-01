@@ -27,7 +27,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
-app.use(express.urlencoded()); // to support URL-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies  
 
 //---------------CONTROLLERS----
 app.post('/usuario/registro', user.registro);
