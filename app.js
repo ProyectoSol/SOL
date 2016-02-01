@@ -5,7 +5,7 @@ conexionBD.conexion();
 var app = express();
 var bodyParser = require('body-parser');
 var user = require('./routes/user.js');
-var tiempo = require('./routes/tiempo.js');
+//var tiempo = require('./routes/tiempo.js');
 var radiacion = require('./routes/radiacion.js');
 var contacto = require('./routes/contacto.js');
 var admin = require('./routes/admin.js');
@@ -24,11 +24,27 @@ app.set('view engine', 'handlebars');
 //------------------------------------------------handlebars
 
 
-
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 app.use(express.urlencoded()); // to support URL-encoded bodies
+
+//---------------CONTROLLERS----
+app.post('/usuario/registro', user.registro);
+app.post('/activacion/:codigo', user.activacion);
+app.post('/usuario/login', user.login);
+app.post('/cambiopass/:codigo', user.cambiopass);
+app.post('/updatenueva', user.updatenueva);
+app.post('/configuracion', user.configuracion);
+app.post('/fototipo', user.fototipo);
+app.post('/consulta', contacto.consulta);
+app.post('/recuperacion', user.recuperacion);
+app.post('/admin', admin.verUsuarios);
+app.post('/informacion', user.info);
+app.post('logout', user.logout);
+app.get('/radiacion/insert/:disp_nombre/:uv', radiacion.insert);
+app.get('/home',radiacion.mostrar);
+
 
 app.use(express.static(__dirname +'/views'));
 
@@ -45,18 +61,7 @@ app.get('/', function(req, res) {
 
 // model
 //conexionBD.conexion();
-
-app.post('/usuario/registro', function(req, res){
-
-  var usuariov = req.body.usuario;
-  var emailv = req.body.email;
-  var passv = req.body.pass;
-  var pass2v = req.body.pass2;
-  
-  user.registro(req, res, usuariov, emailv, passv, pass2v);
-});
-
-
+/*
 app.post('/usuario/login', function(req, res){
   
   var emailL = req.body.email;
@@ -66,9 +71,9 @@ app.post('/usuario/login', function(req, res){
   user.login(req, res, emailL, passL);
  
   
-});
+});*/
 //---------------------------prueba session
- 
+ /*
 app.get('/home', function(req, res) {
     
     if (!req.session.a){
@@ -79,10 +84,10 @@ app.get('/home', function(req, res) {
         radiacion.mostrar(req, res);
     }
 
-});
+});*/
 //----------------------------fin prueba session
 
-
+/*
 app.post('/fototipo',function(req, res) {
     
     
@@ -94,7 +99,8 @@ app.post('/fototipo',function(req, res) {
      var bronceado = req.body.bronceado;
     user.fototipo(req, res, pelo, ojos, piel, pecas, rojo, bronceado);
     
-});
+});*/
+/*
 app.post('/informacion',function(req, res) {
     
     
@@ -105,7 +111,8 @@ app.post('/informacion',function(req, res) {
      
     user.info(req, res, nombre, apellidos, fecha, sexo);
     
-});
+});*/
+/*
 app.post('/configuracion',function(req, res) {
     
      var alertas = req.body.alertas;
@@ -114,8 +121,9 @@ app.post('/configuracion',function(req, res) {
     
     user.configuracion(req, res, alertas, tiempoAlertas, idDispositivo);
     
-});
+});*/
 //----------------consulta----------------------
+/*
 app.post('/consulta',function(req, res) {
       var asunto = req.body.asunto;
       var email = req.body.email;
@@ -124,7 +132,8 @@ app.post('/consulta',function(req, res) {
       
     contacto.consulta(req, res, email, asunto, mensaje);
     
-});
+});*/
+/*
 
 app.post('/recuperacion',function(req, res) {
      
@@ -134,15 +143,15 @@ app.post('/recuperacion',function(req, res) {
       
     user.recuperacion(req, res, email);
     
-});
-
+});*/
+/*
 app.get('/cambiopass/:codigo', function(req,res){
    
     var codigo = req.params.codigo;
     
     user.cambiopass(req,res,codigo);
-});
-
+});*/
+/*
 app.post('/updatenueva', function(req,res){
     var pass1 = req.body.pass;
     var pass2 = req.body.pass2;
@@ -152,19 +161,21 @@ app.post('/updatenueva', function(req,res){
     }else{
         console.log('Las contraseñas no coinciden');
     }
-});
+});*/
 
-app.get('/activacion/:codigo', function(req, res) {
+
+/*app.get('/activacion/:codigo', function(req, res) {
     user.activacion(req,  res, req.params.codigo);
-});
+});*/
 //--------------Admin
 //-------------- LogOut
 
 
-app.get('/logout', function(req, res) { user.logout(req,  res);});
+//app.get('/logout', function(req, res) { user.logout(req,  res);});
 
 
 //app.post('/')
+/*
 app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
   
   var disp_nombre = req.params.disp_nombre;
@@ -172,12 +183,12 @@ app.get('/radiacion/insert/:disp_nombre/:uv', function(req, res) {
   
   radiacion.insert(req, res, disp_nombre, uv);
     
-});
-
+});*/
+/*
 app.get('/admin', function(req,res){
   
    admin.verUsuarios(req, res); 
-});
+});*/
 
 
 

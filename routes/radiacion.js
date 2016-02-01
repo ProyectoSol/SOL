@@ -21,9 +21,10 @@ var radiacion = mongoose.model('uv', radiacionEsquema);
 var historial = mongoose.model('historial', historialEsquema);
 
 
-exports.insert = function(req, res, disp_nombre, uv){
+exports.insert = function(req, res){
    //------------------------------------------comprobar existencia del dispositivo y update
-    
+    var disp_nombre = req.params.disp_nombre;
+    var uv = req.params.uv;
     
     radiacion.findOne({'dispositivo': disp_nombre},function(err, disp){
         if(!disp){
@@ -76,6 +77,15 @@ exports.insert = function(req, res, disp_nombre, uv){
 
 //---------------coger ultimo indice de radiacion--------
 exports.mostrar = function(req, res){
+    
+    if (!req.session.a){
+        console.log("sesion fallida")
+         res.redirect('/');
+    }else{
+        
+      //  radiacion.mostrar(req, res);
+   
+
     //console.log("lol "+getFecha())
    
     radiacion.findOne({'dispositivo': req.session.dispositivo},function(err, Ruv) {
@@ -131,6 +141,7 @@ exports.mostrar = function(req, res){
         
     }
  }).sort({_id:-1}); 
+    }
 };
 
 

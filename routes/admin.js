@@ -10,9 +10,7 @@ exports.verUsuarios = function(req, res){
             console.log(listaUsuarios[i].email);
         };
         
-            res.render('admin', {usuarios: arrayUsu
-                                
-                                 });
+            res.render('admin', {usuarios: arrayUsu});
                  
               
         });  

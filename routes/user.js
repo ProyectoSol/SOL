@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var randomstring = require('randomstring');
 var md5 = require('md5');
-
+var tiempo = require('./tiempo.js');
 
 app.use(express.cookieParser());
 app.use(session({ resave: true,
@@ -12,8 +12,9 @@ app.use(session({ resave: true,
                   secret: 'uwotm8'
                 })
 );
-        
+
 app.use(express.static(__dirname +'/radiacion'));
+
 
 var usuarioEsquema = mongoose.Schema({
     usuario: String,
@@ -47,8 +48,12 @@ var api_key = 'key-895d8c83afc89fdfe4dbbc0f77914001';
 var domain = 'sandbox8ce7f0bf5daa434f80e058f59c7e5798.mailgun.org';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
-exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
+exports.registro = function(req, res){
   //---------------------------------------- controlar usuarios
+  var emailv = req.body.email;
+  var usuariov = req.body.usuario;
+  var passv = req.body.pass;
+  var pass2v = req.body.pass2;
   User.findOne({'email': emailv},function(err, userc){
   
     if (!userc) {
@@ -116,7 +121,8 @@ exports.registro = function(req, res, usuariov,emailv,passv,pass2v){
  
 };
 
-exports.activacion = function(req, res, codigo){
+exports.activacion = function(req, res){
+  var codigo = req.params.codigo;
   User.update({codigo: codigo}, {confirmado:'1'}, function(user) {
    res.redirect('/');
    
@@ -125,10 +131,13 @@ exports.activacion = function(req, res, codigo){
 };
 
 
-exports.login = function(req, res, emailL, passL){
-
-
-var passh2 = md5(passL);
+exports.login = function(req, res){
+  
+ tiempo.recogertiempo(req, res);
+ 
+ var emailL = req.body.email;
+ var passL = req.body.pass;
+ var passh2 = md5(passL);
   
 
   User.findOne({'email': emailL, 'pass':passh2},function(err, user) {
@@ -189,7 +198,16 @@ exports.logout = function(req, res){
   res.redirect('/');
 };
 
-exports.fototipo = function(req, res, peloF, ojosF, pielF, pecasF, rojoF, bronceadoF){
+exports.fototipo = function(req, res){
+     
+     var peloF = req.body.cabello;
+     var ojosF = req.body.ojos;
+     var pielF = req.body.piel;
+     var pecasF = req.body.pecas;
+     var rojoF = req.body.eritema;
+     var bronceadoF = req.body.bronceado;
+ 
+ 
   console.log(peloF + ojosF + pielF + pecasF + rojoF + bronceadoF);
 
   var ResultadoFototipo = (parseInt(peloF) + parseInt(ojosF) + parseInt(pielF) + parseInt(pecasF) + parseInt(rojoF) + parseInt(bronceadoF)) / 6;
@@ -207,7 +225,12 @@ exports.fototipo = function(req, res, peloF, ojosF, pielF, pecasF, rojoF, bronce
   
 };
 
-exports.info = function(req, res, nombre, apellido, fecha, sexo){
+exports.info = function(req, res){
+      var nombre = req.body.name;
+     var apellido = req.body.apellidos;
+     var fecha = req.body.fecha;
+     var sexo  = req.body.sexo;
+     
   console.log(nombre + apellido + fecha + sexo);
   
   User.update({usuario: req.session.a}, {nombre: nombre, apellido: apellido, fecha: fecha, sexo: sexo}, function(user) {
@@ -218,7 +241,8 @@ exports.info = function(req, res, nombre, apellido, fecha, sexo){
 
 };
 
-exports.recuperacion = function(req, res,email){
+exports.recuperacion = function(req, res){
+  var email = req.body.email;
   console.log(email);
  
  User.findOne({'email': email},function(err, user) {
@@ -246,15 +270,21 @@ exports.recuperacion = function(req, res,email){
  });
 };
 
-exports.cambiopass = function(req, res,codigo){
+exports.cambiopass = function(req, res){
   
+   var codigo = req.params.codigo;
   req.session.code = codigo;
   res.redirect('/recuperar.html');
 
 };
 exports.updatenueva =function(req, res, pass1){
   
-  var passn = md5(pass1);
+     var pass1 = req.body.pass;
+    var pass2 = req.body.pass2;
+    
+    if(pass1==pass2){
+       // user.updatenueva(req, res, pass1);
+       var passn = md5(pass1);
   
   User.update({codigo: req.session.code}, {pass: passn}, function(user) {
     req.session.destroy();
@@ -262,6 +292,10 @@ exports.updatenueva =function(req, res, pass1){
    
     console.log("Contraseña actualizada");
   });
+    }else{
+        console.log('Las contraseñas no coinciden');
+    }
+  
 };
 
 exports.alertas1 = function(){
@@ -335,8 +369,13 @@ exports.alertas3 = function(){
     
 };
 
-exports.configuracion = function (req, res, alertas, tiempoAlertas, idDispositivo) {
+exports.configuracion = function (req, res) {
   
+  
+   var alertas = req.body.alertas;
+     var tiempoAlertas = req.body.tiempoAlertas;
+     var idDispositivo = req.body.idDispositivo;
+     
 User.update({usuario: req.session.a}, {alertas: alertas, tiempoDeAlertas: tiempoAlertas, dispositivo: idDispositivo}, function(user) {
   
    
