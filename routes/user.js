@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var session = require('express-session');
+var registro = require('../models/registro.js');
 var randomstring = require('randomstring');
 var md5 = require('md5');
 var tiempo = require('./tiempo.js');
@@ -54,7 +55,9 @@ exports.registro = function(req, res){
   var usuariov = req.body.usuario;
   var passv = req.body.pass;
   var pass2v = req.body.pass2;
-  User.findOne({'email': emailv},function(err, userc){
+  
+  //registro.registro(req,res,emailv,usuariov,passv,pass2v);
+ User.findOne({'email': emailv},function(err, userc){
   
     if (!userc) {
        console.log('E-mail válido');
