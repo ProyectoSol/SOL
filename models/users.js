@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-exports.userModel = function() {
+var userModel = function() {
     
     var usuarioEsquema = mongoose.Schema({
     usuario: String,
@@ -28,8 +28,8 @@ exports.userModel = function() {
     admin: String,
     dispositivo: String
 },{ collection : 'usuario' });
-    var userMo = mongoose.model('User1', usuarioEsquema)
-    return (userMo);
+   return mongoose.model('User1', usuarioEsquema)
+   
 };
 
-//module.exports = new userModel();
+module.exports = new userModel();
