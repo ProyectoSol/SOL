@@ -38,9 +38,15 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 
 //---------------CONTROLLERS----
 app.post('/usuario/registro', registro.registro);
+<<<<<<< HEAD
 app.get('/activacion/:codigo', activacion.activacion);
 app.post('/usuario/login', login.login);
 app.get('/cambiopass/:codigo', cambiopass.cambiopass);
+=======
+app.post('/activacion/:codigo', activacion.activacion);
+app.post('/usuario/login', login.login);
+app.post('/cambiopass/:codigo', cambiopass.cambiopass);
+>>>>>>> 493ed6a55321ca7d8050603630dfc0c647ffd945
 app.post('/updatenueva', cambiopass.updatenueva);
 app.post('/configuracion', configuracion.configuracion);
 app.post('/fototipo', fototipo.fototipo);
