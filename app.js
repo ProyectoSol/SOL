@@ -7,6 +7,13 @@ var bodyParser = require('body-parser');
 var user = require('./routes/user.js');
 //var tiempo = require('./routes/tiempo.js');
 var radiacion = require('./routes/radiacion.js');
+var registro = require('./controllers/registro.js');
+var activacion= require('./controllers/activacion.js');
+var cambiopass= require('./controllers/cambiopass.js');
+var alertas= require('./controllers/alertas.js');
+var fototipo = require('./controllers/fototipo.js');
+var configuracion = require('./controllers/configuracion.js');
+var login = require('./controllers/login.js');
 var contacto = require('./routes/contacto.js');
 var admin = require('./routes/admin.js');
 var session = require('express-session');
@@ -30,21 +37,22 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies  
 
 //---------------CONTROLLERS----
-app.post('/usuario/registro', user.registro);
-app.post('/activacion/:codigo', user.activacion);
-app.post('/usuario/login', user.login);
-app.post('/cambiopass/:codigo', user.cambiopass);
-app.post('/updatenueva', user.updatenueva);
-app.post('/configuracion', user.configuracion);
-app.post('/fototipo', user.fototipo);
+app.post('/usuario/registro', registro.registro);
+app.get('/activacion/:codigo', activacion.activacion);
+app.post('/usuario/login', login.login);
+app.get('/cambiopass/:codigo', cambiopass.cambiopass);
+app.post('/updatenueva', cambiopass.updatenueva);
+app.post('/configuracion', configuracion.configuracion);
+app.post('/fototipo', fototipo.fototipo);
 app.post('/consulta', contacto.consulta);
-app.post('/recuperacion', user.recuperacion);
+app.post('/recuperacion', registro.recuperacion);
 app.get('/admin', admin.verUsuarios);
-app.post('/informacion', user.info);
-app.get('/logout', user.logout);
+app.post('/informacion', fototipo.info);
+app.get('/logout', login.logout);
 app.get('/radiacion/insert/:disp_nombre/:uv', radiacion.insert);
 app.get('/home',radiacion.mostrar);
 
+app.get('/clientedatos/:usuario', admin.prueba);
 
 app.use(express.static(__dirname +'/views'));
 
@@ -60,9 +68,9 @@ app.get('/', function(req, res) {
 });
 
 
-setInterval(user.alertas1, 1800000);
-setInterval(user.alertas2, 3600000);
-setInterval(user.alertas3, 7200000);
+setInterval(alertas.alertas1, 1800000);
+setInterval(alertas.alertas2, 3600000);
+setInterval(alertas.alertas3, 7200000);
 //setInterval(radiacion.media, )
 
 
