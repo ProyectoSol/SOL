@@ -3,6 +3,7 @@ var app = express();
 
 var TablaRadiacion = require('../models/TablaRadiacion.js');
 var TablaHistorial = require('../models/TablaHistorial.js');
+var EstadisticaSemana= require('./estadisticaSemana.js');
 
 //var mongoose = require('mongoose');
 
@@ -111,7 +112,7 @@ exports.mostrar = function(req, res){
     Hace7Dias.setDate(fecha.getDate() -7);
     console.log(Hace7Dias);
  //historial 
- TablaHistorial.aggregate([{ $match : {fecha : {$lte : fecha, $gte : Hace7Dias}, dispositivo : req.session.dispositivo} },
+ /*TablaHistorial.aggregate([{ $match : {fecha : {$lte : fecha, $gte : Hace7Dias}, dispositivo : req.session.dispositivo} },
                      { $group: { _id: {day: { $dayOfYear: "$fecha" }}, media: { $avg: "$uv" } } }] ,function(err, historia) {
 //console.log(historia)
             if (!historia) {
@@ -129,20 +130,27 @@ exports.mostrar = function(req, res){
                     
                  
                 } 
+                
                console.log("radiaciones "+radiacion)
         
             }  
+            
+            console.log(global.radiacionF+" ssdff")
+            */
+            var dispositivo = req.session.dispositivo;
+            EstadisticaSemana.Semana(req,res, dispositivo);
             res.render('login', {User: req.session.a,
                         Uv: nivelfinal,
                         max: global.max,
                         min: global.min,
                         meteo: global.datodia,
-                        Esemana: radiacion,
+                    //  Esemana: radiacion,
+                        Esemana: global.radiacionF,
                         Fototipo: global.fototipo
                         
                          });
                        
-        });
+     //   });
         
     
      //handlebars mostrar el usuario y el nivel de radiacion (ultimo añadido)
