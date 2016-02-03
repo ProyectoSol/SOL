@@ -1,7 +1,12 @@
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose');
 
+var TablaRadiacion = require('../models/TablaRadiacion.js');
+var TablaHistorial = require('../models/TablaHistorial.js');
+
+//var mongoose = require('mongoose');
+
+/*
 var radiacionEsquema = mongoose.Schema({
     dispositivo: String,
     uv: String
@@ -20,17 +25,17 @@ var historialEsquema = mongoose.Schema({
 var radiacion = mongoose.model('uv', radiacionEsquema);
 var historial = mongoose.model('historial', historialEsquema);
 
-
+*/
 exports.insert = function(req, res){
    //------------------------------------------comprobar existencia del dispositivo y update
     var disp_nombre = req.params.disp_nombre;
     var uv = req.params.uv;
-    
-    radiacion.findOne({'dispositivo': disp_nombre},function(err, disp){
+    //radiacion
+    TablaRadiacion.findOne({'dispositivo': disp_nombre},function(err, disp){
         if(!disp){
             
             //insertar dispositivo nuevo y radiacion
-            var uvNuevo = new radiacion({dispositivo: disp_nombre, uv: uv});
+            var uvNuevo = new TablaRadiacion({dispositivo: disp_nombre, uv: uv});
             console.log(uvNuevo.uv);
     
              uvNuevo.save(function (err, anadirUv, numberAffected) {
@@ -48,15 +53,16 @@ exports.insert = function(req, res){
         }
         else{
             //actualizar datos de un dispositivo
-            radiacion.update({dispositivo: disp.dispositivo}, {uv: uv}, function(radiacion) {
+            //radiacion
+            TablaRadiacion.update({dispositivo: disp.dispositivo}, {uv: uv}, function(radiacion) {
                 console.log("El dispositivo se ha actualizado");
             });
         };
         //-------------------------insertar en el historial
         var fecha = new Date();
-       //fecha.setDate(fecha.getDate() -3);
-        console.log(fecha)
-         var historialNuevo = new historial({dispositivo:disp_nombre, uv: uv, fecha:  fecha, hora: getHora(), diaSemana: getDiaSemana()});
+      // fecha.setDate(fecha.getDate() -1);
+        console.log(fecha)        //historial
+         var historialNuevo = new TablaHistorial({dispositivo:disp_nombre, uv: uv, fecha:  fecha, hora: getHora(), diaSemana: getDiaSemana()});
        
         historialNuevo.save(function (err, anadirHistorial, numberAffected) {
                   if (err) {
@@ -87,8 +93,8 @@ exports.mostrar = function(req, res){
    
 
     //console.log("lol "+getFecha())
-   
-    radiacion.findOne({'dispositivo': req.session.dispositivo},function(err, Ruv) {
+    //radiacion
+    TablaRadiacion.findOne({'dispositivo': req.session.dispositivo},function(err, Ruv) {
     if (err) {
         console.error(err);
         res.send('Error');
@@ -102,10 +108,10 @@ exports.mostrar = function(req, res){
           var fecha = new Date();
      var Hace7Dias = new Date();
   
-    Hace7Dias.setDate(fecha.getDate() -7)
-    console.log(Hace7Dias)
-    
- historial.aggregate([{ $match : {fecha : { $gte : Hace7Dias, $lte : fecha}, dispositivo : req.session.dispositivo} },
+    Hace7Dias.setDate(fecha.getDate() -7);
+    console.log(Hace7Dias);
+ //historial 
+ TablaHistorial.aggregate([{ $match : {fecha : {$lte : fecha, $gte : Hace7Dias}, dispositivo : req.session.dispositivo} },
                      { $group: { _id: {day: { $dayOfYear: "$fecha" }}, media: { $avg: "$uv" } } }] ,function(err, historia) {
 //console.log(historia)
             if (!historia) {
@@ -135,7 +141,9 @@ exports.mostrar = function(req, res){
                         Fototipo: global.fototipo
                         
                          });
+                       
         });
+        
     
      //handlebars mostrar el usuario y el nivel de radiacion (ultimo añadido)
         
@@ -176,3 +184,17 @@ function getHora() {
     
     return(horaCompleta);
 }
+/*
+function handlebars(res, req) {
+       
+       
+       res.render('login', {User: req.session.a,
+                        Uv: nivelfinal,
+                        max: global.max,
+                        min: global.min,
+                        meteo: global.datodia,
+                        Esemana: radiacion,
+                        Fototipo: global.fototipo
+                        
+                         });
+}*/

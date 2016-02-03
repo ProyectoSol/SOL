@@ -6,7 +6,7 @@ exports.verUsuarios = function(req, res){
     
     
     
-    user1.find(function(error, listaUsuarios) {
+ /*   user1.find(function(error, listaUsuarios) {
         var arrayUsu = [];   
         for(var i=0;i<listaUsuarios.length;i++){
             arrayUsu.push(listaUsuarios[i].email);
@@ -16,5 +16,11 @@ exports.verUsuarios = function(req, res){
             res.render('admin', {usuarios: arrayUsu});
                  
               
-        });  
+        });  */
+        
+        user1.find(function(error, usuarios){
+            var arrays = {datos:usuarios};
+            
+            res.render('admin', arrays);
+        });
 };
