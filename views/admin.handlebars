@@ -1,65 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script>
-      $(document).ready(function(){
-        $("#boton").click(function(){
-          var usuario = $('#campousuario').val();
-          $.get("/clientedatos/"+usuario ,{ user: usuario}, function(datosUsuario) {
-            var user = JSON.stringify(datosUsuario);
-            alert("Hola: " + user.usuario);
-          });
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel de control</title>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
+  <link rel="apple-touch-icon" href="/images/solicon.png">
+  <style>
+    .lista {
+      list-style-type: none;
+      margin-left: -40px;
+      padding: 10px;
+      margin-top: 0px;
+      background-color: #F4F7F8;
+      display: none;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      $(".lista").click(function() {
+        var usuario = $(this).text();
+        $.get("/clientedatos/" + usuario, {
+          user: usuario
+        }, function(usuarioc) {
+          $('#usuario').val(usuarioc.usuario);
+          $('#email').val(usuarioc.email);
+          $('#dispositivo').val(usuarioc.dispositivo);
         });
       });
-    </script>
-  </head>
-  <body>
-     <header class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <div>
-                    <h1 align="center">Panel De Control</h1>
-                </div>
-            </div>
+    });
+
+    function filtro(element) {
+      var value = $(element).val();
+
+      $('#listt > li:not(:contains(' + value + '))').css('display','none'); 
+      $('#listt > li:contains(' + value + ')').css('display','inline');
+    }
+  </script>
+</head>
+
+<body>
+  <header class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div>
+          <h2 align="center">Panel De Control</h2>
         </div>
-    </header>
-      <div class="container">
-        <div class="row">
-            <div>
-              <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Usuario</a></li>
-                <li role="presentation"><a href="#">Dispositivo</a></li>
-                <li role="presentation"><a href="#">Estadisticas</a></li>
-              </ul>
-            </div>
-        </div>
-        <div class="row" style="padding:40px;">
-          <div class="col-md-6">
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#">Usuario</a></li>
+          <li role="presentation"><a href="#">Dispositivo</a></li>
+          <li role="presentation"><a href="#">Estadísticas</a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <div class="container col-md-12">
+      <div class="row" style="padding:40px;">
+        <div class="col-md-4">
           <form class="form-inline">
             <div class="form-group">
-              <input type="email" class="form-control" id="campousuario" placeholder="Email">
+              <input type="text" onkeyup="filtro(this)" class="form-control" id="campousuario" placeholder="Usuario">
             </div>
-            <button type="button" id="boton" class="btn btn-default">Buscar</button>
           </form>
-          </div>
-          <div id="usus" class="col-md-6">           
-          <ul>
-            {{#each datos}}
-            <li>{{usuario}}</li>
-            {{/each}}
-            </ul>
-          </div>
-          <div id="texto"></div>
         </div>
-       </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+        <div class="row"></div>
+        <div id="usus" class="col-md-6">
+          <ul id="listt">
+            {{#each datos}}
+              <li class=" col-md-8 lista list-group-item" hidden>{{usuario}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    
+    <div class="container col-md-6">
+      <div class="row col-md-8" style="padding:40px;" id="formusuario">
+        <form>
+          <input type="text" class="form-control" id="usuario" value="" placeholder="Usuario">
+          <input type="text" style="margin-top:10px;" class="form-control" id="email" value="" placeholder="Email">
+          <input type="text" style="margin-top:10px;" class="form-control" id="dispositivo" value="" placeholder="Dispositivo">
+          <br>
+          <button type="submit" style="margin-top:-10px;" id="boton" class="btn btn-block btn-primary">Aceptar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
 </html>

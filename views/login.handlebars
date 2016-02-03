@@ -66,8 +66,62 @@
     <div class="w-row estadisticas">
       <div class="w-col w-col-4 columnaestadistica1">
         <div class="divestadisticas">
+          <!------------estadistica DIA-------------->
           <h3 class="tituloestadistica">Día</h3>
-      <img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
+           <div id="HoraR" hidden>{{HoraR}}</div>
+           <div id="RadiacionHora" hidden>{{RadiacionHora}}</div>
+          
+          <canvas id="mycanvas2" class="imagenestadistica">
+            
+              <script type="text/javascript">
+           $(document).ready(function(){
+           
+
+          
+        
+          
+          var HoraR =  document.getElementById("HoraR").innerHTML;
+          var RadiacionHora =  document.getElementById("RadiacionHora").innerHTML;
+          var HoraSplit = HoraR.split(",");
+          var RadiacionHorasplit = RadiacionHora.split(",");
+          
+          // var invertidoHora = HoraSplit.sort(function(a, b){return a,b});
+        //     var invertidoRadiacion = RadiacionHorasplit.sort(function(a, b){return a,b});
+            
+               var ctx2 = $("#mycanvas2").get(0).getContext("2d");
+               
+               var data = {
+                 labels: HoraSplit,
+               
+                  datasets: [
+                      {
+                          label: "My 2 dataset",
+                          fillColor: "rgb(51, 173, 255)", // "rgba(220,220,220,0.2)"
+                          strokeColor: "rgb(0, 204, 255)",
+                          pointColor: "rgba(220,220,220,1)",
+                          pointStrokeColor: "#fff",
+                          pointHighlightFill: "#fff",
+                          pointHighlightStroke: "rgba(220,220,220,1)",
+                          data : RadiacionHorasplit
+                      }
+                  ]
+              };
+                 var myLineChart = new Chart(ctx2).Line(data);
+
+           
+           })
+        
+          
+           
+        </script>
+            
+            
+          </canvas>
+          
+        
+          <!------------estadistica DIA-------------->
+         <!-- <h3 class="tituloestadistica">Día</h3>
+      <img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">-->
         </div>
      </div>
       <div class="w-col w-col-4 columnaestadistica2">
@@ -77,7 +131,8 @@
              
       <div id="radioA" hidden>{{Esemana}}</div>
       
-      <canvas id="mycanvas2" class="imagenestadistica">
+      <canvas id="mycanvas" class="imagenestadistica">
+        
        <script type="text/javascript">
            $(document).ready(function(){
              //-----------------------fecha
@@ -128,7 +183,7 @@
 
 
        
-               var ctx = $("#mycanvas2").get(0).getContext("2d");
+               var ctx = $("#mycanvas").get(0).getContext("2d");
                
                
                var data = {
@@ -142,7 +197,6 @@
                           pointColor: "rgba(220,220,220,1)",
                           pointStrokeColor: "#fff",
                           pointHighlightFill: "#fff",
-                          
                           pointHighlightStroke: "rgba(220,220,220,1)",
                           data : invertido
                       }

@@ -1,0 +1,46 @@
+{ ArrayFototipo:{ bronceado: '2',
+                 rojo: '3',
+                 pecas: '3',
+                 piel: '1',
+                 ojos: '4',
+                 pelo: '2'
+                },
+  dispositivo: 'lol',
+  fototipo: '2.5',
+  __v: 0,
+  alertas: '',
+  admin: '1',
+  confirmado: '1',
+  codigo: 'tgjY1OPHY2',
+  pass: '4297f44b13955235245b2497399d7a93',
+  email: 'deivoz14@gmail.com',
+  usuario: 'david',
+  _id: 56a0c130fe2b1d9d6089544a 
+    
+}
+
+
+{ ArrayFototipo: {},
+  __v: 0,
+  confirmado: '1',
+  codigo: 'QLyowdQckz',
+  pass: '5b1187b498c81a6ee925605422bc5ea1',
+  email: 'jon.eizaguirre95@ikasle.fpdonbosco.eus',
+  usuario: 'Jon',
+  _id: 56a0d5675b12ba42b8345373 }
+
+
+{"datosUser":{  "_id":"56a0c40afe2b1d9d6089544b",
+                "usuario":"miguel",
+                "email":"mgilav14dw@ikzubirimanteo.com",
+                "pass":"4297f44b13955235245b2497399d7a93",
+                "codigo":"j6Kby6mX2K",
+                "confirmado":"1",
+                "alertas":"",
+                "__v":0,
+                "dispositivo":"lol",
+                "fototipo":"1.6666666666666667",
+                "admin":"1",
+                "ArrayFototipo":{"pelo":"2","ojos":"1","piel":"1","pecas":"3","rojo":"2","bronceado":"1"}}
+    
+}

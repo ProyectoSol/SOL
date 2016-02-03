@@ -18,10 +18,8 @@ exports.prueba = function (req, res){
   var user = req.params.usuario;
     
   user1.findOne({'usuario': user}, function(error, usuarioc) {
-    
-    var datosUsuario = {datosUser:usuarioc};
-    
-    res.send(datosUsuario);
+  console.log(usuarioc);
+    res.send(usuarioc);
   });
 
 };
