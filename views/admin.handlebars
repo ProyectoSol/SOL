@@ -13,7 +13,8 @@
         $("#boton").click(function(){
           var usuario = $('#campousuario').val();
           $.get("/clientedatos/"+usuario ,{ user: usuario}, function(datosUsuario) {
-            alert("Hola: " + datosUsuario);
+            var user = JSON.stringify(datosUsuario);
+            alert("Hola: " + user.usuario);
           });
         });
       });
