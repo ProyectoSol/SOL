@@ -1,9 +1,9 @@
 var schema =require("../models/users.js");
-//<<<<<<< HEAD
-var EstadisticaSemana= require('../routes/estadisticaSemana.js');
-//=======
 
-//>>>>>>> 493ed6a55321ca7d8050603630dfc0c647ffd945
+var EstadisticaSemana= require('../routes/estadisticaSemana.js');
+
+
+
 exports.configuracion = function (req, res) {
   
   
@@ -15,10 +15,9 @@ schema.update({usuario: req.session.a}, {alertas: alertas, tiempoDeAlertas: tiem
   
    
    req.session.dispositivo = idDispositivo;
-//<<<<<<< HEAD
+
     EstadisticaSemana.Semana(req,res, req.session.dispositivo);
-//=======
-//>>>>>>> 493ed6a55321ca7d8050603630dfc0c647ffd945
+
     res.redirect("/home");
    
    console.log("configuracion actualizado");

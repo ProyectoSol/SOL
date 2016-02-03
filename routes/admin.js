@@ -1,8 +1,7 @@
-var user = require('../models/users.js');
 var mongoose = require("mongoose");
 var schema =require("../models/users.js");
 
-var user1 = mongoose.model('User1', user.userModel);
+var user1 = mongoose.model('User1', schema.userModel);
 
 
 exports.verUsuarios = function(req, res){
@@ -24,13 +23,5 @@ exports.prueba = function (req, res){
     
     res.send(datosUsuario);
   });
-
-
-        
-        schema.find(function(error, usuarios){
-            var arrays = {datos:usuarios};
-            
-            res.render('admin', arrays);
-        });
 
 };
