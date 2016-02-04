@@ -36,7 +36,7 @@
 <div class="menu">
 
   <span><a href="#section1" class="sindeco">Home</a></span>
-  <span><a href="panel.html"  class="sindeco">Panel de control</a></span>
+  <span><a href="/panel"  class="sindeco">Panel de control</a></span>
   <span><a href="#sectionEstadisticas" class="sindeco">Estadísticas</a></span>
   <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
   
@@ -96,8 +96,8 @@
                   datasets: [
                       {
                           label: "My 2 dataset",
-                          fillColor: "rgb(51, 173, 255)", // "rgba(220,220,220,0.2)"
-                          strokeColor: "rgb(0, 204, 255)",
+                          fillColor: "rgb(92,214,92)", // "rgba(220,220,220,0.2)"
+                          strokeColor: "rgb(77,255,135)",
                           pointColor: "rgba(220,220,220,1)",
                           pointStrokeColor: "#fff",
                           pointHighlightFill: "#fff",
@@ -118,10 +118,6 @@
             
           </canvas>
           
-        
-          <!------------estadistica DIA-------------->
-         <!-- <h3 class="tituloestadistica">Día</h3>
-      <img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">-->
         </div>
      </div>
       <div class="w-col w-col-4 columnaestadistica2">
@@ -130,52 +126,20 @@
              <!--    <div>-->
              
       <div id="radioA" hidden>{{Esemana}}</div>
-      
+       <div id="SemanaDia" hidden>{{EsemanaDia}}</div>
       <canvas id="mycanvas" class="imagenestadistica">
         
        <script type="text/javascript">
            $(document).ready(function(){
-             //-----------------------fecha
-            function getFecha() {
-              
-              var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
-              var fecha = new Date();
-              var dia = diasSemana[fecha.getDay()]
-              
-               var diasSemanaF;
-                if (dia == "Lunes"){
-                  diasSemanaF = ["Martes","Miércoles","Jueves","Viernes","Sábado","Domingo","Lunes"];
-                }
-                else if (dia == "Martes"){
-                  diasSemanaF = ["Miércoles","Jueves","Viernes","Sábado","Domingo","Lunes","Martes"];
-                }
-                else if (dia == "Miércoles"){
-                  diasSemanaF = ["Jueves","Viernes","Sábado","Domingo","Lunes","Martes","Miércoles"];
-                }
-                 else if (dia == "Jueves"){
-                  diasSemanaF = ["Viernes","Sábado","Domingo","Lunes","Martes","Miércoles","Jueves"];
-                }
-                
-               else if (dia == "Viernes"){
-                  diasSemanaF = ["Sábado","Domingo","Lunes","Martes","Miércoles","Jueves","Viernes"];
-                }
-                 else if (dia == "Sábado"){
-                  diasSemanaF = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-                }
-                 else if (dia == "Domingo"){
-                  diasSemanaF = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
-                }
-               
-               
-                return(diasSemanaF);
-              }
-             
-
+       
           
           var radiacion=  document.getElementById("radioA").innerHTML;
           var semana = radiacion.split(",");
           
+          var semanaDia = document.getElementById("SemanaDia").innerHTML;
+          var diaSemana = semanaDia.split(",");
           
+        var diaSemanaI = diaSemana.sort(function(a, b){return a,b});
         
             
           var invertido = semana.sort(function(a, b){return a,b});
@@ -187,7 +151,7 @@
                
                
                var data = {
-                 labels: getFecha(),
+                 labels: diaSemana,
                
                   datasets: [
                       {

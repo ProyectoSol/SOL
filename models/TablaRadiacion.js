@@ -1,14 +1,16 @@
 'use strict';
 var mongoose = require('mongoose');
 
-var datoRadiacion = function () {
+var datoRadiacion = function() {
 
-var radiacionEsquema = mongoose.Schema({
-    dispositivo: String,
-    uv: String
-},{ collection : 'dispositivo' });
+    var radiacionEsquema = mongoose.Schema({
+        dispositivo: String,
+        uv: String
+    }, {
+        collection: 'dispositivo'
+    });
 
-      return mongoose.model('uv', radiacionEsquema);
+    return mongoose.model('uv', radiacionEsquema);
 };
 
 

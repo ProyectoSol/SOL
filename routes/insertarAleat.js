@@ -14,14 +14,17 @@ exports.anadirHistorial=function (req,res) {
     start.setHours(count);
     var hora = start.getHours();
     
-    console.log(hora)
+   
     
     if(count > 18){
-        count = 8
+        count = 8;
         start.setHours(count);
+        fecha.setHours(count)
     }
     else{
         start.setHours(count);
+        fecha.setHours(count)
+        
    var historial = new TablaHistorial({dispositivo : "lol", fecha: fecha, uv: random(), hora: hora});
      // console.log(fecha+" "+random()+" "+start)
       historial.save(function (err, historiaNueva, numberAffected) {

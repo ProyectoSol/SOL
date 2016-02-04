@@ -1,5 +1,7 @@
 var tiempo = require('../routes/tiempo.js');
 var schema = require("../models/users.js");
+var EstadisticaSemana = require('../routes/estadisticaSemana.js');
+var EstadisticaHora = require('../routes/estadisticaHora.js');
 var md5 = require('md5');
 
 exports.login = function(req, res) {
@@ -50,6 +52,8 @@ exports.login = function(req, res) {
       req.session.dispositivo = user.dispositivo;
       console.log("dispositivo personal " + req.session.dispositivo);
      }
+     EstadisticaSemana.Semana(req,res,req.session.dispositivo);
+     EstadisticaHora.Hora(req,res,req.session.dispositivo)
      res.redirect('/home');
     }
    }

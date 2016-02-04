@@ -14,11 +14,29 @@
   <style>
     .lista {
       list-style-type: none;
-      margin-left: -40px;
-      padding: 10px;
-      margin-top: 0px;
       background-color: #F4F7F8;
       display: none;
+      cursor: pointer;
+    }
+    
+    #listaa {
+      /*list-style-type: none;
+      padding: 10px;
+      margin-top: 0px;
+      display: none;
+      */
+      margin-top: -20px;
+      margin-left: 25px;
+    }
+    
+    legend {
+      border-bottom: none;
+    }
+    
+    ul#listt {
+      max-height: 200px;
+      overflow: hidden;
+      overflow-y: scroll;
     }
   </style>
   <script>
@@ -38,8 +56,8 @@
     function filtro(element) {
       var value = $(element).val();
 
-      $('#listt > li:not(:contains(' + value + '))').css('display','none'); 
-      $('#listt > li:contains(' + value + ')').css('display','inline');
+      $('#listt > li:not(:contains(' + value + '))').css('display', 'none');
+      $('#listt > li:contains(' + value + ')').css('display', 'block');
     }
   </script>
 </head>
@@ -56,37 +74,30 @@
   </header>
   <div class="container">
     <div class="row">
-      <div>
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#">Usuario</a></li>
-          <li role="presentation"><a href="#">Dispositivo</a></li>
-          <li role="presentation"><a href="#">Estadísticas</a></li>
-        </ul>
-      </div>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Usuario</a></li>
+        <li role="presentation"><a href="#">Dispositivo</a></li>
+        <li role="presentation"><a href="#">Estadísticas</a></li>
+      </ul>
     </div>
-    </div>
-    <div class="container col-md-12">
-      <div class="row" style="padding:40px;">
-        <div class="col-md-4">
-          <form class="form-inline">
-            <div class="form-group">
-              <input type="text" onkeyup="filtro(this)" class="form-control" id="campousuario" placeholder="Usuario">
-            </div>
-          </form>
-        </div>
-        <div class="row"></div>
-        <div id="usus" class="col-md-6">
+  </div>
+  <div class="container">
+    <div class="row" style="padding:40px;margin-left:25px;">
+      <div class="col-md-4">
+        <label for="campousuario">Buscar usuario</label>
+        <input type="text" onkeyup="filtro(this)" class="form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
+        <div id="usus">
           <ul id="listt">
             {{#each datos}}
-              <li class=" col-md-8 lista list-group-item" hidden>{{usuario}}</li>
+            <li class="lista list-group-item" hidden>{{usuario}}</li>
             {{/each}}
           </ul>
         </div>
+
       </div>
-    
-    <div class="container col-md-6">
-      <div class="row col-md-8" style="padding:40px;" id="formusuario">
-        <form>
+      <div class=" col-md-offset-2 col-md-4" id="formusuario">
+        <label for="formusuario">Datos del usuario</label>
+        <form id="formusuario">
           <input type="text" class="form-control" id="usuario" value="" placeholder="Usuario">
           <input type="text" style="margin-top:10px;" class="form-control" id="email" value="" placeholder="Email">
           <input type="text" style="margin-top:10px;" class="form-control" id="dispositivo" value="" placeholder="Dispositivo">
@@ -96,7 +107,6 @@
       </div>
     </div>
   </div>
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 </body>

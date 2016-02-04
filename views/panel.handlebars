@@ -64,9 +64,9 @@
        <div class="col-lg-8 col-md-offset-2">
          <br>
               <form  id="email-form" name="email-form" data-name="Email Form" method="POST" action="/informacion">
-                <input id="name" type="text" placeholder="Nombre" name="name" data-name="Name" class="w-input redondeado">
-                <input id="apellidos" type="text" placeholder="Apellidos" name="apellidos" data-name="apellidos" class="w-input redondeado">
-                <input id="fecha" type="date" placeholder="fecha de nacimiento" name="fecha" data-name="fecha" class="w-input fecha redondeado">
+                <input id="name" type="text" value="{{nombre}}" placeholder="Nombre" name="name" data-name="Name" class="w-input redondeado">
+                <input id="apellidos" type="text" value="{{apellido}}" placeholder="Apellidos" name="apellidos" data-name="apellidos" class="w-input redondeado">
+                <input id="fecha" value="{{Fecha}}" type="text" placeholder="dd/mm/aaaa" name="fecha" data-name="fecha" class="w-input fecha redondeado">
                 <select id="sexo" name="sexo" data-name="sexo" class="w-select sexo redondeado">
                   <option value="mujer">Mujer</option>
                   <option value="hombre">Hombre</option>
@@ -162,7 +162,7 @@
                    <option value="0">nunca</option>
                 </select>
                 <label for="field-8">Si has comprado un dispositivo añade su Codigo</label>
-               <input id="idDispositivo" type="text" placeholder="Codigo Dispositivo" name="idDispositivo" data-name="idDispositivo" class="w-input redondeado">
+               <input id="idDispositivo" type="text" placeholder="Codigo Dispositivo" value="{{dispositivo}}" name="idDispositivo" data-name="idDispositivo" class="w-input redondeado">
                
                 <input type="submit" value="Enviar" data-wait="Please wait..." class="w-button">
               </form>

@@ -1,17 +1,17 @@
 var TablaHistorial = require('../models/TablaHistorial.js');
 
-
-var start = new Date();
-start.setHours(8);
-
-var end = new Date();
-end.setHours(18);
-
 exports.Hora = function(res, req, dispositivo) {
+    var inicio = new Date();
+    var fin = new Date();
+    inicio.setHours(8);
+    fin.setHours(18);
+  //  console.log(inicio+" inicio");
+//    console.log(fin+" fin");
+    
     TablaHistorial.find({
         fecha: {
-            $gte: start,
-            $lt: end
+            $gte: inicio,
+            $lt: fin
         },
         dispositivo: dispositivo
     }, function(err, historia) {
@@ -32,7 +32,7 @@ exports.Hora = function(res, req, dispositivo) {
             var  hour = parseInt(horas[0]);
              hora.push(hour);
             }
-             console.log(radiacionH +"---"+ hora)
+            // console.log(radiacionH +"---"+ hora)
             global.radiacionH;
            
            

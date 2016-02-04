@@ -83,7 +83,11 @@
   margin-bottom: 0px;
   padding-top: 0px;
   float: none;
-  background-color: #e9eafe;
+  /*background-color: #e9eafe;*/
+  background-image: -webkit-radial-gradient(top, circle cover, #FFFFFF, #C7C7C7 80%);
+  background-image: -moz-radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
+  background-image: -o-radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
+  background-image: radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
 }
 
 .columnas1 {
@@ -778,10 +782,16 @@
   margin-bottom: 0px;
   float: none;
   clear: none;
-  background-color: #EFEFEF;
+  /*background-color: #EFEFEF;
   background-image: none;
   background-size: auto;
+  background: #92c7d6;*/
+  background-image: -webkit-radial-gradient(top, circle cover, #FFFFFF, #C7C7C7 80%);
+  background-image: -moz-radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
+  background-image: -o-radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
+  background-image: radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
 }
+
 
 .columnaestadistica1 {
   min-height: 300px;

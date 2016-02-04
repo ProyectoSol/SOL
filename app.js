@@ -48,6 +48,7 @@ app.post('/usuario/login', login.login);
 app.post('/cambiopass/:codigo', cambiopass.cambiopass);
 app.post('/updatenueva', cambiopass.updatenueva);
 app.post('/configuracion', configuracion.configuracion);
+app.get('/panel', configuracion.panel);
 app.post('/fototipo', fototipo.fototipo);
 app.post('/consulta', contacto.consulta);
 app.post('/recuperacion', registro.recuperacion);
