@@ -17,12 +17,9 @@ exports.verUsuarios = function(req, res) {
 
 exports.prueba = function(req, res) {
 
-    var user = req.params.usuario;
+    var email = req.params.email;
 
-
-    user1.findOne({
-        'usuario': new RegExp('^' + user + '$', "i")
-    }, function(err, usuarioc) {
+    user1.findOne({'usuario': new RegExp('^' + email + '$', "i")}, function(err, usuarioc) {
         console.log(usuarioc);
         res.send(usuarioc);
     });
@@ -30,11 +27,14 @@ exports.prueba = function(req, res) {
 };
 
 exports.modificar = function(req, res) {
-        var user = req.params.usuario;
-        user1.findOne({'usuario': user}, function(err, usuariom) {
-
-
-                });
-
-
-        };
+    
+    var user = req.params.usuario;
+    var email = req.params.email;
+    var disp = req.params.dispositivo;
+    
+    user1.update({'email': email}, {usuario: user, dispositivo:disp}, function(user) {
+ 
+        console.log("usuario actualizado");
+    });
+    
+};

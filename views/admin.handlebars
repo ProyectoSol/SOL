@@ -43,9 +43,7 @@
     $(document).ready(function() {
       $(".lista").click(function() {
         var usuario = $(this).text();
-        $.get("/clientedatos/" + usuario, {
-          user: usuario
-        }, function(usuarioc) {
+        $.get("/clientedatos/" + usuario, {user: usuario}, function(usuarioc) {
           $('#usuario').val(usuarioc.usuario);
           $('#email').val(usuarioc.email);
           $('#dispositivo').val(usuarioc.dispositivo);
@@ -85,11 +83,11 @@
     <div class="row" style="padding:40px;margin-left:25px;">
       <div class="col-md-4">
         <label for="campousuario">Buscar usuario</label>
-        <input type="text" onkeyup="filtro(this)" class="form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
+        <input type="text" onkeyup="filtro(this)" class="form-control" id="campousuario" placeholder="Email" autocomplete="off">
         <div id="usus">
           <ul id="listt">
             {{#each datos}}
-            <li class="lista list-group-item" hidden>{{usuario}}</li>
+            <li class="lista list-group-item" hidden>{{email}}</li>
             {{/each}}
           </ul>
         </div>
