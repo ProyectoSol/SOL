@@ -2,7 +2,7 @@ var schema =require("../models/users.js");
 
 var EstadisticaSemana = require('../routes/estadisticaSemana.js');
 var EstadisticaHora = require('../routes/estadisticaHora.js');
-
+var EstadisticaAnual = require('../routes/estadisticaAnual.js');
 
 exports.panel = function (req, res) {
   schema.findOne({'usuario': req.session.a},function(error, userc2) {
@@ -37,6 +37,7 @@ schema.update({usuario: req.session.a}, {alertas: alertas, tiempoDeAlertas: tiem
 
     EstadisticaSemana.Semana(req,res, req.session.dispositivo);
     EstadisticaHora.Hora(req,res,req.session.dispositivo)
+    EstadisticaAnual.anual(req,res,req.session.dispositivo)
     res.redirect("/home");
    
    console.log("configuracion actualizado");
