@@ -21,7 +21,7 @@ exports.anual = function(res, req, dispositivo,cb) {
                 
                 for(var i= 0; i<historia.length; i++){
                
-                    radiacion.push(historia[i].media);
+                    radiacionAnual.push(historia[i].media);
                     ano.push(historia[i]._id["year"]);
                     
                  

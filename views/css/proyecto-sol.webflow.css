@@ -13,7 +13,7 @@
   position: relative;
   width: 100%;
   height:650px;
-  padding-top: 20%;
+  padding-top:200px;
   background-color: rgba(194, 24, 217, 0.7);
   background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.56) 0%), url('../images/Galenica_Protector_solar_01.jpg');
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0) 0%), url('../images/giphy.gif');
