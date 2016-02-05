@@ -103,12 +103,43 @@ exports.mostrar = function(req, res) {
                 Hace7Dias.setDate(fecha.getDate() - 7);
 
                 var dispositivo = req.session.dispositivo;
-                EstadisticaSemana.Semana(req, res, dispositivo);
-                EstadisticaHora.Hora(req, res, dispositivo);
-                EstadisticaAnual.anual(req,res,dispositivo)
+                //EstadisticaSemana.Semana(req, res, dispositivo);
+               // EstadisticaHora.Hora(req, res, dispositivo);
+                //EstadisticaAnual.anual(req,res,dispositivo)
+                
+                //var radiacionFinall;
+           
+             
+    
+     EstadisticaSemana.Semana(res, req, dispositivo, function(radiacion,fecha) {
+         EstadisticaHora.Hora(res, req, dispositivo, function(radiacionH,hora) {
+             EstadisticaAnual.anual(res, req, dispositivo, function(RadiacionAnual,ano) {
+                  res.render('login', {
+                    User: req.session.a,
+                    Uv: nivelfinal,
+                    max: global.max,
+                    min: global.min,
+                    meteo: global.datodia,
+                    //  Esemana: radiacion,
+                    Esemana: radiacion,
+                    EsemanaDia: fecha,
+                    Fototipo: global.fototipo,
+                    RadiacionHora: radiacionH,
+                    HoraR: hora,
+                    RadiacionAnual: RadiacionAnual,
+                    anoA: ano
+
+                });
+        });
+        });
+     });
+      
+       
+     
+       
+           //    console.log(EstadisticaSemana.Semana.radiacion)
             
-            
-            
+            /*
                 res.render('login', {
                     User: req.session.a,
                     Uv: nivelfinal,
@@ -124,7 +155,7 @@ exports.mostrar = function(req, res) {
                     RadiacionAnual: global.radiacionA,
                     anoA: global.fechaAnual
 
-                });
+                });*/
 
             }
         }).sort({

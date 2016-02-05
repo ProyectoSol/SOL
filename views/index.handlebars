@@ -22,18 +22,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
 
   <script>
+  $(document).ready(function(){
+    $("#eqis").click(function(){
+          $("#fadde").remove();
+    });
+});
     WebFont.load({
       google: {
         families: ["Varela Round:400","Changa One:400,400italic"]
       }
     });
     
-$(document).keypress(function(e) { 
-    if (e.keyCode == 27) { 
-        $("#puto").fadeOut(500);
-        
-    } 
-});
+
+
   </script>
   <script type="text/javascript" src="/js/modernizr.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
@@ -135,7 +136,7 @@ $(document).keypress(function(e) {
   
 </div>
 
-  <div class="capa"></div>
+  
   <div class="hamburgerMenu"><span></span></div>
 <div class="menu">
 
@@ -153,29 +154,29 @@ $(document).keypress(function(e) {
     <div class="botones">
   {{#if error2}}
 
-     <div data-ix="error-1" class="alert alert-danger" >
-      <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <div data-ix="error-1" id="fadde" class="alert alert-danger" >
+      <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Este email ya existe !</strong> 
       </div>
   {{/if}} 
    {{#if error1}}
 
-     <div data-ix="error-1" class="alert alert-danger" >
-      <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <div data-ix="error-1" id="fadde" class="alert alert-danger" >
+      <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>¡Este Usuario ya existe!</strong> 
       </div>
   {{/if}} 
   {{#if error3}}
 
-     <div data-ix="error-1" class="alert alert-danger" >
-      <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <div data-ix="error-1" id="fadde" class="alert alert-danger" >
+      <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Confirma tu email</strong> 
       </div>
   {{/if}} 
     {{#if error4}}
 
-     <div data-ix="error-1" class="alert alert-danger" >
-      <button type="button" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <div data-ix="error-1" id="fadde" class="alert alert-danger" >
+      <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Email o contraseña incorrecta</strong> 
       </div>
   {{/if}} 

@@ -10,8 +10,16 @@ exports.verUsuarios = function(req, res) {
         var arrays = {
             datos: usuarios
         };
-
+      //  res.send(arrays);
         res.render('admin', arrays);
+    });
+};
+
+exports.usercompletos = function(req, res) {
+
+    user1.find({},{'_id':0 , 'usuario':1}, function(error, usuarios) {
+       res.send(usuarios);
+
     });
 };
 
@@ -29,15 +37,34 @@ exports.prueba = function(req, res) {
 
 };
 
-exports.modificar = function(req, res) {
+exports.eliminar = function(req, res) {
+
+    var user = req.params.usuario;
+    user1.remove({
+        usuario: user
+    }, function(err) {
+        console.log(user + " ha sido eliminado");
+    });
+
     
+
+};
+
+exports.modificar = function(req, res) {
+
     var user = req.params.usuario;
     var email = req.params.email;
     var disp = req.params.dispositivo;
-    
-    user1.update({'email': email}, {usuario: user, dispositivo:disp}, function(user) {
- 
-   console.log("usuario actualizado");
-});
-    
+
+    user1.update({
+        'email': email
+    }, {
+        usuario: user,
+        dispositivo: disp
+    }, function(user) {
+
+
+        console.log("usuario actualizado");
+    });
+
 };

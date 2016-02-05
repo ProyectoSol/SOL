@@ -53,9 +53,9 @@ exports.login = function(req, res) {
       req.session.dispositivo = user.dispositivo;
       console.log("dispositivo personal " + req.session.dispositivo);
      }
-     EstadisticaSemana.Semana(req,res,req.session.dispositivo);
-     EstadisticaHora.Hora(req,res,req.session.dispositivo)
-     EstadisticaAnual.anual(req,res,req.session.dispositivo)
+   //  EstadisticaSemana.Semana(req,res,req.session.dispositivo);
+   //  EstadisticaHora.Hora(req,res,req.session.dispositivo)
+   //  EstadisticaAnual.anual(req,res,req.session.dispositivo)
      res.redirect('/home');
     }
    }

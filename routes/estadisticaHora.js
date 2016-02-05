@@ -1,6 +1,6 @@
 var TablaHistorial = require('../models/TablaHistorial.js');
 
-exports.Hora = function(res, req, dispositivo) {
+exports.Hora = function(res, req, dispositivo, cb) {
     var inicio = new Date();
     var fin = new Date();
     inicio.setHours(8);
@@ -34,16 +34,16 @@ exports.Hora = function(res, req, dispositivo) {
             }
             // console.log(radiacionH +"---"+ hora)
             global.radiacionH;
-           
-           
-           
             global.horaR;
 
             global.radiacionH = radiacionH;
             global.horaR = hora;
-
+            
+            cb(radiacionH,hora);
+          
 
         }
+         
 
     });
 

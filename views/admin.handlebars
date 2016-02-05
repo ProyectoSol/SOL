@@ -3,10 +3,12 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="theme-color" content="#ff33ff">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Panel de control</title>
   <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
@@ -40,7 +42,30 @@
     }
   </style>
   <script>
+    
     $(document).ready(function() {
+      $.ajax({
+          type: "GET",
+          url: 'https://sol-anthonyprz.c9users.io/usercompletos',
+          dataType: "json",
+          success: function(data) {
+            alert("longi "+data.length);
+            var arrayUsu = [];
+              for(var i=0; i<data.length; i++){
+                alert('he entrado');
+                arrayUsu.push(data[i].usuario);
+              }
+              alert( "aaqa" +arrayUsu);
+              $("#campousuario").autocomplete({
+                source: arrayUsu
+              });
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+              console.log("Status: " + textStatus);
+              console.log("Error: " + errorThrown);
+          }
+      });
+    
       $(".lista").click(function() {
         var usuario = $(this).text();
         $.get("/clientedatos/" + usuario, {
@@ -51,14 +76,20 @@
           $('#dispositivo').val(usuarioc.dispositivo);
         });
       });
+       $("#eliminar").click(function() {
+          var usuariob = $("#usuario").val();
+          alert(usuariob);
+        $.get("/eliminar/"+usuario);
+      });
     });
-
+/*
     function filtro(element) {
       var value = $(element).val();
 
       $('#listt > li:not(:contains(' + value + '))').css('display', 'none');
       $('#listt > li:contains(' + value + ')').css('display', 'block');
     }
+*/    
   </script>
 </head>
 
@@ -85,13 +116,8 @@
     <div class="row" style="padding:40px;margin-left:25px;">
       <div class="col-md-4">
         <label for="campousuario">Buscar usuario</label>
-        <input type="text" onkeyup="filtro(this)" class="form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
+        <input type="text" class="form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
         <div id="usus">
-          <ul id="listt">
-            {{#each datos}}
-            <li class="lista list-group-item">{{usuario}}</li>
-            {{/each}}
-          </ul>
         </div>
       </div>
       <div class=" col-md-offset-2 col-md-4" id="formusuario">
@@ -102,7 +128,7 @@
           <input type="text" style="margin-top:10px;" class="form-control" id="dispositivo" value="" placeholder="Dispositivo">
           <br>
           <button type="submit" style="margin-top:-10px;" id="boton" class="btn btn-block btn-primary ">Modificar</button>
-          <button type="submit" id="boton" class="btn btn-block btn-danger">Eliminar</button>
+          <button  id="eliminar" class="btn btn-block btn-danger">Eliminar</button>
         </form>
       </div>
     </div>
