@@ -183,7 +183,58 @@
       </div>
       <div class="w-col w-col-4 columnaestadistica3">
         <div class="divestadisticas">
-          <h3 class="tituloestadistica">Año</h3><img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">
+          <h3 class="tituloestadistica">Año</h3><!--<img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">-->
+            <div id="RadiacionAnual" hidden>{{RadiacionAnual}}</div>
+            <div id="fechaAnual" hidden>{{anoA}}</div>
+             <canvas id="mycanvas3" class="imagenestadistica">
+        
+       <script type="text/javascript">
+           $(document).ready(function(){
+       
+          var radiacionA=  document.getElementById("RadiacionAnual").innerHTML;
+          var RadiacionAnual = radiacionA.split(",");
+          
+          var anual = document.getElementById("fechaAnual").innerHTML;
+          var numAnual = anual.split(",");
+          
+             
+      //  var anoF = numAnual.sort(function(a, b){return a,b});
+        
+      //    var radioanual = RadiacionAnual.sort(function(a, b){return a,b});
+         
+
+
+       
+               var ctx = $("#mycanvas3").get(0).getContext("2d");
+               
+               
+               var data = {
+                 labels: numAnual,
+               
+                  datasets: [
+                      {
+                          label: "My First dataset",
+                          fillColor: "rgb(255, 128, 191)", // "rgba(220,220,220,0.2)"
+                          strokeColor: "rgb(255, 153, 204)",
+                          pointColor: "rgba(220,220,220,1)",
+                          pointStrokeColor: "#fff",
+                          pointHighlightFill: "#fff",
+                          pointHighlightStroke: "rgba(220,220,220,1)",
+                          data : RadiacionAnual
+                      }
+                  ]
+              };
+                 var myLineChart = new Chart(ctx).Line(data);
+
+          
+           //banderas
+           
+           })
+        
+          
+           
+        </script>
+      </canvas>
         </div>
       </div>
    

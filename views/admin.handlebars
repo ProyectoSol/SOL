@@ -36,7 +36,7 @@
     ul#listt {
       max-height: 200px;
       overflow: hidden;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   </style>
   <script>
@@ -89,11 +89,10 @@
         <div id="usus">
           <ul id="listt">
             {{#each datos}}
-            <li class="lista list-group-item" hidden>{{usuario}}</li>
+            <li class="lista list-group-item">{{usuario}}</li>
             {{/each}}
           </ul>
         </div>
-
       </div>
       <div class=" col-md-offset-2 col-md-4" id="formusuario">
         <label for="formusuario">Datos del usuario</label>
@@ -102,7 +101,8 @@
           <input type="text" style="margin-top:10px;" class="form-control" id="email" value="" placeholder="Email">
           <input type="text" style="margin-top:10px;" class="form-control" id="dispositivo" value="" placeholder="Dispositivo">
           <br>
-          <button type="submit" style="margin-top:-10px;" id="boton" class="btn btn-block btn-primary">Aceptar</button>
+          <button type="submit" style="margin-top:-10px;" id="boton" class="btn btn-block btn-primary ">Modificar</button>
+          <button type="submit" id="boton" class="btn btn-block btn-danger">Eliminar</button>
         </form>
       </div>
     </div>

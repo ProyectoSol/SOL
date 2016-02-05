@@ -5,6 +5,7 @@ var TablaRadiacion = require('../models/TablaRadiacion.js');
 var TablaHistorial = require('../models/TablaHistorial.js');
 var EstadisticaSemana = require('./estadisticaSemana.js');
 var EstadisticaHora = require('./estadisticaHora.js');
+var EstadisticaAnual = require('./estadisticaAnual.js');
 
 exports.insert = function(req, res) {
     //------------------------------------------comprobar existencia del dispositivo y update
@@ -104,7 +105,10 @@ exports.mostrar = function(req, res) {
                 var dispositivo = req.session.dispositivo;
                 EstadisticaSemana.Semana(req, res, dispositivo);
                 EstadisticaHora.Hora(req, res, dispositivo);
-
+                EstadisticaAnual.anual(req,res,dispositivo)
+            
+            
+            
                 res.render('login', {
                     User: req.session.a,
                     Uv: nivelfinal,
@@ -116,7 +120,9 @@ exports.mostrar = function(req, res) {
                     EsemanaDia: global.fechaF,
                     Fototipo: global.fototipo,
                     RadiacionHora: global.radiacionH,
-                    HoraR: global.horaR
+                    HoraR: global.horaR,
+                    RadiacionAnual: global.radiacionA,
+                    anoA: global.fechaAnual
 
                 });
 
