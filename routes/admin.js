@@ -62,6 +62,7 @@ exports.prueba = function(req, res) {
 exports.eliminar = function(req, res) {
 
     var user = req.body.usuario;
+    console.log(user+"eliminar");
     schema.remove({
         usuario: user
     }, function(err) {

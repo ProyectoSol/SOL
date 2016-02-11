@@ -195,6 +195,9 @@
         </div>
       </div>
       <div id="dispositivos" class="tab-pane fade">
+        
+        
+        
              <div class="row" style="padding:40px;margin-left:25px;">
           <div class=" col-md-4">
             <div class="circle circle-border">
@@ -204,21 +207,19 @@
                 </div>
               </div>
             </div>
-            <label for="campousuario">Buscar usuario</label>
+            <label for="campousuario">Buscar Dispositivo</label>
             <input type="text" class=" col-md-4 form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
             <button type="submit" id="boton1" class="col-md-4 btn btn-block btn-success ">Aceptar</button>
           </div>
 
           <div class=" col-md-offset-2 col-md-4" id="formusuario">
-            <label for="formusuario">Datos del usuario</label>
+            <label for="formusuario">Datos del Dispositivo</label>
 
             <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
               <input type="text" class="form-control" name="usuario" id="usuario" value="" placeholder="Usuario">
               <input type="text" class="form-control" name="email" id="email" value="" placeholder="Email">
               <input type="text" class="form-control" name="dispositivo" id="dispositivo" value="" placeholder="Dispositivo">
 
-              <input type="checkbox" value="1" id="checkadmin" name="check" />
-              <label for="checkadmin">Administrador</label>
 
               <button type="submit" id="modificar" onclick="submitForm('/modificaruser')" class="btn btn-block btn-primary ">Modificar</button>
               <button type="submit" id="eliminar" onclick="submitForm('/eliminaruser')" class="btn btn-block btn-danger">Eliminar</button>
