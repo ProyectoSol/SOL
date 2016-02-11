@@ -61,6 +61,8 @@ app.get('/clientedatos/:usuario', admin.prueba);
 //app.get('/eliminar/:usuario', admin.eliminar);
 app.get('/usercompletos', admin.usercompletos);
 
+app.post('/modificaruser', admin.modificar);
+
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function(req, res) {

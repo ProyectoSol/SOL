@@ -1,24 +1,44 @@
 var mongoose = require("mongoose");
 var schema = require("../models/users.js");
 
-var user1 = mongoose.model('User1', schema.userModel);
+//var user1 = mongoose.model('User1', schema.userModel);
+var md5 = require('md5');
 
 
 exports.verUsuarios = function(req, res) {
 
-    user1.find(function(error, usuarios) {
-        var arrays = {
-            datos: usuarios
-        };
-      //  res.send(arrays);
-        res.render('admin', arrays);
-    });
-};
+//    var emailL = req.body.email;
+//    var passL = req.body.pass;
+///    var passh2 = md5(passL);
+    
+        schema.findOne({
+         //  'email': emailL,
+          //  'pass': passh2,
+            'usuario': req.session.a,
+            'admin':"1"
+        }, function(err, user) {
+            if (user) {
+                schema.find(function(error, usuarios) {
+                    var arrays = {
+                        datos: usuarios
+                    };
+                    //  res.send(arrays);
+                    res.render('admin', arrays);
+                });
+            }
+            else {
+                res.redirect('/');
+            }
+        });
 
+};
 exports.usercompletos = function(req, res) {
 
-    user1.find({},{'_id':0 , 'usuario':1}, function(error, usuarios) {
-       res.send(usuarios);
+    schema.find({}, {
+        '_id': 0,
+        'usuario': 1
+    }, function(error, usuarios) {
+        res.send(usuarios);
 
     });
 };
@@ -28,7 +48,7 @@ exports.prueba = function(req, res) {
     var user = req.params.usuario;
 
 
-    user1.findOne({
+    schema.findOne({
         'usuario': new RegExp('^' + user + '$', "i")
     }, function(err, usuarioc) {
         console.log(usuarioc);
@@ -40,31 +60,33 @@ exports.prueba = function(req, res) {
 exports.eliminar = function(req, res) {
 
     var user = req.params.usuario;
-    user1.remove({
+    schema.remove({
         usuario: user
     }, function(err) {
         console.log(user + " ha sido eliminado");
     });
 
-    
+
 
 };
 
 exports.modificar = function(req, res) {
 
-    var user = req.params.usuario;
-    var email = req.params.email;
-    var disp = req.params.dispositivo;
+    var user = req.body.usuario;
+    var email = req.body.email;
+    var disp = req.body.dispositivo;
 
-    user1.update({
-        'email': email
+    console.log(user + email + disp + " aaaaaaaaaa");
+
+    schema.update({
+        'usuario': user
     }, {
-        usuario: user,
+        email: email,
         dispositivo: disp
     }, function(user) {
 
-
         console.log("usuario actualizado");
+        res.redirect('/admin');
     });
 
 };

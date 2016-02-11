@@ -34,10 +34,10 @@ schema.update({usuario: req.session.a}, {alertas: alertas, tiempoDeAlertas: tiem
   
    
    req.session.dispositivo = idDispositivo;
-
-    EstadisticaSemana.Semana(req,res, req.session.dispositivo);
-    EstadisticaHora.Hora(req,res,req.session.dispositivo)
-    EstadisticaAnual.anual(req,res,req.session.dispositivo)
+ //EstadisticaSemana.Semana(res, req,  req.session.dispositivo, function(radiacion,fecha) {})
+ // EstadisticaSemana.Semana(req,res, req.session.dispositivo);
+ //EstadisticaHora.Hora(req,res,req.session.dispositivo)
+//  EstadisticaAnual.anual(req,res,req.session.dispositivo)
     res.redirect("/home");
    
    console.log("configuracion actualizado");

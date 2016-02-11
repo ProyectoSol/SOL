@@ -2,6 +2,7 @@
 <!-- This site was created in Webflow. http://www.webflow.com-->
 <!-- Last Published: Wed Dec 09 2015 11:11:43 GMT+0000 (UTC) -->
 <html data-wf-site="5645cad42404c4fe414da2da" data-wf-page="5660040eba246d4834c2d905">
+
 <head>
   <meta charset="utf-8">
   <title>Home</title>
@@ -16,14 +17,14 @@
   <script src="js/jquery-1.11.3.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
   <script src="js/index.js"></script>
-   <script src="js/Chart.js"></script>
-   <script src="js/recomendaciones.js"></script>
+  <script src="js/Chart.js"></script>
+  <script src="js/recomendaciones.js"></script>
   <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
- <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+  <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
   <script>
     WebFont.load({
       google: {
-        families: ["Varela Round:400","Changa One:400,400italic"]
+        families: ["Varela Round:400", "Changa One:400,400italic"]
       }
     });
   </script>
@@ -32,20 +33,21 @@
   <link rel="shortcut icon" type="image/x-icon" href="images/solicon.png">
   <link rel="apple-touch-icon" href="images/solicon.png">
 </head>
-<body class="body">
-<div class="hamburgerMenu"><span></span></div>
-<div class="menu">
 
-  <span><a href="#section1" class="sindeco">Home</a></span>
-  <span><a href="/panel"  class="sindeco">Panel de control</a></span>
-  <span><a href="#sectionEstadisticas" class="sindeco">Estadísticas</a></span>
-  <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
-  
-  
-</div>
-   
+<body class="body">
+  <div class="hamburgerMenu"><span></span></div>
+  <div class="menu">
+
+    <span><a href="#section1" class="sindeco">Home</a></span>
+    <span><a href="/panel"  class="sindeco">Panel de control</a></span>
+    <span><a href="#sectionEstadisticas" class="sindeco">Estadísticas</a></span>
+    <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
+
+
+  </div>
+
   <div id="hero" class="w-section w-clearfix hero">
-    
+
     <h4 class="lugar">Donostia, País Vasco/Euskadi</h4>
     <h1 class="radio" id="nivelUV">{{Uv}} Vº</h1><img height="100" id="banderaimg" src="banderas/verde.png" class="bandera">
     <div class="divtiempo"><img src="images/{{meteo}}.png">
@@ -56,12 +58,12 @@
     <h4 class="segundotitulorecomendacion"> {{User}} utiliza una crema de protección</h4>
     <div id="fototipo" hidden> {{Fototipo}} </div>
     <div class="textrecomendacion">
-     <p id="seRecomienda">recomendacion</p> 
-      </div>
+      <p id="seRecomienda">recomendacion</p>
+    </div>
   </div>
-  
-  
-  
+
+
+
   <!------------section estadisticas-------------->
   <div id="sectionEstadisticas" class="w-section sectionestadisticas">
     <div class="w-row estadisticas">
@@ -69,182 +71,47 @@
         <div class="divestadisticas">
           <!------------estadistica DIA-------------->
           <h3 class="tituloestadistica">Día</h3>
-           <div id="HoraR" hidden>{{HoraR}}</div>
-           <div id="RadiacionHora" hidden>{{RadiacionHora}}</div>
-          
+          <div id="HoraR" hidden>{{HoraR}}</div>
+          <div id="RadiacionHora" hidden>{{RadiacionHora}}</div>
+
           <canvas id="mycanvas2" class="imagenestadistica">
-            
-              <script type="text/javascript">
-           $(document).ready(function(){
-           
-
-          
-        
-          
-          var HoraR =  document.getElementById("HoraR").innerHTML;
-          var RadiacionHora =  document.getElementById("RadiacionHora").innerHTML;
-          var HoraSplit = HoraR.split(",");
-          var RadiacionHorasplit = RadiacionHora.split(",");
-          
-          // var invertidoHora = HoraSplit.sort(function(a, b){return a,b});
-        //     var invertidoRadiacion = RadiacionHorasplit.sort(function(a, b){return a,b});
-            
-               var ctx2 = $("#mycanvas2").get(0).getContext("2d");
-               
-               var data = {
-                 labels: HoraSplit,
-               
-                  datasets: [
-                      {
-                          label: "My 2 dataset",
-                          fillColor: "rgb(92,214,92)", // "rgba(220,220,220,0.2)"
-                          strokeColor: "rgb(77,255,135)",
-                          pointColor: "rgba(220,220,220,1)",
-                          pointStrokeColor: "#fff",
-                          pointHighlightFill: "#fff",
-                          pointHighlightStroke: "rgba(220,220,220,1)",
-                          data : RadiacionHorasplit
-                      }
-                  ]
-              };
-                 var myLineChart = new Chart(ctx2).Line(data);
-
-           
-           })
-        
-          
-           
-        </script>
-            
-            
+            <script src="estadisticasJS/Dia.js"></script>
           </canvas>
-          
+
         </div>
-     </div>
+      </div>
       <div class="w-col w-col-4 columnaestadistica2">
         <div class="divestadisticas">
           <h3 class="tituloestadistica">Semana</h3>
-             <!--    <div>-->
-             
-      <div id="radioA" hidden>{{Esemana}}</div>
-       <div id="SemanaDia" hidden>{{EsemanaDia}}</div>
-      <canvas id="mycanvas" class="imagenestadistica">
-        
-       <script type="text/javascript">
-           $(document).ready(function(){
-       
-          
-          var radiacion=  document.getElementById("radioA").innerHTML;
-          var semana = radiacion.split(",");
-          
-          var semanaDia = document.getElementById("SemanaDia").innerHTML;
-          var diaSemana = semanaDia.split(",");
-          
-        var diaSemanaI = diaSemana.sort(function(a, b){return a,b});
-        
-            
-          var invertido = semana.sort(function(a, b){return a,b});
-         
+          <!--    <div>-->
 
+          <div id="radioA" hidden>{{Esemana}}</div>
+          <div id="SemanaDia" hidden>{{EsemanaDia}}</div>
+          <canvas id="mycanvas" class="imagenestadistica">
+            <script src="estadisticasJS/Semana.js"></script>
 
-       
-               var ctx = $("#mycanvas").get(0).getContext("2d");
-               
-               
-               var data = {
-                 labels: diaSemana,
-               
-                  datasets: [
-                      {
-                          label: "My First dataset",
-                          fillColor: "rgb(51, 173, 255)", // "rgba(220,220,220,0.2)"
-                          strokeColor: "rgb(0, 204, 255)",
-                          pointColor: "rgba(220,220,220,1)",
-                          pointStrokeColor: "#fff",
-                          pointHighlightFill: "#fff",
-                          pointHighlightStroke: "rgba(220,220,220,1)",
-                          data : invertido
-                      }
-                  ]
-              };
-                 var myLineChart = new Chart(ctx).Line(data);
+          </canvas>
 
-          
-           //banderas
-           
-           })
-        
-          
-           
-        </script>
-      </canvas> 
-    
-  <!-- </div>-->
+          <!-- </div>-->
         </div>
       </div>
       <div class="w-col w-col-4 columnaestadistica3">
         <div class="divestadisticas">
-          <h3 class="tituloestadistica">Año</h3><!--<img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">-->
-            <div id="RadiacionAnual" hidden>{{RadiacionAnual}}</div>
-            <div id="fechaAnual" hidden>{{anoA}}</div>
-             <canvas id="mycanvas3" class="imagenestadistica">
-        
-       <script type="text/javascript">
-           $(document).ready(function(){
-       
-          var radiacionA=  document.getElementById("RadiacionAnual").innerHTML;
-          var RadiacionAnual = radiacionA.split(",");
-          
-          var anual = document.getElementById("fechaAnual").innerHTML;
-          var numAnual = anual.split(",");
-          
-             
-      //  var anoF = numAnual.sort(function(a, b){return a,b});
-        
-      //    var radioanual = RadiacionAnual.sort(function(a, b){return a,b});
-         
-
-
-       
-               var ctx = $("#mycanvas3").get(0).getContext("2d");
-               
-               
-               var data = {
-                 labels: numAnual,
-               
-                  datasets: [
-                      {
-                          label: "My First dataset",
-                          fillColor: "rgb(255, 128, 191)", // "rgba(220,220,220,0.2)"
-                          strokeColor: "rgb(255, 153, 204)",
-                          pointColor: "rgba(220,220,220,1)",
-                          pointStrokeColor: "#fff",
-                          pointHighlightFill: "#fff",
-                          pointHighlightStroke: "rgba(220,220,220,1)",
-                          data : RadiacionAnual
-                      }
-                  ]
-              };
-                 var myLineChart = new Chart(ctx).Line(data);
-
-          
-           //banderas
-           
-           })
-        
-          
-           
-        </script>
-      </canvas>
+          <h3 class="tituloestadistica">Año</h3>
+          <!--<img src="images/Graficos-Estadisticos-con-jQuery.png" class="imagenestadistica">-->
+          <div id="RadiacionAnual" hidden>{{RadiacionAnual}}</div>
+          <div id="fechaAnual" hidden>{{anoA}}</div>
+          <script src="estadisticasJS/Anual.js"></script>
+          <canvas id="mycanvas3" class="imagenestadistica"></canvas>
         </div>
       </div>
-   
+
     </div>
   </div>
 
-  
-  
-   <div class="w-section w-clearfix footer">
+
+
+  <div class="w-section w-clearfix footer">
     <div class="w-clearfix numero"><img src="images/1448043780_phone.png" class="number">
       <div class="tnumero">934-24 25 25</div>
     </div>
@@ -260,7 +127,8 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
-  
-   
+
+
 </body>
+
 </html>
