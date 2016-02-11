@@ -41,14 +41,56 @@
       overflow: hidden;
       overflow-y: auto;
     }
-     input{
+    
+    input {
       margin-top: 10px;
     }
-     button{
+    
+    button {
       margin-top: 10px;
     }
-    #logout{
+    
+    #logout {
       float: right;
+    }
+    /*------------------------redondeado---------------------*/
+    
+    .circle {
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 50%;
+      width: 40%;
+      position: relative;
+    }
+    
+    .circle-border {
+      border: 1px solid #31B404;
+    }
+    
+    .circle-solid {
+      background-color: whitesmoke;
+    }
+    
+    .circle:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+    
+    .circle-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+    }
+    
+    .score-text {
+      margin-top: 30%;
+      line-height: 3vw;
+      font-size: 15px;
+      color: #31B404;
     }
   </style>
   <script>
@@ -63,6 +105,7 @@
           $('#dispositivo').val(usuarioc.dispositivo);
         });
       });
+      
     });
     /*
      $("#eliminar").click(function() {
@@ -83,13 +126,16 @@
         $("#campousuario").autocomplete({
           source: arrayUsu
         });
+        $("#NumUsuarios").text(arrayUsu.length + " usuarios");
+
+
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         console.log("Status: " + textStatus);
         console.log("Error: " + errorThrown);
       }
     });
-    
+
   </script>
 </head>
 
@@ -107,32 +153,83 @@
   <div class="container">
     <div class="row">
       <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Usuario</a></li>
-        <li role="presentation"><a href="#">Dispositivo</a></li>
-        <li role="presentation"><a href="#">Estadísticas</a></li>
+        <li class="active"><a data-toggle="tab" href="#usuarios">Usuario</a></li>
+        <li><a data-toggle="tab" href="#dispositivos">Dispositivo</a></li>
+        <!--<li role="presentation"><a href="#">Estadísticas</a></li>-->
       </ul>
     </div>
   </div>
+
   <div class="container">
-    <div class="row" style="padding:40px;margin-left:25px;">
-      <div class=" col-md-4">
-        <label for="campousuario">Buscar usuario</label>
-        <input type="text" class=" col-md-4 form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
-        <button type="submit" id="boton1" class="col-md-4 btn btn-block btn-success ">Aceptar</button>
+    <div class="tab-content">
+      <div id="usuarios" class="tab-pane fade in active">
+        <div class="row" style="padding:40px;margin-left:25px;">
+          <div class=" col-md-4">
+            <div class="circle circle-border">
+              <div class="circle-inner">
+                <div class="score-text" id="NumUsuarios">
+
+                </div>
+              </div>
+            </div>
+            <label for="campousuario">Buscar usuario</label>
+            <input type="text" class=" col-md-4 form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
+            <button type="submit" id="boton1" class="col-md-4 btn btn-block btn-success ">Aceptar</button>
+          </div>
+
+          <div class=" col-md-offset-2 col-md-4" id="formusuario">
+            <label for="formusuario">Datos del usuario</label>
+
+            <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
+              <input type="text" class="form-control" name="usuario" id="usuario" value="" placeholder="Usuario">
+              <input type="text" class="form-control" name="email" id="email" value="" placeholder="Email">
+              <input type="text" class="form-control" name="dispositivo" id="dispositivo" value="" placeholder="Dispositivo">
+
+              <input type="checkbox" value="1" id="checkadmin" name="check" />
+              <label for="checkadmin">Administrador</label>
+
+              <button type="submit" id="modificar" formaction = '/modificaruser' class="btn btn-block btn-primary ">Modificar</button>
+              <button type="submit" id="eliminar" formaction = '/eliminaruser' class="btn btn-block btn-danger">Eliminar</button>
+            </form>
+          </div>
+        </div>
       </div>
-      
-      <div class=" col-md-offset-2 col-md-4" id="formusuario">
-        <label for="formusuario">Datos del usuario</label>
-        <form id="formusuario" method="POST" action="/modificaruser" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
-          <input type="text" class="form-control" name="usuario" id="usuario" value="" placeholder="Usuario">
-          <input type="text"  class="form-control"name="email" id="email" value="" placeholder="Email">
-          <input type="text"  class="form-control"  name="dispositivo" id="dispositivo" value="" placeholder="Dispositivo">
-          <button type="submit"  id="modificar" class="btn btn-block btn-primary ">Modificar</button>
-         <!-- <button id="eliminar" class="btn btn-block btn-danger">Eliminar</button>-->
-        </form>
+      <div id="dispositivos" class="tab-pane fade">
+             <div class="row" style="padding:40px;margin-left:25px;">
+          <div class=" col-md-4">
+            <div class="circle circle-border">
+              <div class="circle-inner">
+                <div class="score-text" id="NumUsuarios">
+
+                </div>
+              </div>
+            </div>
+            <label for="campousuario">Buscar usuario</label>
+            <input type="text" class=" col-md-4 form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
+            <button type="submit" id="boton1" class="col-md-4 btn btn-block btn-success ">Aceptar</button>
+          </div>
+
+          <div class=" col-md-offset-2 col-md-4" id="formusuario">
+            <label for="formusuario">Datos del usuario</label>
+
+            <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
+              <input type="text" class="form-control" name="usuario" id="usuario" value="" placeholder="Usuario">
+              <input type="text" class="form-control" name="email" id="email" value="" placeholder="Email">
+              <input type="text" class="form-control" name="dispositivo" id="dispositivo" value="" placeholder="Dispositivo">
+
+              <input type="checkbox" value="1" id="checkadmin" name="check" />
+              <label for="checkadmin">Administrador</label>
+
+              <button type="submit" id="modificar" onclick="submitForm('/modificaruser')" class="btn btn-block btn-primary ">Modificar</button>
+              <button type="submit" id="eliminar" onclick="submitForm('/eliminaruser')" class="btn btn-block btn-danger">Eliminar</button>
+            </form>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
+
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
   <script src="js/bootstrap.min.js"></script>
 </body>

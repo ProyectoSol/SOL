@@ -22,6 +22,8 @@ exports.verUsuarios = function(req, res) {
                     var arrays = {
                         datos: usuarios
                     };
+                   // var numeroDeUsuarios = usuarios.length;
+                  // console.log(numeroDeUsuarios)
                     //  res.send(arrays);
                     res.render('admin', arrays);
                 });
@@ -59,7 +61,7 @@ exports.prueba = function(req, res) {
 
 exports.eliminar = function(req, res) {
 
-    var user = req.params.usuario;
+    var user = req.body.usuario;
     schema.remove({
         usuario: user
     }, function(err) {
@@ -75,14 +77,15 @@ exports.modificar = function(req, res) {
     var user = req.body.usuario;
     var email = req.body.email;
     var disp = req.body.dispositivo;
-
+    var check = req.body.check;
     console.log(user + email + disp + " aaaaaaaaaa");
 
     schema.update({
         'usuario': user
     }, {
         email: email,
-        dispositivo: disp
+        dispositivo: disp,
+        admin: check
     }, function(user) {
 
         console.log("usuario actualizado");

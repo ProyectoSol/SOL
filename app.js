@@ -58,7 +58,7 @@ app.get('/logout', login.logout);
 app.get('/radiacion/insert/:disp_nombre/:uv', radiacion.insert);
 app.get('/home', radiacion.mostrar);
 app.get('/clientedatos/:usuario', admin.prueba);
-//app.get('/eliminar/:usuario', admin.eliminar);
+app.post('/eliminaruser', admin.eliminar);
 app.get('/usercompletos', admin.usercompletos);
 
 app.post('/modificaruser', admin.modificar);
