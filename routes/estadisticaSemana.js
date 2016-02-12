@@ -26,9 +26,9 @@ TablaHistorial.aggregate([{ $match : {fecha : {$lte : fecha, $gte : Hace7Dias}, 
                     fecha.push(historia[i]._id["day"]);
                 } 
 
-            global.radiacionF = radiacion;
-            global.fechaF = fecha;
-           
+        //    global.radiacionF = radiacion;
+         //   global.fechaF = fecha;
+            
              cb(radiacion,fecha);
             }  
                    

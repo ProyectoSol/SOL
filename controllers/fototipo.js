@@ -1,4 +1,5 @@
 var schema =require("../models/users.js");
+var login = require("./login.js")
 
 exports.fototipo = function(req, res){
      
@@ -18,7 +19,9 @@ exports.fototipo = function(req, res){
   console.log("tu fototipo es "+ ResultadoFototipo);
  
   schema.update({usuario: req.session.a}, {ArrayFototipo: {pelo: peloF,ojos: ojosF,piel: pielF,pecas: pecasF, rojo: rojoF,bronceado: bronceadoF},fototipo: ResultadoFototipo}, function(user) {
-   res.redirect('/home');
+  
+  
+   res.redirect("/home");
    
    console.log("Usuario actualizado");
 });
@@ -28,14 +31,15 @@ exports.fototipo = function(req, res){
 };
 exports.info = function(req, res){
       var nombre = req.body.name;
-     var apellido = req.body.apellidos;
-     var fecha = req.body.fecha;
-     var sexo  = req.body.sexo;
+      var apellido = req.body.apellidos;
+      var fecha = req.body.fecha;
+      var sexo  = req.body.sexo;
      
   console.log(nombre + apellido + fecha + sexo);
   
   schema.update({usuario: req.session.a}, {nombre: nombre, apellido: apellido, fecha: fecha, sexo: sexo}, function(user) {
-   res.redirect('/home');
+  
+    res.redirect("/home");
    
    console.log("Usuario actualizado");
   });

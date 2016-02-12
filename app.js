@@ -4,7 +4,7 @@ var conexionBD = require('./routes/conexion.js');
 conexionBD.conexion();
 var app = express();
 var bodyParser = require('body-parser');
-var user = require('./routes/user.js');
+//var user = require('./routes/user.js');
 //var tiempo = require('./routes/tiempo.js');
 var radiacion = require('./routes/radiacion.js');
 var registro = require('./controllers/registro.js');
@@ -15,13 +15,14 @@ var fototipo = require('./controllers/fototipo.js');
 var configuracion = require('./controllers/configuracion.js');
 var login = require('./controllers/login.js');
 var contacto = require('./routes/contacto.js');
-var admin = require('./routes/admin.js');
+var admin = require('./controllers/admin.js');
 var session = require('express-session');
 app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: 'uwotm8'
 }));
+
 
 //------------------------------------------------handlebars
 
@@ -41,7 +42,7 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 //---------------CONTROLLERS----
 app.post('/usuario/registro', registro.registro);
 app.get('/activacion/:codigo', activacion.activacion);
-app.post('/usuario/login', login.login);
+app.get('/usuario/login', login.login);
 app.get('/cambiopass/:codigo', cambiopass.cambiopass);
 app.post('/activacion/:codigo', activacion.activacion);
 app.post('/usuario/login', login.login);
@@ -56,12 +57,12 @@ app.get('/admin', admin.verUsuarios);
 app.post('/informacion', fototipo.info);
 app.get('/logout', login.logout);
 app.get('/radiacion/insert/:disp_nombre/:uv', radiacion.insert);
-app.get('/home', radiacion.mostrar);
+app.get('/home', login.login);
 app.get('/clientedatos/:usuario', admin.prueba);
-app.post('/eliminaruser', admin.eliminar);
 app.get('/usercompletos', admin.usercompletos);
-
+app.get('/dispositivocompletos', admin.usercompletos);
 app.post('/modificaruser', admin.modificar);
+app.post('/eliminaruser', admin.eliminar);
 
 app.use(express.static(__dirname + '/views'));
 

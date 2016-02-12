@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-
+var login = require("../controllers/login.js")
 var TablaRadiacion = require('../models/TablaRadiacion.js');
 var TablaHistorial = require('../models/TablaHistorial.js');
 var EstadisticaSemana = require('./estadisticaSemana.js');
@@ -12,7 +12,9 @@ exports.insert = function(req, res) {
     var disp_nombre = req.params.disp_nombre;
     var uv = req.params.uv;
     //radiacion
-    TablaRadiacion.findOne({'dispositivo': disp_nombre}, function(err, disp) {
+    TablaRadiacion.findOne({
+        'dispositivo': disp_nombre
+    }, function(err, disp) {
         if (!disp) {
 
             //insertar dispositivo nuevo y radiacion
@@ -74,88 +76,60 @@ exports.insert = function(req, res) {
 };
 
 //---------------coger ultimo indice de radiacion--------
-exports.mostrar = function(req, res) {
-
+exports.mostrar = function(req, res, fototipo) {
+    //console.log("usuario----.----"+usuario)
     if (!req.session.a) {
-        console.log("sesion fallida")
+        console.log("sesion fallida");
         res.redirect('/');
     }
     else {
-
+     
         //  radiacion.mostrar(req, res);
 
 
         //console.log("lol "+getFecha())
         //radiacion
-        TablaRadiacion.findOne({'dispositivo': req.session.dispositivo}, function(err, Ruv) {
+        TablaRadiacion.findOne({
+            'dispositivo': req.session.dispositivo
+        }, function(err, Ruv) {
             if (err) {
                 console.error(err);
                 res.send('Error');
             }
             else {
-                global.nivel;
-                global.nivel = Ruv.uv;
+                //   global.nivel;
+                //  global.nivel = Ruv.uv;
 
-                var nivelfinal = global.nivel;
+                //   var nivelfinal = global.nivel;
                 var fecha = new Date();
                 var Hace7Dias = new Date();
 
                 Hace7Dias.setDate(fecha.getDate() - 7);
 
                 var dispositivo = req.session.dispositivo;
-                //EstadisticaSemana.Semana(req, res, dispositivo);
-               // EstadisticaHora.Hora(req, res, dispositivo);
-                //EstadisticaAnual.anual(req,res,dispositivo)
-                
-                //var radiacionFinall;
-           
-             
-    
-     EstadisticaSemana.Semana(res, req, dispositivo, function(radiacion,fecha) {
-         EstadisticaHora.Hora(res, req, dispositivo, function(radiacionH,hora) {
-             EstadisticaAnual.anual(res, req, dispositivo, function(RadiacionAnual,ano) {
-                  res.render('login', {
-                    User: req.session.a,
-                    Uv: nivelfinal,
-                    max: global.max,
-                    min: global.min,
-                    meteo: global.datodia,
-                    //  Esemana: radiacion,
-                    Esemana: radiacion,
-                    EsemanaDia: fecha,
-                    Fototipo: global.fototipo,
-                    RadiacionHora: radiacionH,
-                    HoraR: hora,
-                    RadiacionAnual: RadiacionAnual,
-                    anoA: ano
 
+                EstadisticaSemana.Semana(res, req, dispositivo, function(radiacion, fecha) {
+                    EstadisticaHora.Hora(res, req, dispositivo, function(radiacionH, hora) {
+                        EstadisticaAnual.anual(res, req, dispositivo, function(RadiacionAnual, ano) {
+
+                            res.render('login', {
+                                User: req.session.a,
+                                Uv: Ruv.uv,
+                                max: global.max,
+                                min: global.min,
+                                meteo: global.datodia,
+                                Esemana: radiacion,
+                                EsemanaDia: fecha,
+                                Fototipo: fototipo,
+                                RadiacionHora: radiacionH,
+                                HoraR: hora,
+                                RadiacionAnual: RadiacionAnual,
+                                anoA: ano
+
+                            });
+                        });
+                    });
                 });
-        });
-        });
-     });
-      
-       
-     
-       
-           //    console.log(EstadisticaSemana.Semana.radiacion)
-            
-            /*
-                res.render('login', {
-                    User: req.session.a,
-                    Uv: nivelfinal,
-                    max: global.max,
-                    min: global.min,
-                    meteo: global.datodia,
-                    //  Esemana: radiacion,
-                    Esemana: global.radiacionF,
-                    EsemanaDia: global.fechaF,
-                    Fototipo: global.fototipo,
-                    RadiacionHora: global.radiacionH,
-                    HoraR: global.horaR,
-                    RadiacionAnual: global.radiacionA,
-                    anoA: global.fechaAnual
-
-                });*/
 
             }
         }).sort({

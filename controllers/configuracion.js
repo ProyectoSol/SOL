@@ -1,4 +1,5 @@
 var schema =require("../models/users.js");
+var login = require("./login.js")
 
 var EstadisticaSemana = require('../routes/estadisticaSemana.js');
 var EstadisticaHora = require('../routes/estadisticaHora.js');
@@ -31,14 +32,11 @@ exports.configuracion = function (req, res) {
     var idDispositivo = req.body.idDispositivo;
      
 schema.update({usuario: req.session.a}, {alertas: alertas, tiempoDeAlertas: tiempoAlertas, dispositivo: idDispositivo}, function(user) {
-  
-   
-   req.session.dispositivo = idDispositivo;
- //EstadisticaSemana.Semana(res, req,  req.session.dispositivo, function(radiacion,fecha) {})
- // EstadisticaSemana.Semana(req,res, req.session.dispositivo);
- //EstadisticaHora.Hora(req,res,req.session.dispositivo)
-//  EstadisticaAnual.anual(req,res,req.session.dispositivo)
+     req.session.dispositivo = idDispositivo;
+
+//login.login(req,res);
     res.redirect("/home");
+    
    
    console.log("configuracion actualizado");
 });
