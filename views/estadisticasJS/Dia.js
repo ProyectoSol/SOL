@@ -21,6 +21,7 @@
               pointStrokeColor: "#fff",
               pointHighlightFill: "#fff",
               pointHighlightStroke: "rgba(220,220,220,1)",
+              backgroundColor: "#ffffff",
               data: RadiacionHorasplit
           }]
       };
