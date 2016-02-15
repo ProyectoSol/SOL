@@ -53,8 +53,13 @@
     #logout {
       float: right;
     }
-    checkbox{
+    
+    checkbox {
       cursor: pointer;
+    }
+    .bloque{
+      margin-top: 30px;
+      margin-left: 25px;
     }
   </style>
   <script>
@@ -64,7 +69,6 @@
         $.get("/clientedatos/" + usuario, {
           user: usuario
         }, function(usuarioc) {
-          alert(usuarioc.confirmado);
           $('#usuario').val(usuarioc.usuario);
           $('#email').val(usuarioc.email);
           $('#dispositivo').val(usuarioc.dispositivo);
@@ -90,13 +94,7 @@
       });
 
     });
-    /*
-     $("#eliminar").click(function() {
-        var usuariob = $("#usuario").val();
-        alert(usuariob);
-      $.get("/eliminar/"+usuario);
-    });*/
-
+  
     $.ajax({
       type: "GET",
       url: 'https://sol-anthonyprz.c9users.io/usercompletos',
@@ -109,8 +107,7 @@
         $("#campousuario").autocomplete({
           source: arrayUsu
         });
-        $("#NumUsuarios").text(arrayUsu.length);
-
+        $("#numUsuarios").text(arrayUsu.length);
 
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -118,8 +115,61 @@
         console.log("Error: " + errorThrown);
       }
     });
+    
+    
+    //-----------------------------------------------DISPOSITIVO
+    $.ajax({
+      type: "GET",
+      url: 'https://sol-anthonyprz.c9users.io/dispositivoscompletos',
+      dataType: "json",
+      success: function(data) {
+        var arrayDisp = [];
+        for (var i = 0; i < data.length; i++) {
+          arrayDisp.push(data[i].dispositivo);
+        }
+        $("#IdDispositivo").autocomplete({
+          source: arrayDisp
+        });
+        $("#numDispositivos").text(arrayDisp.length);
+
+
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("Status: " + textStatus);
+        console.log("Error: " + errorThrown);
+      }
+    });  
+    
+    $(document).ready(function() {
+      $("#boton2").click(function() {
+        var dispositivo = $('#IdDispositivo').val();
+        $.get("/dispositivo/" + dispositivo, {
+          dispositivo: dispositivo
+        }, function(dispositivoC) {
+          $('#ddispositivo').val(dispositivoC.dispositivo);
+         $('#ciudad').val(dispositivoC.ciudad);
+  
+/*
+          if (usuarioc.admin == '1') {
+            $('#checkadmin').prop('checked', true);
+          }
+          else {
+            $('#checkadmin').prop('checked', false);
+          }
+
+          if (usuarioc.confirmado == '1') {
+            $('#checkconfirm').prop('checked', true);
+          }
+          else {
+            $('#checkconfirm').prop('checked', false);
+          }
+*/
+        });
+      });
+
+    });
+  
   </script>
-  <!---------------dispositivo------------------>
 
 </head>
 
@@ -137,8 +187,8 @@
   <div class="container">
     <div class="row">
       <ul class="nav nav-justified nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#usuarios">Usuarios <span id="numUsuarios" class="badge">9</span></a></li>
-        <li><a data-toggle="tab" href="#dispositivos">Dispositivos</a></li>
+        <li class="active"><a data-toggle="tab" href="#usuarios">Usuarios <span id="numUsuarios" class="badge"></span></a></li>
+        <li><a data-toggle="tab" href="#dispositivos">Dispositivos <span id="numDispositivos" class="badge"></span></a></li>
         <!--<li role="presentation"><a href="#">Estadísticas</a></li>-->
       </ul>
     </div>
@@ -147,7 +197,7 @@
   <div class="container">
     <div class="tab-content">
       <div id="usuarios" class="tab-pane fade in active">
-        <div class="row" style="padding:40px;margin-left:25px;">
+        <div class="row bloque">
           <div class=" col-md-4">
             <label for="campousuario">Buscar usuario</label>
             <input type="text" class=" col-md-4 form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
@@ -158,33 +208,32 @@
             <label for="formusuario">Datos del usuario</label>
 
             <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
-              <input type="text" class="form-control" name="usuario" id="usuario" value="" readonly placeholder="Usuario">
-              <input type="text" class="form-control" name="email" id="email" value="" placeholder="Email">
-              <input type="text" class="form-control" name="dispositivo" id="dispositivo" value="" placeholder="Dispositivo">
-              <input type="text" class="form-control" name="nombre" id="nombre" value="" readonly placeholder="Nombre">
-              <input type="text" class="form-control" name="apellido" id="apellido" value="" readonly placeholder="Apellido">
-              <input type="text" class="form-control" name="fechaNac" id="fechaNac" value="" readonly placeholder="Fecha de nacimiento">
+
+              <input type="text" class="form-control" name="usuario" id="usuario" readonly placeholder="Usuario">
+              <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+              <input type="text" class="form-control" name="dispositivo" id="dispositivo" placeholder="Dispositivo">
+              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+              <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
+              <input type="text" class="form-control" name="fechaNac" id="fechaNac" placeholder="Fecha de nacimiento">
 
               <input type="checkbox" value="1" id="checkadmin" name="admin" />
               <label for="checkadmin">Administrador</label>
               <br>
-<!--
-              <input type="checkbox" value="1" id="checkconfirm" name="confirm" />
+              <input type="checkbox" value="1" id="checkconfirm" name="confirmado" />
               <label for="checkconfirm">Confirmado</label>
--->
+
               <button type="submit" id="modificar" formaction='/modificaruser' class="btn btn-block btn-primary ">Modificar</button>
               <button type="submit" id="eliminar" formaction='/eliminaruser' class="btn btn-block btn-danger">Eliminar</button>
             </form>
           </div>
         </div>
       </div>
+      
       <div id="dispositivos" class="tab-pane fade">
 
-
-
-        <div class="row" style="padding:40px;margin-left:25px;">
+        <div class="row bloque">
           <div class=" col-md-4">
-            <label for="campousuario">Buscar Dispositivo</label>
+            <label for="IdDispositivo">Buscar dispositivo</label>
             <input type="text" class=" col-md-4 form-control" id="IdDispositivo" placeholder="ID Dispositivo" autocomplete="off">
             <button type="submit" id="boton2" class="col-md-4 btn btn-block btn-success ">Aceptar</button>
           </div>
@@ -192,17 +241,18 @@
           <div class=" col-md-offset-2 col-md-4" id="formusuario">
             <label for="formusuario">Datos del Dispositivo</label>
 
-            <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
-              <input type="text" class="form-control" name="Nombre" id="nombre" placeholder="nombre">
-              <input type="text" class="form-control" name="Ciudad" id="Ciudad" placeholder="Ciudad">
+            <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el Dispositivo?');">
+              <input type="text" class="form-control" name="ddispositivo" id="ddispositivo" placeholder="nombre">
+              <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad">
 
 
-              <button type="submit" id="modificar" onclick="submitForm('/modificaruser')" class="btn btn-block btn-primary ">Modificar</button>
-              <button type="submit" id="eliminar" onclick="submitForm('/eliminaruser')" class="btn btn-block btn-danger">Eliminar</button>
+              <button type="submit" id="modificar" formaction='/modificardisp' class="btn btn-block btn-primary ">Modificar</button>
+              <button type="submit" id="eliminar" formaction='/eliminardisp' class="btn btn-block btn-danger">Eliminar</button>
             </form>
           </div>
         </div>
       </div>
+      
     </div>
   </div>
   </div>

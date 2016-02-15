@@ -768,6 +768,18 @@
 
 .textrecomendacion {
   text-align: center;
+ 
+}
+#reco{
+  margin-top:-20px;
+  width:400px;
+  margin:auto;
+  border-style: solid;
+  border-color: #cfcfcf;
+  background-color:white;
+  color:#b9b9b9;
+  border-radius:10px;
+
 }
 
 .hero {
@@ -785,11 +797,11 @@
   /*background-color: #EFEFEF;
   background-image: none;
   background-size: auto;
-  background: #92c7d6;*/
+  background: #92c7d6;
   background-image: -webkit-radial-gradient(top, circle cover, #FFFFFF, #C7C7C7 80%);
   background-image: -moz-radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
   background-image: -o-radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
-  background-image: radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
+  background-image: radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);*/
 }
 
 
@@ -850,10 +862,13 @@
   margin-left: auto;
   color: #b8b4b4;
   text-align: center;
+  margin-top:-20px;
+
+
 }
 
 .logoss {
-  margin-top: -40px;
+  margin-top: -20px;
   float: right;
 }
 
@@ -1166,14 +1181,7 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
   .divtiempo {
     margin-top: -20%;
   }
-  .letras {
-    display: block;
-    margin-top: 0px;
-    margin-right: auto;
-    margin-left: 53px;
-    float: left;
-    color: #7c7b81;
-  }
+  
   .logoss {
     margin-top: -21px;
   }
@@ -1323,18 +1331,10 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
     min-height: auto;
   }
   .cop {
-    margin-top: 6px;
-    margin-left: 81px;
+
     float: left;
   }
-  .letras {
-    position: static;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    float: none;
-    clear: both;
-  }
+ 
   .logoss {
     margin-top: -30px;
     margin-right: 6px;

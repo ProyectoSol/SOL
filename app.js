@@ -58,11 +58,14 @@ app.post('/informacion', fototipo.info);
 app.get('/logout', login.logout);
 app.get('/radiacion/insert/:disp_nombre/:uv', radiacion.insert);
 app.get('/home', login.login);
-app.get('/clientedatos/:usuario', admin.prueba);
+app.get('/clientedatos/:usuario', admin.buscarusu);
+app.get('/dispositivo/:dispositivo', admin.buscardisp);
 app.get('/usercompletos', admin.usercompletos);
-app.get('/dispositivocompletos', admin.usercompletos);
-app.post('/modificaruser', admin.modificar);
-app.post('/eliminaruser', admin.eliminar);
+app.get('/dispositivoscompletos', admin.dispcompletos);
+app.post('/modificaruser', admin.modificarusu);
+app.post('/eliminaruser', admin.eliminarusu);
+app.post('/modificardisp', admin.modificardisp);
+app.post('/eliminardisp', admin.eliminardisp);
 
 app.use(express.static(__dirname + '/views'));
 

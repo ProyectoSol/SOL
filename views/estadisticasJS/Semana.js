@@ -4,11 +4,10 @@
 
        var semanaDia = document.getElementById("SemanaDia").innerHTML;
        var diaSemana = semanaDia.split(",");
+   
+         var diaSemanaI = diaSemana.sort(function(a, b){return a,b});
 
-       //    var diaSemanaI = diaSemana.sort(function(a, b){return a,b});
-
-
-       //  var invertido = semana.sort(function(a, b){return a,b});
+       var invertido = semana.sort(function(a, b){return a,b});
 
 
 
@@ -17,7 +16,7 @@
 
 
        var data = {
-           labels: diaSemana,
+           labels: diaSemanaI,
 
            datasets: [{
                label: "My First dataset",
@@ -27,7 +26,7 @@
                pointStrokeColor: "#fff",
                pointHighlightFill: "#fff",
                pointHighlightStroke: "rgba(220,220,220,1)",
-               data: semana
+               data: invertido
            }]
        };
        var myLineChart = new Chart(ctx).Line(data);
