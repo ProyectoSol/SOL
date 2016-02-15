@@ -8,52 +8,6 @@ var Ficheroradiacion = require("../routes/radiacion.js");
 
 
 exports.login = function(req, res) {
- //--------------------------------------------------------comprobar la session en el login
- if (req.session.a) {
-  schema.findOne({
-   'usuario': req.session.a
-  }, function(err, user) {
-
-    if (user.confirmado == '1') {
-     req.session.a = user.usuario;
-
-     if (user.admin == "1") {
-      console.log("admin entrando...");
-
-      res.redirect('/admin');
-     }
-     else {
-      var fototipo = user.fototipo;
-
-      if (user.dispositivo == null || user.dispositivo == "") {
-       req.session.dispositivo = "ML8511";
-       console.log("dispositivo estandar " + req.session.dispositivo);
-       Ficheroradiacion.mostrar(req, res, fototipo);
-      }
-      else {
-
-       req.session.dispositivo = user.dispositivo;
-       console.log("dispositivo personal " + req.session.dispositivo);
-       Ficheroradiacion.mostrar(req, res, fototipo);
-      }
-     }
-    }
-
-
-    else {
-     console.log('no confirmado');
-     res.render('index', {
-      error3: "confirma el emailaso"
-
-     });
-    }
-
-   
-
-  });
- }
- //--------------------------------------------------------logearse 
- else {
 
   tiempo.recogertiempo(req, res);
 
@@ -121,7 +75,7 @@ exports.login = function(req, res) {
    }
 
   });
- }
+
 };
 
 exports.logout = function(req, res) {
@@ -129,3 +83,50 @@ exports.logout = function(req, res) {
  console.log("Sesión destruida");
  res.redirect('/');
 };
+
+
+exports.mantenerlogin = function(req, res) {
+ //if (req.session.a) {
+  schema.findOne({
+   'usuario': req.session.a
+  }, function(err, user) {
+
+    if (user.confirmado == '1') {
+     req.session.a = user.usuario;
+
+     if (user.admin == "1") {
+      console.log("admin entrando...");
+
+      res.redirect('/admin');
+     }
+     else {
+      var fototipo = user.fototipo;
+
+      if (user.dispositivo == null || user.dispositivo == "") {
+       req.session.dispositivo = "ML8511";
+       console.log("dispositivo estandar " + req.session.dispositivo);
+       Ficheroradiacion.mostrar(req, res, fototipo);
+      }
+      else {
+
+       req.session.dispositivo = user.dispositivo;
+       console.log("dispositivo personal " + req.session.dispositivo);
+       Ficheroradiacion.mostrar(req, res, fototipo);
+      }
+     }
+    }
+
+
+    else {
+     console.log('no confirmado');
+     res.render('index', {
+      error3: "confirma el emailaso"
+
+     });
+    }
+
+   
+
+  });
+ //}
+}

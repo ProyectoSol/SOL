@@ -57,7 +57,7 @@ app.get('/admin', admin.verUsuarios);
 app.post('/informacion', fototipo.info);
 app.get('/logout', login.logout);
 app.get('/radiacion/insert/:disp_nombre/:uv', radiacion.insert);
-app.get('/home', login.login);
+app.get('/home', login.mantenerlogin);
 app.get('/clientedatos/:usuario', admin.buscarusu);
 app.get('/dispositivo/:dispositivo', admin.buscardisp);
 app.get('/usercompletos', admin.usercompletos);
