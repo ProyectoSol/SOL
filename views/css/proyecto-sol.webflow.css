@@ -760,14 +760,17 @@
 
 .titulorecomendacion {
   text-align: center;
+  z-index:99;
 }
 
 .segundotitulorecomendacion {
   text-align: center;
+   z-index:99;
 }
 
 .textrecomendacion {
   text-align: center;
+   z-index:99;
  
 }
 #reco{
@@ -1388,4 +1391,15 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
     margin-right: auto;
     margin-left: auto;
   }
+}
+
+
+#sol{
+  height:100px;
+  width:100px;
+  margin-left:45%;
+  margin-top:-50px;
+  z-index:-99px;
+  position:absolute;
+  
 }

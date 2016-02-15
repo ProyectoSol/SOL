@@ -27,8 +27,6 @@ exports.login = function(req, res) {
      error4: "email o contraseña incorrecta :D"
 
     });
-
-
    }
    else {
 
@@ -86,13 +84,13 @@ exports.logout = function(req, res) {
 
 
 exports.mantenerlogin = function(req, res) {
- //if (req.session.a) {
+ if (req.session.a) {
   schema.findOne({
    'usuario': req.session.a
   }, function(err, user) {
 
     if (user.confirmado == '1') {
-     req.session.a = user.usuario;
+    // req.session.a = user.usuario;
 
      if (user.admin == "1") {
       console.log("admin entrando...");
@@ -128,5 +126,5 @@ exports.mantenerlogin = function(req, res) {
    
 
   });
- //}
+ }
 }
