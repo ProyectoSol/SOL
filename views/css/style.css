@@ -3,7 +3,7 @@
   display: block;
   width: 30px;
   height: 4px;
-  background: #CB91D0;
+  background: white;
   position: absolute;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -89,7 +89,7 @@
   padding: 10px 20px;
   box-sizing: border-box;
   position: relative;
-  right: -120px;
+  right:-120px;
   background: rgba(100, 100, 100, 0.7);
   margin-bottom: 5px;
   -moz-border-radius: 2px;

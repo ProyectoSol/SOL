@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
     var radiacion = document.getElementById("nivelUV").innerHTML;
     var fototipo = Math.floor(document.getElementById("fototipo").innerHTML);
   //  alert(radiacion + "  " + fototipo);
@@ -33,4 +34,6 @@ var radfot = radiacion * fototipo;
           else if(radfot > 50){
              document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 50%";
         }
+        
+        
 });

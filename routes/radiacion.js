@@ -117,6 +117,7 @@ exports.mostrar = function(req, res, fototipo) {
                                 Uv: Ruv.uv,
                                 max: global.max,
                                 min: global.min,
+                                city: global.city,
                                 meteo: global.datodia,
                                 Esemana: radiacion,
                                 EsemanaDia: fecha,

@@ -16,6 +16,7 @@
 
 
        var data = {
+          
            labels: diaSemanaI,
 
            datasets: [{
@@ -24,6 +25,7 @@
                strokeColor: "rgb(0, 204, 255)",
                pointColor: "rgba(220,220,220,1)",
                pointStrokeColor: "#fff",
+               
                pointHighlightFill: "#fff",
                pointHighlightStroke: "rgba(220,220,220,1)",
                data: invertido

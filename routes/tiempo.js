@@ -37,6 +37,7 @@ exports.recogertiempo = function(req, res){
 		if (!error && response.statusCode == 200) {
 		
             global.datodia = body.weather[0].main;
+            global.city = body.name;
             global.max = Math.round(body.main.temp_max -273);
             global.min =  Math.round(body.main.temp_min -273);
             var sunrise = body.sys.sunrise;

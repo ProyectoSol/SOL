@@ -87,6 +87,8 @@ app.get('/', function(req, res) {
 var inn = require('./routes/insertarAleat.js');
 app.get('/inn', inn.anadirHistorial);
 
+setInterval(inn.anadirRadiacion, 3600000);
+
 setInterval(alertas.alertas1, 1800000);
 setInterval(alertas.alertas2, 3600000);
 setInterval(alertas.alertas3, 7200000);
