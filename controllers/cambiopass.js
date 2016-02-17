@@ -1,20 +1,23 @@
-var session = require('express-session');
 var md5 = require('md5');
 var schema = require("../models/users.js");
+
 exports.cambiopass = function(req, res) {
 
     var codigo = req.params.codigo;
     req.session.code = codigo;
-    res.redirect('/recuperar.html');
+    res.redirect('/recuperar');
 
+};
+
+exports.redirigir = function(req,res){
+    res.render('recuperar');
 };
 exports.updatenueva = function(req, res) {
 
-    var pass1 = req.body.pass;
+    var pass1 = req.body.pass1;
     var pass2 = req.body.pass2;
 
     if (pass1 == pass2) {
-        // user.updatenueva(req, res, pass1);
         var passn = md5(pass1);
 
         schema.update({
@@ -30,6 +33,7 @@ exports.updatenueva = function(req, res) {
     }
     else {
         console.log('Las contraseñas no coinciden');
+        res.redirect('/recuperar');
     }
 
 };

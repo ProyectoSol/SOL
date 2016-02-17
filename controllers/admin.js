@@ -6,23 +6,12 @@ var md5 = require('md5');
 
 
 exports.verUsuarios = function(req, res) {
-
-
     schema.findOne({
-
         'usuario': req.session.a,
         'admin': "1"
     }, function(err, user) {
         if (user) {
-            schema.find(function(error, usuarios) {
-                var arrays = {
-                    datos: usuarios
-                };
-                // var numeroDeUsuarios = usuarios.length;
-                // console.log(numeroDeUsuarios)
-                //  res.send(arrays);
-                res.render('admin', arrays);
-            });
+            res.render('admin');
         }
         else {
             res.redirect('/');
@@ -30,31 +19,7 @@ exports.verUsuarios = function(req, res) {
     });
 
 };
-exports.verDispositivos = function(req, res) {
 
-
-
-    schema.findOne({
-        'usuario': req.session.a,
-        'admin': "1"
-    }, function(err, user) {
-        if (user) {
-            schema.find(function(error, dispositivos) {
-                var arrays = {
-                    datos: dispositivos
-                };
-                // var numeroDeUsuarios = usuarios.length;
-                // console.log(numeroDeUsuarios)
-                //  res.send(arrays);
-                res.render('admin', arrays);
-            });
-        }
-        else {
-            res.redirect('/');
-        }
-    });
-
-};
 exports.usercompletos = function(req, res) {
 
     schema.find({}, {

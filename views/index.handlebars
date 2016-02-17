@@ -15,8 +15,8 @@
   <link rel="stylesheet" type="text/css" href="/css/proyecto-sol.webflow.css">
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <link rel="stylesheet" href="/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="/js/menu.js"></script>
   <script src="/js/validator.js"></script>
   <script src="/js/bootstrap.min.js"></script>
@@ -40,9 +40,6 @@
 </head>
 
 <body class="body">
-
-
-
   <div id="puto" data-ix="new-interaction-2" class="modal-wrapper">
     <div class="w-clearfix sing-up-wrapper">
       <button type="button" class="close" data-ix="close-interaction" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -53,28 +50,22 @@
             <input type="text" class="form-control" id="inputName" placeholder="Usuario" name="usuario" required>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="Ese email no es válido" required>
 
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group">
 
-            <input type="password" data-minlength="6" class="form-control" id="inputPassword" name="pass" placeholder="contraseña" required>
-
+            <input type="password" data-minlength="6" class="form-control" id="inputPassword" name="pass" data-minlength-error="La contraseña debe contener mínimo 6 carácteres" placeholder="contraseña" required>
+            <div class="help-block with-errors"></div>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="inputPasswordConfirm" name="pass2" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirmación" required>
+            <input type="password" class="form-control" id="inputPasswordConfirm" name="pass2" data-match="#inputPassword" data-match-error="Las contraseñas no coinciden" placeholder="Confirmación" required>
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group">
             <input type="submit" value="Entrar" data-wait="Please wait..." class="w-button sbmit">
           </div>
-
-          <!--<input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="usuario" class="w-input colorregist">
-          <input id="email-3" type="email" placeholder="email" name="email" data-name="email" required="required" class="w-input colorregist">
-          <input id="pass" type="password" placeholder="Contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">
-          <input id="pass-2" type="password" placeholder="Repetir contraseña" name="pass2" data-name="pass2" required="required" class="w-input colorregist">
-          <input type="submit" value="Registrarse" data-wait="Please wait..." class="w-button sbmit">-->
         </form>
         <div class="w-form-done">
           <p>¡Gracias! Te has registrado correctamente.</p>
@@ -93,7 +84,7 @@
       <div class="w-form">
         <form id="email-form-3" name="email-form-3" data-toggle="validator" data-name="Email Form 3" class="w-clearfix" method="POST" action="/usuario/login">
           <div class="form-group">
-            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="Ese email no es válido" required>
             <div class="help-block with-errors"></div>
           </div>
           <input id="pass-3" type="password" placeholder="contraseña" name="pass" data-name="pass" required="required" class="w-input colorregist">

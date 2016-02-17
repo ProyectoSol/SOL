@@ -1,9 +1,9 @@
 var schema =require("../models/users.js");
 var login = require("./login.js")
 
-var EstadisticaSemana = require('../routes/estadisticaSemana.js');
-var EstadisticaHora = require('../routes/estadisticaHora.js');
-var EstadisticaAnual = require('../routes/estadisticaAnual.js');
+var EstadisticaSemana = require('./estadisticaSemana.js');
+var EstadisticaHora = require('./estadisticaHora.js');
+var EstadisticaAnual = require('./estadisticaAnual.js');
 
 exports.panel = function (req, res) {
   schema.findOne({'usuario': req.session.a},function(error, userc2) {

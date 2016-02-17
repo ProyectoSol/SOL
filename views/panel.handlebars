@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="./css/bootstrap.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+   
   <script src="js/index.js"></script>
 
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -34,34 +35,89 @@
     });
   </script>
   <script type="text/javascript">
-    $(document).ready(function(){
-      
+    $(document).ready(function() {
+
       var cont = 1;
-      var fototipo = 0;
-    $("#f1").click(function(){
-         cont = cont +1;
-         fototipo = fototipo+1;
-         $('#f1').css('background-image', 'url(images/'+cont+'1.jpg)');
-          $('#f2').css('background-image', 'url(images/'+cont+'2.jpg)');
-           $('#f3').css('background-image', 'url(images/'+cont+'3.jpg)');
-            $('#f4').css('background-image', 'url(images/'+cont+'4.jpg)');
+      var mensajes = [" ", "Color de piel", "Color de ojos", "Cantidad de lunares", "Frecuencia de enrojecimiento", "Frecuencia de bronceado"];
+      var Arrayfototipo = [];
+      var pelo = fototipo[0];
+      var piel = fototipo[1];
+      var ojos = fototipo[2];
+      var pecas = fototipo[3];
+      var enro = fototipo[4];
+      var bronceado = fototipo[5];
+
+
+
+
+      $("#f1").click(function() {
+
+        cont = cont + 1;
+        
+        $("#mensaje").html(mensajes[cont - 1]);
+        Arrayfototipo.push(1);
+        for (var i = 1; i < 7; i++) {
+          $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
+        }
+
+        if (cont == 7) {
+        $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
+       
+        $.get("/fototipo/"+Arrayfototipo, {}, function(usuarioc) {});
+     
+     
+      }
+
+      });
+      $("#f2").click(function() {
+        cont = cont + 1;
+       
+        $("#mensaje").html(mensajes[cont - 1]);
+        Arrayfototipo.push(2);
+        for (var i = 1; i < 7; i++) {
+
+          $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
+        }
+if (cont == 7) {
+        $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
+            $.get("/fototipo/"+Arrayfototipo, {}, function(usuarioc) {});
+     
+      }
+      });
+      $("#f3").click(function() {
+        cont = cont + 1;
+       
+        $("#mensaje").html(mensajes[cont - 1]);
+        Arrayfototipo.push(3);
+        for (var i = 1; i < 7; i++) {
+          $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
+        }
+if (cont == 7) {
+        $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
+            $.get("/fototipo/"+Arrayfototipo, {}, function(usuarioc) {});
+     
+      }
+      });
+      $("#f4").click(function() {
+        cont = cont + 1;
+       
+        $("#mensaje").html(mensajes[cont - 1]);
+        Arrayfototipo.push(4);
+        for (var i = 1; i < 7; i++) {
+          $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
+        }
+
+if (cont == 7) {
+        $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
+            $.get("/fototipo/"+Arrayfototipo, {}, function(usuarioc) {});
+     
+      }
+      });
+
+
+      
+
     });
-    $("#f2").click(function(){
-         cont = cont +1;
-         fototipo = fototipo+2;
-         
-    });
-    $("#f3").click(function(){
-         cont = cont +1;
-         fototipo = fototipo+3;
-         
-    });
-    $("#f4").click(function(){
-         cont = cont +1;
-         fototipo = fototipo+4;
-         
-    });
-});
   </script>
   <script type="text/javascript" src="js/modernizr.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="images/solicon.png">
@@ -78,9 +134,14 @@
     <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
   </div>
 
-
+  <header class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <h2 align="center">Panel de Control</h2>
+      </div>
+    </div>
+  </header>
   <div class="container">
-    <h2>Panel de Control</h2>
     <ul class="nav nav-tabs ">
       <li class="active"><a data-toggle="tab" href="#perfil">Perfil</a></li>
       <li><a data-toggle="tab" href="#fototipo">Fototipo</a></li>
@@ -179,8 +240,9 @@
                     <!-- formulario de fototipo-------------fin----------->
 
         <div class="container" id="fototipo">
-          <div class="row">  
-          
+          <div class="row">
+            <h1 id="mensaje">color de pelo</h1>
+
             <div id="f1" value="1" class="col-md-4"></div>
             <div id="f2" value="2" class="col-md-4"></div>
           </div>
@@ -188,7 +250,8 @@
             <div id="f3" value="3" class="col-md-4"></div>
             <div id="f4" value="4" class="col-md-4"></div>
           </div>
-          <div id="barra" class="progress row" width="500px" >
+
+          <div id="barra" class="progress row" width="500px">
             <div class="progress-bar" role="progressbar" width="500px" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%">
               <span class="sr-only">70% Complete</span>
             </div>

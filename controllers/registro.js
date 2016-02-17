@@ -102,7 +102,7 @@ exports.recuperacion = function(req, res){
                       from: 'Sunit <SunBand@zubirimanteo.com>',
                       to: email,
                       subject: 'Cambio de contraseña',
-                      text: 'Cambio de contraseña de sunit: http://sunit.zubirimanteoweb.com/cambiopass/'+user.codigo
+                      text: 'Cambio de contraseña de sunit: https://sol-anthonyprz.c9users.io/cambiopass/'+user.codigo
                     };
          
         mailgun.messages().send(data, function (error, body) {

@@ -9,7 +9,7 @@
   <title>Panel de control</title>
   <script src="js/jquery-1.11.2.js"></script>
   <script src="js/jquery-ui.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/jquery-ui.css" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
@@ -66,9 +66,7 @@
     $(document).ready(function() {
       $("#boton1").click(function() {
         var usuario = $('#campousuario').val();
-        $.get("/clientedatos/" + usuario, {
-          user: usuario
-        }, function(usuarioc) {
+        $.get("/clientedatos/" + usuario, function(usuarioc) {
           $('#usuario').val(usuarioc.usuario);
           $('#email').val(usuarioc.email);
           $('#dispositivo').val(usuarioc.dispositivo);
@@ -148,22 +146,7 @@
         }, function(dispositivoC) {
           $('#ddispositivo').val(dispositivoC.dispositivo);
          $('#ciudad').val(dispositivoC.ciudad);
-  
-/*
-          if (usuarioc.admin == '1') {
-            $('#checkadmin').prop('checked', true);
-          }
-          else {
-            $('#checkadmin').prop('checked', false);
-          }
 
-          if (usuarioc.confirmado == '1') {
-            $('#checkconfirm').prop('checked', true);
-          }
-          else {
-            $('#checkconfirm').prop('checked', false);
-          }
-*/
         });
       });
 
@@ -242,7 +225,7 @@
             <label for="formusuario">Datos del Dispositivo</label>
 
             <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el Dispositivo?');">
-              <input type="text" class="form-control" name="ddispositivo" id="ddispositivo" placeholder="nombre">
+              <input type="text" class="form-control" name="ddispositivo" id="ddispositivo" placeholder="ID del dispositivo">
               <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad">
 
 

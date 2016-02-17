@@ -1,12 +1,12 @@
 var express = require('express');
-var conexionBD = require('./routes/conexion.js');
+var conexionBD = require('./controllers/conexion.js');
 //var mongoose = require('mongoose');
 conexionBD.conexion();
 var app = express();
 var bodyParser = require('body-parser');
 //var user = require('./routes/user.js');
 //var tiempo = require('./routes/tiempo.js');
-var radiacion = require('./routes/radiacion.js');
+var radiacion = require('./controllers/radiacion.js');
 var registro = require('./controllers/registro.js');
 var activacion = require('./controllers/activacion.js');
 var cambiopass = require('./controllers/cambiopass.js');
@@ -14,7 +14,7 @@ var alertas = require('./controllers/alertas.js');
 var fototipo = require('./controllers/fototipo.js');
 var configuracion = require('./controllers/configuracion.js');
 var login = require('./controllers/login.js');
-var contacto = require('./routes/contacto.js');
+var contacto = require('./controllers/contacto.js');
 var admin = require('./controllers/admin.js');
 var session = require('express-session');
 app.use(session({
@@ -48,9 +48,10 @@ app.post('/activacion/:codigo', activacion.activacion);
 app.post('/usuario/login', login.login);
 app.post('/cambiopass/:codigo', cambiopass.cambiopass);
 app.post('/updatenueva', cambiopass.updatenueva);
+app.get('/recuperar', cambiopass.redirigir);
 app.post('/configuracion', configuracion.configuracion);
 app.get('/panel', configuracion.panel);
-app.post('/fototipo', fototipo.fototipo);
+app.get('/fototipo/:fototipo', fototipo.fototipo);
 app.post('/consulta', contacto.consulta);
 app.post('/recuperacion', registro.recuperacion);
 app.get('/admin', admin.verUsuarios);
@@ -84,7 +85,7 @@ app.get('/', function(req, res) {
 
 //var hora = require('./routes/estadisticaHora.js');
 //app.get('/hora', hora.Hora);
-var inn = require('./routes/insertarAleat.js');
+var inn = require('./controllers/insertarAleat.js');
 app.get('/inn', inn.anadirHistorial);
 
 setInterval(inn.anadirRadiacion, 3600000);
@@ -99,7 +100,7 @@ setInterval(alertas.alertas3, 7200000);
 
 
 //-----------------prueba Estadistica con aggregate avg
-var estadistica = require("./routes/estadistica.js");
+var estadistica = require("./controllers/estadistica.js");
 app.get('/estadistica', function(req, res) {
 
     console.log("ejecutado estadistica.js")
