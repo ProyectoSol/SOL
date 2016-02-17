@@ -3,8 +3,8 @@ var TablaHistorial = require('../models/TablaHistorial.js');
 exports.Hora = function(res, req, dispositivo, cb) {
     var inicio = new Date();
     var fin = new Date();
-    inicio.setHours(8);
-    fin.setHours(18);
+    inicio.setUTCHours(8);
+    fin.setUTCHours(20);
   //  console.log(inicio+" inicio");
 //    console.log(fin+" fin");
     

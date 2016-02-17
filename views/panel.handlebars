@@ -35,8 +35,31 @@
   </script>
   <script type="text/javascript">
     $(document).ready(function(){
-    $("p").click(function(){
-        $(this).hide();
+      
+      var cont = 1;
+      var fototipo = 0;
+    $("#f1").click(function(){
+         cont = cont +1;
+         fototipo = fototipo+1;
+         $('#f1').css('background-image', 'url(images/'+cont+'1.jpg)');
+          $('#f2').css('background-image', 'url(images/'+cont+'2.jpg)');
+           $('#f3').css('background-image', 'url(images/'+cont+'3.jpg)');
+            $('#f4').css('background-image', 'url(images/'+cont+'4.jpg)');
+    });
+    $("#f2").click(function(){
+         cont = cont +1;
+         fototipo = fototipo+2;
+         
+    });
+    $("#f3").click(function(){
+         cont = cont +1;
+         fototipo = fototipo+3;
+         
+    });
+    $("#f4").click(function(){
+         cont = cont +1;
+         fototipo = fototipo+4;
+         
     });
 });
   </script>
