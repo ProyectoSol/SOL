@@ -107,6 +107,8 @@ exports.mostrar = function(req, res, fototipo) {
                 Hace7Dias.setDate(fecha.getDate() - 7);
 
                 var dispositivo = req.session.dispositivo;
+                
+                console.log(Ruv.uv+" nivel de radiacion actual")
 
                 EstadisticaSemana.Semana(res, req, dispositivo, function(radiacion, fecha) {
                     EstadisticaHora.Hora(res, req, dispositivo, function(radiacionH, hora) {

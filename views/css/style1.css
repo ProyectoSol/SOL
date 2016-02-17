@@ -151,3 +151,37 @@
 option:disabled{
   color: gray;
 }
+#fototipo{
+  /*background-color:lightgrey;*/
+ 
+  
+  margin:auto;
+}
+#f1{
+  background-image: url("../pelo/rubia.jpg");
+  height: 250px;
+  width: 250px;
+  background-size: 250px 250px;
+}
+#f2{
+  background-image: url("../pelo/castana.jpg");
+  width:250px;
+  height:250px;
+  background-size: 250px 250px;
+ 
+}
+#f3{
+  background-image: url("../pelo/morena.jpg");
+  width:250px;
+  height:250px;
+  background-size: 250px 250px;
+}
+#f4{
+  background-image: url("../pelo/negro.jpg");
+  width:250px;
+  height:250px;
+  background-size: 250px 250px;
+}
+#barra{
+  width:500px;
+}

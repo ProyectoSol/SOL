@@ -2,6 +2,7 @@
 <!-- This site was created in Webflow. http://www.webflow.com-->
 <!-- Last Published: Wed Dec 09 2015 11:11:43 GMT+0000 (UTC) -->
 <html data-wf-site="5645cad42404c4fe414da2da" data-wf-page="5660154353fc7d877ec2b727">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -11,83 +12,91 @@
   <meta name="generator" content="Webflow">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/webflow.css">
-<!--<link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">-->
+  <!--<link rel="stylesheet" type="text/css" href="css/proyecto-sol.webflow.css">-->
   <link rel="stylesheet" href="css/style1.css">
   <link rel="stylesheet" href="./css/bootstrap.css">
- 
+
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
   <script src="js/index.js"></script>
-  
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
- <script src="js/jquery-1.11.3.min.js"></script>
+
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/menu.js"></script>
-<script src="js/bootstrap.min.js"></script>
-  
-  
+  <script src="js/bootstrap.min.js"></script>
+
+
   <script>
     WebFont.load({
       google: {
-        families: ["Varela Round:400","Changa One:400,400italic"]
+        families: ["Varela Round:400", "Changa One:400,400italic"]
       }
     });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $("p").click(function(){
+        $(this).hide();
+    });
+});
   </script>
   <script type="text/javascript" src="js/modernizr.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="images/solicon.png">
   <link rel="apple-touch-icon" href="images/solicon.png">
 </head>
+
 <body class="colorBody">
-  
-      <div class="hamburgerMenu"><span></span></div>
-        <div class="menu">
-          <span><a href="/home" class="sindeco">Home</a></span>
-          <span><a href="panel.html"  class="sindeco">Panel de control</a></span>
-          <span><a href="/home#sectionEstadisticas" class="sindeco">Estadisticas</a></span>
-          <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
-        </div>
-        
-        
-       <div class="container">
-  <h2>Panel de Control</h2>
-  <ul class="nav nav-tabs ">
-    <li class="active"><a data-toggle="tab" href="#perfil">Perfil</a></li>
-    <li><a data-toggle="tab" href="#fototipo">Fototipo</a></li>
+
+  <div class="hamburgerMenu"><span></span></div>
+  <div class="menu">
+    <span><a href="/home" class="sindeco">Home</a></span>
+    <span><a href="panel.html"  class="sindeco">Panel de control</a></span>
+    <span><a href="/home#sectionEstadisticas" class="sindeco">Estadisticas</a></span>
+    <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
+  </div>
+
+
+  <div class="container">
+    <h2>Panel de Control</h2>
+    <ul class="nav nav-tabs ">
+      <li class="active"><a data-toggle="tab" href="#perfil">Perfil</a></li>
+      <li><a data-toggle="tab" href="#fototipo">Fototipo</a></li>
       <li><a data-toggle="tab" href="#configuracion">Configuración</a></li>
-  </ul>
+    </ul>
 
-  <div class="tab-content">
+    <div class="tab-content">
 
-    <div id="perfil" class="tab-pane fade in active">
-     
+      <div id="perfil" class="tab-pane fade in active">
 
-       <!-- formulario de perfil------------class="col-md-2 col-md-offset-5"------------>
-       <div class="col-lg-8 col-md-offset-2">
-         <br>
-              <form  id="email-form" name="email-form" data-name="Email Form" method="POST" action="/informacion">
-                <input id="name" type="text" value="{{nombre}}" placeholder="Nombre" name="name" data-name="Name" class="w-input redondeado">
-                <input id="apellidos" type="text" value="{{apellido}}" placeholder="Apellidos" name="apellidos" data-name="apellidos" class="w-input redondeado">
-                <input id="fecha" value="{{Fecha}}" type="text" placeholder="dd/mm/aaaa" name="fecha" data-name="fecha" class="w-input fecha redondeado">
-                <select id="sexo" name="sexo" data-name="sexo" class="w-select sexo redondeado">
-                  <option value="mujer">Mujer</option>
-                  <option value="hombre">Hombre</option>
-                </select>
-                  <input disabled="true" id="tlf" type="number" placeholder="Número de telefono" name="tlf" data-name="tlf" class="w-input fecha redondeado">
-                 <input type="submit" value="Enviar" data-wait="Please wait..." class="btn btn-primary">
-              </form>
-               
 
-            </div>
-            <!-- formulario de perfil-----fin------------------->
-              
-          
-           
-           
-            
-    </div>  
-    <div id="fototipo" class="tab-pane fade">
-         <!-- formulario de fototipo------------------------>
-         
-         <!--
+        <!-- formulario de perfil------------class="col-md-2 col-md-offset-5"------------>
+        <div class="col-lg-8 col-md-offset-2">
+          <br>
+          <form id="email-form" name="email-form" data-name="Email Form" method="POST" action="/informacion">
+            <input id="name" type="text" value="{{nombre}}" placeholder="Nombre" name="name" data-name="Name" class="w-input redondeado">
+            <input id="apellidos" type="text" value="{{apellido}}" placeholder="Apellidos" name="apellidos" data-name="apellidos" class="w-input redondeado">
+            <input id="fecha" value="{{Fecha}}" type="text" placeholder="dd/mm/aaaa" name="fecha" data-name="fecha" class="w-input fecha redondeado">
+            <select id="sexo" name="sexo" data-name="sexo" class="w-select sexo redondeado">
+              <option value="mujer">Mujer</option>
+              <option value="hombre">Hombre</option>
+            </select>
+            <input disabled="true" id="tlf" type="number" placeholder="Número de telefono" name="tlf" data-name="tlf" class="w-input fecha redondeado">
+            <input type="submit" value="Enviar" data-wait="Please wait..." class="btn btn-primary">
+          </form>
+
+
+        </div>
+        <!-- formulario de perfil-----fin------------------->
+
+
+
+
+
+      </div>
+      <div id="fototipo" class="tab-pane fade">
+        <!-- formulario de fototipo------------------------>
+
+        <!--
           <div class="col-lg-8 col-md-offset-2">
            <div class="w-form ">
               <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="POST" action="/fototipo">
@@ -145,56 +154,62 @@
                </div> >
 
                     <!-- formulario de fototipo-------------fin----------->
-                    
-                    <div id="fototipo">
-                      <row>
-                        <div class="col-md-4">1</div>
-                        <div class="col-md-4">2</div>
-                      </row>
-                      <row>
-                        <div class="col-md-4">3</div>
-                        <div class="col-md-4">4</div>
-                      </row>
-                      
-                      
-                    </div>
-                    
-                    
-                    
-                    
-    </div>
-     <div id="configuracion" class="tab-pane fade">  
-     <div class="col-lg-8 col-md-offset-2">
-         <div class="w-form">
-            <form id="email-form-3" name="email-form-3" data-name="Email Form 3" method="POST" action="/configuracion">
-                <label for="field-7">¿Como quieres recibir las alertas?</label>
-                <select id="alertas" name="alertas" class="w-select redondeado">
-                  <option value="">selecciona uno</option>
-                  <option value="email">Email</option>
-                  <option value="sms">sms</option>
-                </select>
-                <label for="field-8">¿Cada cuanto quiere recibir las alertas?</label>
-                <select id="tiempoAlertas" name="tiempoAlertas" class="w-select redondeado">
-                  <option value="">selecciona uno</option>
-                  <option value="1">cada 30 minutos</option>
-                  <option value="2">cada hora</option>
-                  <option value="3">cada 2 horas</option>
-                   <option value="0">nunca</option>
-                </select>
-                <label for="field-8">Si has comprado un dispositivo añade su Codigo</label>
-               <input id="idDispositivo" type="text" placeholder="Codigo Dispositivo" value="{{dispositivo}}" name="idDispositivo" data-name="idDispositivo" class="w-input redondeado">
-               
-                <input type="submit" value="Enviar" data-wait="Please wait..." class="w-button">
-              </form>
-           </div>
+
+        <div class="container" id="fototipo">
+          <div class="row">  
+          
+            <div id="f1" value="1" class="col-md-4"></div>
+            <div id="f2" value="2" class="col-md-4"></div>
+          </div>
+          <div class="row">
+            <div id="f3" value="3" class="col-md-4"></div>
+            <div id="f4" value="4" class="col-md-4"></div>
+          </div>
+          <div id="barra" class="progress row" width="500px" >
+            <div class="progress-bar" role="progressbar" width="500px" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%">
+              <span class="sr-only">70% Complete</span>
+            </div>
+          </div>
+
         </div>
-     </div>
-    
-    
-  
+
+
+
+
+      </div>
+      <div id="configuracion" class="tab-pane fade">
+        <div class="col-lg-8 col-md-offset-2">
+          <div class="w-form">
+            <form id="email-form-3" name="email-form-3" data-name="Email Form 3" method="POST" action="/configuracion">
+              <label for="field-7">¿Como quieres recibir las alertas?</label>
+              <select id="alertas" name="alertas" class="w-select redondeado">
+                <option value="">selecciona uno</option>
+                <option value="email">Email</option>
+                <option value="sms">sms</option>
+              </select>
+              <label for="field-8">¿Cada cuanto quiere recibir las alertas?</label>
+              <select id="tiempoAlertas" name="tiempoAlertas" class="w-select redondeado">
+                <option value="">selecciona uno</option>
+                <option value="1">cada 30 minutos</option>
+                <option value="2">cada hora</option>
+                <option value="3">cada 2 horas</option>
+                <option value="0">nunca</option>
+              </select>
+              <label for="field-8">Si has comprado un dispositivo añade su Codigo</label>
+              <input id="idDispositivo" type="text" placeholder="Codigo Dispositivo" value="{{dispositivo}}" name="idDispositivo" data-name="idDispositivo" class="w-input redondeado">
+
+              <input type="submit" value="Enviar" data-wait="Please wait..." class="w-button">
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
   </div>
-  
-  
-</div>
 </body>
+
 </html>

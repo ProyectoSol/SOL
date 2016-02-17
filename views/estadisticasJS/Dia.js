@@ -2,8 +2,10 @@
 
       var HoraR = document.getElementById("HoraR").innerHTML;
       var RadiacionHora = document.getElementById("RadiacionHora").innerHTML;
+      alert(HoraR +"  prueba openshift  "+RadiacionHora)
       var HoraSplit = HoraR.split(",");
       var RadiacionHorasplit = RadiacionHora.split(",");
+      
 
       // var invertidoHora = HoraSplit.sort(function(a, b){return a,b});
       //     var invertidoRadiacion = RadiacionHorasplit.sort(function(a, b){return a,b});
