@@ -5,8 +5,8 @@ exports.Hora = function(res, req, dispositivo, cb) {
     var fin = new Date();
     inicio.setUTCHours(8);
     fin.setUTCHours(20);
-  //  console.log(inicio+" inicio");
-//    console.log(fin+" fin");
+   //console.log(inicio+" inicio");
+    //console.log(fin+" fin");
     
     TablaHistorial.find({
         fecha: {
