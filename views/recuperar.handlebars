@@ -8,7 +8,7 @@
 
   <title>Restablecer contraseña</title>
 
-  
+
   <link rel="stylesheet" type="text/css" href="/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="/css/boton.css">
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -19,7 +19,7 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
   <link rel="apple-touch-icon" href="/images/solicon.png">
-  
+
 
 </head>
 
@@ -31,15 +31,23 @@
     <div class=" col-md-offset-4 col-md-5">
       <form id="cambiopass" data-toggle="validator" data-name="Email Form 2" method="POST" action="/updatenueva">
         <div class="form-group">
-            <label for="contrasena1">Nueva contraseña</label>
+          <label for="contrasena1">Nueva contraseña</label>
+          <div class="form-group has-feedback">
             <input type="password" data-minlength="6" class="form-control" id="contrasena1" name="pass1" data-minlength-error="La contraseña debe contener mínimo 6 carácteres" placeholder="Contraseña" autocomplete="off" required>
-            <div class="help-block with-errors"></div>
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 
+            <div class="help-block with-errors"></div>
+          </div>
         </div>
         <div class="form-group">
-            <label for="contrasena2">Repite la contraseña</label>
-            <input type="password" class="form-control" id="contraseña2"  name="pass2" data-match="#contrasena1" data-match-error="Las contraseñas no coinciden" placeholder="Confirmación" autocomplete="off" required>
-          <div class="help-block with-errors"></div>
+          <label for="contrasena2">Repite la contraseña</label>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" id="contraseña2" name="pass2" data-match="#contrasena1" data-minlength="6" data-minlength-error="La contraseña debe contener mínimo 6 carácteres" data-match-error="Las contraseñas no coinciden" placeholder="Confirmación"
+            autocomplete="off" required>
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            <div class="help-block with-errors"></div>
+          </div>
+
         </div>
         <button type="submit" class="btn btn-primary btn-block">Aceptar</button>
       </form>

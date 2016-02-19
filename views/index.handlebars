@@ -28,6 +28,7 @@
         $("#fadde").remove();
       });
     });
+
     WebFont.load({
       google: {
         families: ["Varela Round:400", "Changa One:400,400italic"]
@@ -48,23 +49,25 @@
         <form id="email-form-2" name="email-form-2" data-toggle="validator" data-name="Email Form 2" method="POST" action="/usuario/registro">
           <div class="form-group">
             <input type="text" class="form-control" id="inputName" placeholder="Usuario" name="usuario" required>
+            <div class="help-block with-errors"></div>
           </div>
           <div class="form-group">
             <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="Ese email no es válido" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group has-feedback">
 
+            <input type="password" class="form-control" id="inputPassword" name="pass" data-minlength="6" data-minlength-error="La contraseña debe contener mínimo 6 carácteres" placeholder="contraseña" required>
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" id="inputPasswordConfirm" name="pass2" data-match="#inputPassword" data-minlength="6"  data-minlength-error="La contraseña debe contener mínimo 6 carácteres" data-match-error="Las contraseñas no coinciden" placeholder="Confirmación" required>
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group">
-
-            <input type="password" data-minlength="6" class="form-control" id="inputPassword" name="pass" data-minlength-error="La contraseña debe contener mínimo 6 carácteres" placeholder="contraseña" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="inputPasswordConfirm" name="pass2" data-match="#inputPassword" data-match-error="Las contraseñas no coinciden" placeholder="Confirmación" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group">
-            <input type="submit" value="Entrar" data-wait="Please wait..." class="w-button sbmit">
+            <input type="submit" id="botonregistro" value="Registrarse" data-wait="Please wait..." class="w-button sbmit ">
           </div>
         </form>
         <div class="w-form-done">
@@ -117,13 +120,15 @@
 
             <div class="row">
               <div class="col-md-12">
-                  <form class="form-inline" id="recuperarpass" name="recuperarpass" data-name="Email Form 3" method="POST" action="/recuperacion">
-                    <input type="email" class="form-control" placeholder="Introduce tu e-mail" name="email" id="email" />
-                    <input type="submit" class="btn btn-primary" value="Enviar" id="submit">
-                  </form>
+                <form class="form-inline" id="recuperarpass" name="recuperarpass" data-name="Email Form 3" method="POST" action="/recuperacion">
+                  <input type="email" class="form-control" placeholder="Introduce tu e-mail" name="email" id="email" />
+                  <input type="submit" class="btn btn-primary" value="Enviar" id="submit">
+                </form>
               </div>
-            </div><!-- /.row -->
-          </div><!-- modal -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- modal -->
         </div>
       </div>
 
@@ -147,30 +152,35 @@
     <h1 class="titulo1">¡Protege tu piel ahora!</h1>
     <h3 class="titulo2">Registrate para empezar a protegerte con esta app</h3>
 
-    <div class="botones">
+    <div id="alertas" class="botones">
       {{#if error2}}
 
       <div data-ix="error-1" id="fadde" class="alert alert-danger">
         <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Este email ya existe !</strong>
+        <strong>{{error2}}</strong>
       </div>
       {{/if}} {{#if error1}}
 
       <div data-ix="error-1" id="fadde" class="alert alert-danger">
         <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>¡Este Usuario ya existe!</strong>
+        <strong>{{error1}}</strong>
       </div>
       {{/if}} {{#if error3}}
 
       <div data-ix="error-1" id="fadde" class="alert alert-danger">
         <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Confirma tu email</strong>
+        <strong>{{error3}}</strong>
       </div>
       {{/if}} {{#if error4}}
 
       <div data-ix="error-1" id="fadde" class="alert alert-danger">
         <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Email o contraseña incorrecta</strong>
+      </div>
+      {{/if}} {{#if registrob}}
+      <div data-ix="error-1" id="fadde" class="alert alert-info">
+        <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Te has registrado correctamente</strong>, asegurate de confirmar el email
       </div>
       {{/if}}
       <a data-ix="subscribe-interaction" class="w-button botonregistro">Registrarse</a><a data-ix="login-interaction-2" class="w-button loginb">Iniciar sesión</a>

@@ -6,8 +6,8 @@
      var anual = document.getElementById("fechaAnual").innerHTML;
      var numAnual = anual.split(",");
 
-     //  var anoF = numAnual.sort(function(a, b){return a,b});
-     //    var radioanual = RadiacionAnual.sort(function(a, b){return a,b});
+  //  var anoF = numAnual.sort(function(a, b){return a,b});
+   //   var radioanual = RadiacionAnual.sort(function(a, b){return a,b});
 
      var ctx = $("#mycanvas3").get(0).getContext("2d");
 

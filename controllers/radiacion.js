@@ -112,7 +112,7 @@ exports.mostrar = function(req, res, fototipo) {
 
                 EstadisticaSemana.Semana(res, req, dispositivo, function(radiacion, fecha) {
                     EstadisticaHora.Hora(res, req, dispositivo, function(radiacionH, hora) {
-                        EstadisticaAnual.anual(res, req, dispositivo, function(RadiacionAnual, ano) {
+                        EstadisticaAnual.anual(res, req, dispositivo, function(RadiacionAnual, mes) {
 
                             res.render('login', {
                                 User: req.session.a,
@@ -127,7 +127,7 @@ exports.mostrar = function(req, res, fototipo) {
                                 RadiacionHora: radiacionH,
                                 HoraR: hora,
                                 RadiacionAnual: RadiacionAnual,
-                                anoA: ano
+                                mesA: mes
 
                             });
                         });

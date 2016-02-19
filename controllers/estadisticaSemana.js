@@ -7,7 +7,9 @@ var Hace7Dias = new Date();
 Hace7Dias.setDate(fecha.getDate() -7);
 
 TablaHistorial.aggregate([{ $match : {fecha : {$lte : fecha, $gte : Hace7Dias}, dispositivo : dispositivo} },
+                    { $sort: { fecha: -1 } },
                      { $group: { _id: {day: { $dayOfMonth: "$fecha" }}, media: { $avg: "$uv" }} }] ,function(err, historia) {
+                       //  console.log(historia)
                         
             if (!historia) {
                 console.error("no existe ese dispositivo :D");
@@ -18,7 +20,6 @@ TablaHistorial.aggregate([{ $match : {fecha : {$lte : fecha, $gte : Hace7Dias}, 
                 var radiacion =[];
                  var fecha = [];
                
-           
    
                 for(var i= 0; i<historia.length; i++){
                

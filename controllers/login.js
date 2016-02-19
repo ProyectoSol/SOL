@@ -20,19 +20,19 @@ exports.login = function(req, res) {
  }, function(err, user) {
 
   if (!user) {
-  console.error("problemas al iniciar session");
-//   res.render('index', {
-//    error4: "email o contraseña incorrecta :D"
+   console.error("problemas al iniciar session");
+   res.render('index', {
+    error4: "email o contraseña incorrecta :D"
 
- //  });
+   });
   }
   else {
-   req.session.a = user.usuario;
-    res.redirect("/home");
-/*
+   // req.session.a = user.usuario;
+   //  res.redirect("/home");
+
    if (user.confirmado == '1') {
     req.session.a = user.usuario;
-
+    console.log('SESION: '+req.session.a)
     if (user.admin == "1") {
      console.log("admin entrando...");
 
@@ -40,11 +40,11 @@ exports.login = function(req, res) {
     }
     else {
 
-     var fototipo = user.fototipo;
+     //var fototipo = user.fototipo;
 
      if (user.dispositivo == null || user.dispositivo == "") {
       req.session.dispositivo = "ML8511";
-      //     console.log("dispositivo estandar " + req.session.dispositivo);
+      //  console.log("dispositivo estandar " + req.session.dispositivo);
       //  Ficheroradiacion.mostrar(req, res, fototipo);
       res.redirect("/home");
      }
@@ -66,7 +66,7 @@ exports.login = function(req, res) {
 
     });
    }
-*/
+
   }
 
  });
@@ -75,7 +75,6 @@ exports.login = function(req, res) {
 
 exports.logout = function(req, res) {
  req.session.destroy();
- console.log("Sesión destruida");
  res.redirect('/');
 };
 

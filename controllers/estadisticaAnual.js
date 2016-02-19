@@ -1,14 +1,17 @@
 var TablaHistorial = require('../models/TablaHistorial.js');
 
-
 exports.anual = function(res, req, dispositivo,cb) {
     var fecha = new Date();
-    var Hace7anos = new Date();
-    Hace7anos.setFullYear(fecha.getFullYear()-7);
+    var Hace7meses = new Date();
+    //Hace7meses.setMonth(fecha.setMonth(-7));
+    Hace7meses.setMonth(-7);
+    
+   // console.log(Hace7meses)
     
 
-    TablaHistorial.aggregate([{ $match : {fecha : {$lte : fecha, $gte : Hace7anos}, dispositivo : dispositivo} },
-                     { $group: { _id: { year: { $year: "$fecha" }}, media: { $avg: "$uv" }} }] ,function(err, historia) {
+    TablaHistorial.aggregate([{ $match : {fecha : {$lte : fecha, $gte : Hace7meses}, dispositivo : dispositivo} },
+                    { $sort: { fecha: -1 } },
+                     { $group: { _id: { month: { $month: "$fecha" }}, media: { $avg: "$uv" }} }] ,function(err, historia) {
                          
 //console.log( historia)
             if (!historia) {
@@ -17,26 +20,21 @@ exports.anual = function(res, req, dispositivo,cb) {
               
             else {
                 var radiacionAnual =[];
-                 var ano = [];
+                 var mes = [];
                 
                 for(var i= 0; i<historia.length; i++){
                
                     radiacionAnual.push(historia[i].media);
-                    ano.push(historia[i]._id["year"]);
+                    mes.push(historia[i]._id["month"]);
                     
                  
                 } 
-              // console.log("radiacionessss "+radiacion);
-           //   console.log(radiacion+"+++++++++++++++"+fecha)
-            //global.radiacionF;
-            global.radiacionA = radiacionAnual;
-            global.fechaAnual = ano;
-            cb(radiacionAnual,ano)
-            //console.log(global.fechaAnual)
-             //return radiacion;  
+           
+            cb(radiacionAnual,mes)
+           
             }  
                    
-        }); 
+        }) 
       
     
    

@@ -16,6 +16,7 @@ var configuracion = require('./controllers/configuracion.js');
 var login = require('./controllers/login.js');
 var contacto = require('./controllers/contacto.js');
 var admin = require('./controllers/admin.js');
+var api = require('./controllers/api.js');
 var session = require('express-session');
 app.use(session({
     resave: true,
@@ -67,6 +68,7 @@ app.post('/modificaruser', admin.modificarusu);
 app.post('/eliminaruser', admin.eliminarusu);
 app.post('/modificardisp', admin.modificardisp);
 app.post('/eliminardisp', admin.eliminardisp);
+app.get('/api/:dispositivo', api.api);
 
 app.use(express.static(__dirname + '/views'));
 

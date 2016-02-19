@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="./css/bootstrap.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-   
+
   <script src="js/index.js"></script>
 
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -47,75 +47,79 @@
       var enro = fototipo[4];
       var bronceado = fototipo[5];
 
-
+      var bar = 0;
 
 
       $("#f1").click(function() {
-
+        bar = bar + 16.667;
         cont = cont + 1;
-        
+    
         $("#mensaje").html(mensajes[cont - 1]);
         Arrayfototipo.push(1);
         for (var i = 1; i < 7; i++) {
           $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
         }
-
+         $(".progress-bar").css('width',bar+'%');
         if (cont == 7) {
-        $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
-       
-        $.get("/fototipo/"+Arrayfototipo, {}, function(usuarioc) {});
-     
-     
-      }
+          $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
+
+          $.get("/fototipo/" + Arrayfototipo, {}, function(usuarioc) {});
+
+
+        }
 
       });
       $("#f2").click(function() {
+        bar = bar + 16.667;
         cont = cont + 1;
-       
+
         $("#mensaje").html(mensajes[cont - 1]);
         Arrayfototipo.push(2);
         for (var i = 1; i < 7; i++) {
 
           $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
         }
-if (cont == 7) {
-        $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
-            $.get("/fototipo/"+Arrayfototipo, {}, function(usuarioc) {});
-     
-      }
+        $(".progress-bar").css('width',bar+'%');
+        if (cont == 7) {
+          $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
+          $.get("/fototipo/" + Arrayfototipo, {}, function(usuarioc) {});
+
+        }
       });
       $("#f3").click(function() {
         cont = cont + 1;
-       
+        bar = bar + 16.667;
+
         $("#mensaje").html(mensajes[cont - 1]);
         Arrayfototipo.push(3);
         for (var i = 1; i < 7; i++) {
           $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
         }
-if (cont == 7) {
-        $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
-            $.get("/fototipo/"+Arrayfototipo, {}, function(usuarioc) {});
-     
-      }
+         $(".progress-bar").css('width',bar+'%');
+        if (cont == 7) {
+          $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
+          $.get("/fototipo/" + Arrayfototipo, {}, function(usuarioc) {});
+
+        }
       });
       $("#f4").click(function() {
         cont = cont + 1;
-       
+        bar = bar + 16.667;
         $("#mensaje").html(mensajes[cont - 1]);
         Arrayfototipo.push(4);
         for (var i = 1; i < 7; i++) {
           $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
         }
+         $(".progress-bar").css('width',bar+'%');
+        if (cont == 7) {
+          $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
+          $.get("/fototipo/" + Arrayfototipo);
 
-if (cont == 7) {
-        $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
-            $.get("/fototipo/"+Arrayfototipo, {}, function(usuarioc) {});
-     
-      }
+        }
       });
 
 
-      
+
 
     });
   </script>
@@ -130,7 +134,6 @@ if (cont == 7) {
   <div class="menu">
     <span><a href="/home" class="sindeco">Home</a></span>
     <span><a href="panel.html"  class="sindeco">Panel de control</a></span>
-    <span><a href="/home#sectionEstadisticas" class="sindeco">Estadisticas</a></span>
     <span><a href="/logout" class="sindeco">Cerrar sesión</a></span>
   </div>
 
@@ -252,7 +255,7 @@ if (cont == 7) {
           </div>
 
           <div id="barra" class="progress row" width="500px">
-            <div class="progress-bar" role="progressbar" width="500px" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%">
+            <div class="progress-bar" role="progressbar" width="500px" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%">
               <span class="sr-only">70% Complete</span>
             </div>
           </div>

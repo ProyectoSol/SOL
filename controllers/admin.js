@@ -1,10 +1,6 @@
 var schema = require("../models/users.js");
 var schema2 = require("../models/dispositivos.js");
 
-//var user1 = mongoose.model('User1', schema.userModel);
-var md5 = require('md5');
-
-
 exports.verUsuarios = function(req, res) {
     schema.findOne({
         'usuario': req.session.a,
@@ -21,24 +17,58 @@ exports.verUsuarios = function(req, res) {
 };
 
 exports.usercompletos = function(req, res) {
+    console.log('SESION DE ADMIN: ' + req.session.a);
+    if (req.session.a == undefined || req.session.a == null) {
+        console.log('no hay sesion');
+        res.redirect('/');
+    }
+    else {
 
-    schema.find({}, {
-        '_id': 0,
-        'usuario': 1
-    }, function(error, usuarios) {
-        res.send(usuarios);
+        console.log('sesion: ' + req.session.a);
+        schema.find({
+            'usuario': req.session.a,
+            'admin': "1"
+        }, function(err, user) {
+            console.log('USUARIO:' + user);
+            if (user) {
+                console.log('entro a user');
+                schema.find({}, {
+                    '_id': 0,
+                    'usuario': 1
+                }, function(error, usuarios) {
+                    console.log('find de usuarios');
+                    res.send(usuarios);
 
-    });
+                });
+            }
+            else {
+                console.log('else');
+                res.redirect('/');
+            }
+        });
+    }
 };
+
 exports.dispcompletos = function(req, res) {
+    schema.find({
+        'usuario': req.session.a,
+        'admin': "1"
+    }, function(err, user) {
+        if (user) {
+            schema2.find({}, {
+                '_id': 0,
+                'dispositivo': 1
+            }, function(error, dispositivos) {
+                res.send(dispositivos);
 
-    schema2.find({}, {
-        '_id': 0,
-        'dispositivo': 1
-    }, function(error, dispositivos) {
-        res.send(dispositivos);
-
+            });
+        }
+        else {
+            res.redirect('/');
+        }
     });
+
+
 };
 
 exports.buscarusu = function(req, res) {
@@ -125,13 +155,13 @@ exports.modificardisp = function(req, res) {
     var disp = req.body.ddispositivo;
     var ciudad = req.body.ciudad;
 
-    console.log(disp + ciudad+ " aaaaaaaaaa");
+    console.log(disp + ciudad + " aaaaaaaaaa");
 
     schema2.update({
         'dispositivo': disp
     }, {
-        ciudad: ciudad    
-        
+        ciudad: ciudad
+
     }, function(user) {
 
         console.log("usuario actualizado");
@@ -139,5 +169,3 @@ exports.modificardisp = function(req, res) {
     });
 
 };
-
-

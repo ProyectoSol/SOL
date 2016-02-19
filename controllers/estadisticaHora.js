@@ -45,7 +45,7 @@ exports.Hora = function(res, req, dispositivo, cb) {
         }
          
 
-    });
+    }).sort( { hora: -1 } )
 
 
 }
