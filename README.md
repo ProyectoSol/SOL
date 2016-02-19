@@ -1,4 +1,4 @@
-# Sense-Rover
+# Sunit
 
 ##Proyecto de fin de curso 2014-2016 del ciclo formativo de desarrollo de aplicaciones web
 
@@ -22,6 +22,7 @@ Características
  - Forgot Password
  - Reset Password
  - Fototype Details
+ - Admin panel
 - CSRF protection
 
 
@@ -32,7 +33,7 @@ La manera mas sencilla de empezar es clonando el repositorio
 
 ```bash
 # Clonar repositorio
-git clone https://github.com/DW32-IGSR/senserover miproyecto
+git clone https://github.com/ProyectoSol/SOL 
 
 # Entrar en el directorio creado
 cd miproyecto

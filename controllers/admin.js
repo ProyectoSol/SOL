@@ -122,7 +122,13 @@ exports.modificarusu = function(req, res) {
     var admin = req.body.admin;
     var confirmado = req.body.confirmado;
     console.log(user + email + disp + " aaaaaaaaaa");
-
+    
+    schema.findOne({
+        'email': email    
+    },function(usu){
+        console.log('usuario:: ' + usu.usuario +' --  email:: ' + usu.email);
+        
+    });
     schema.update({
         'usuario': user
     }, {
