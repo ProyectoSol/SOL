@@ -126,7 +126,8 @@ exports.modificarusu = function(req, res) {
     schema.findOne({
         'email': email    
     },function(usu){
-        console.log('usuario:: ' + usu.usuario +' --  email:: ' + usu.email);
+       console.log('daatoos::' +usu);
+       // console.log('usuario:: ' + usu.usuario + ' --  email:: ' + usu.email);
         
     });
     schema.update({
