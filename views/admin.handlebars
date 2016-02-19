@@ -10,6 +10,8 @@
   <script src="js/jquery-1.11.2.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="/js/validator.js"></script>
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/jquery-ui.css" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
@@ -23,11 +25,7 @@
     }
     
     #listaa {
-      /*list-style-type: none;
-      padding: 10px;
-      margin-top: 0px;
-      display: none;
-      */
+
       margin-top: -20px;
       margin-left: 25px;
     }
@@ -172,7 +170,6 @@
       <ul class="nav nav-justified nav-tabs">
         <li class="active"><a data-toggle="tab" href="#usuarios">Usuarios <span id="numUsuarios" class="badge"></span></a></li>
         <li><a data-toggle="tab" href="#dispositivos">Dispositivos <span id="numDispositivos" class="badge"></span></a></li>
-        <!--<li role="presentation"><a href="#">Estadísticas</a></li>-->
       </ul>
     </div>
   </div>
@@ -181,12 +178,6 @@
     <div class="tab-content">
       <div id="usuarios" class="tab-pane fade in active">
         <div class="row bloque">
-          <!--<div class=" col-md-4">
-            <label for="campousuario">Buscar usuario</label>
-            <input type="text" class=" col-md-4 form-control" id="campousuario" placeholder="Usuario" autocomplete="off">
-            <button type="submit" id="boton1" class="col-md-4 btn btn-block btn-success ">Aceptar</button>
-          </div>-->
-
           <div class="col-md-4">
             <label for="campousuario">Buscar usuario</label>
             <div class="input-group">
@@ -202,14 +193,23 @@
           <div class=" col-md-offset-2 col-md-4" id="formusuario">
             <label for="formusuario">Datos del usuario</label>
 
-            <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
-
+            <form id="formusuario" method="POST" data-toggle="validator" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
               <input type="text" class="form-control" name="usuario" id="usuario" readonly placeholder="Usuario">
-              <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+
+              <div class="form-group  has-feedback">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" data-error="Ese email no es válido" required>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+              </div>
               <input type="text" class="form-control" name="dispositivo" id="dispositivo" placeholder="Dispositivo">
               <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
               <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
-              <input type="text" class="form-control" name="fechaNac" id="fechaNac" placeholder="Fecha de nacimiento">
+
+              <div class="form-group has-feedback">
+                <input type="text" class="form-control" name="fechaNac" id="fechaNac" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
+                placeholder="Fecha de nacimiento"> <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+              </div>
 
               <input type="checkbox" value="1" id="checkadmin" name="admin" />
               <label for="checkadmin">Administrador</label>
