@@ -36,7 +36,7 @@ La manera mas sencilla de empezar es clonando el repositorio
 git clone https://github.com/ProyectoSol/SOL 
 
 # Entrar en el directorio creado
-cd miproyecto
+cd SOl
 
 # Instalar dependencias con NPM
 npm install

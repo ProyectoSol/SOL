@@ -6,6 +6,11 @@ var EstadisticaHora = require('./estadisticaHora.js');
 var EstadisticaAnual = require('./estadisticaAnual.js');
 
 exports.panel = function (req, res) {
+    if(!req.session.a){
+        res.redirect("/");
+        
+    }
+    else{
   schema.findOne({'usuario': req.session.a},function(error, userc2) {
     if(error){
         console.log("error en find en configuration.js linea 8");
@@ -15,12 +20,13 @@ exports.panel = function (req, res) {
        res.render('panel', {
                     nombre: userc2.nombre,
                     apellido: userc2.apellido,
-                    Fecha: userc2.fecha
+                    Fecha: userc2.fecha,
+                    dispositivo:userc2.dispositivo
                 });
     }
          
         });
-  
+}
 
 };
 

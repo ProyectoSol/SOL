@@ -83,7 +83,7 @@ exports.mostrar = function(req, res, fototipo) {
         res.redirect('/');
     }
     else {
-     
+
         //  radiacion.mostrar(req, res);
 
 
@@ -107,29 +107,73 @@ exports.mostrar = function(req, res, fototipo) {
                 Hace7Dias.setDate(fecha.getDate() - 7);
 
                 var dispositivo = req.session.dispositivo;
-                
-                console.log(Ruv.uv+" nivel de radiacion actual")
+
+                console.log(Ruv.uv + " nivel de radiacion actual")
 
                 EstadisticaSemana.Semana(res, req, dispositivo, function(radiacion, fecha) {
                     EstadisticaHora.Hora(res, req, dispositivo, function(radiacionH, hora) {
                         EstadisticaAnual.anual(res, req, dispositivo, function(RadiacionAnual, mes) {
+                            if (Ruv.uv < 5) {
+                                console.log("verde");
+                                res.render('login', {
+                                    User: req.session.a,
+                                    Uv: Ruv.uv,
+                                    max: global.max,
+                                    min: global.min,
+                                    city: global.city,
+                                    meteo: global.datodia,
+                                    Esemana: radiacion,
+                                    EsemanaDia: fecha,
+                                    Fototipo: fototipo,
+                                    RadiacionHora: radiacionH,
+                                    HoraR: hora,
+                                    RadiacionAnual: RadiacionAnual,
+                                    style: "alert-success",
+                                    mesA: mes
 
-                            res.render('login', {
-                                User: req.session.a,
-                                Uv: Ruv.uv,
-                                max: global.max,
-                                min: global.min,
-                                city: global.city,
-                                meteo: global.datodia,
-                                Esemana: radiacion,
-                                EsemanaDia: fecha,
-                                Fototipo: fototipo,
-                                RadiacionHora: radiacionH,
-                                HoraR: hora,
-                                RadiacionAnual: RadiacionAnual,
-                                mesA: mes
+                                });
+                            }
+                            else if (Ruv.uv >=5 && Ruv.uv <=7 ) {
+                                console.log("amarillo");
+                                res.render('login', {
+                                    User: req.session.a,
+                                    Uv: Ruv.uv,
+                                    max: global.max,
+                                    min: global.min,
+                                    city: global.city,
+                                    meteo: global.datodia,
+                                    Esemana: radiacion,
+                                    EsemanaDia: fecha,
+                                    Fototipo: fototipo,
+                                    RadiacionHora: radiacionH,
+                                    HoraR: hora,
+                                    RadiacionAnual: RadiacionAnual,
+                                    style: "alert-info",
+                                    mesA: mes
 
-                            });
+                                });
+                            }
+                            else if ( Ruv.uv >=8 ) {
+                                console.log("rojo");
+                                res.render('login', {
+                                    User: req.session.a,
+                                    Uv: Ruv.uv,
+                                    max: global.max,
+                                    min: global.min,
+                                    city: global.city,
+                                    meteo: global.datodia,
+                                    Esemana: radiacion,
+                                    EsemanaDia: fecha,
+                                    Fototipo: fototipo,
+                                    RadiacionHora: radiacionH,
+                                    HoraR: hora,
+                                    RadiacionAnual: RadiacionAnual,
+                                    style: "alert-danger",
+                                    mesA: mes
+
+                                });
+                            }
+
                         });
                     });
                 });

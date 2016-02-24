@@ -95,25 +95,6 @@ setInterval(inn.anadirRadiacion, 3600000);
 setInterval(alertas.alertas1, 1800000);
 setInterval(alertas.alertas2, 3600000);
 setInterval(alertas.alertas3, 7200000);
-//setInterval(radiacion.media, )
-
-
-
-
-
-//-----------------prueba Estadistica con aggregate avg
-var estadistica = require("./controllers/estadistica.js");
-app.get('/estadistica', function(req, res) {
-
-    console.log("ejecutado estadistica.js")
-    estadistica.mostrar(req, res);
-
-});
-
-
-
-
-
 
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;

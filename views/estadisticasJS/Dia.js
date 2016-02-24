@@ -7,8 +7,8 @@
       var RadiacionHorasplit = RadiacionHora.split(",");
       
 
-      // var invertidoHora = HoraSplit.sort(function(a, b){return a,b});
-      //     var invertidoRadiacion = RadiacionHorasplit.sort(function(a, b){return a,b});
+      var invertidoHora = HoraSplit.sort(function(a, b){return a,b});
+          var invertidoRadiacion = RadiacionHorasplit.sort(function(a, b){return a,b});
 
       var ctx2 = $("#mycanvas2").get(0).getContext("2d");
 

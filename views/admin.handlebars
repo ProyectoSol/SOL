@@ -11,149 +11,15 @@
   <script src="js/jquery-ui.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
   <script src="/js/validator.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/cerrar.js"></script>
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/jquery-ui.css" rel="stylesheet">
+  <link href="css/admin.css" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
   <link rel="apple-touch-icon" href="/images/solicon.png">
-  <style>
-    .lista {
-      list-style-type: none;
-      background-color: #F4F7F8;
-      display: none;
-      cursor: pointer;
-    }
-    
-    #listaa {
-
-      margin-top: -20px;
-      margin-left: 25px;
-    }
-    
-    legend {
-      border-bottom: none;
-    }
-    
-    ul {
-      max-height: 200px;
-      overflow: hidden;
-      overflow-y: auto;
-    }
-    
-    input {
-      margin-top: 10px;
-    }
-    
-    button {
-      margin-top: 10px;
-    }
-    
-    #logout {
-      float: right;
-    }
-    
-    checkbox {
-      cursor: pointer;
-    }
-    
-    .bloque {
-      margin-top: 30px;
-      margin-left: 25px;
-    }
-  </style>
-  <script>
-    $(document).ready(function() {
-      $("#boton1").click(function() {
-        var usuario = $('#campousuario').val();
-        $.get("/clientedatos/" + usuario, function(usuarioc) {
-          $('#usuario').val(usuarioc.usuario);
-          $('#email').val(usuarioc.email);
-          $('#dispositivo').val(usuarioc.dispositivo);
-          $('#nombre').val(usuarioc.nombre);
-          $('#apellido').val(usuarioc.apellido);
-          $('#fechaNac').val(usuarioc.fecha);
-
-          if (usuarioc.admin == '1') {
-            $('#checkadmin').prop('checked', true);
-          }
-          else {
-            $('#checkadmin').prop('checked', false);
-          }
-
-          if (usuarioc.confirmado == '1') {
-            $('#checkconfirm').prop('checked', true);
-          }
-          else {
-            $('#checkconfirm').prop('checked', false);
-          }
-
-        });
-      });
-
-    });
-
-    $.ajax({
-      type: "GET",
-      url: 'https://sol-anthonyprz.c9users.io/usercompletos',
-      dataType: "json",
-      success: function(data) {
-        var arrayUsu = [];
-        for (var i = 0; i < data.length; i++) {
-          arrayUsu.push(data[i].usuario);
-        }
-        $("#campousuario").autocomplete({
-          source: arrayUsu
-        });
-        $("#numUsuarios").text(arrayUsu.length);
-
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        console.log("Status: " + textStatus);
-        console.log("Error: " + errorThrown);
-      }
-    });
-
-
-    //-----------------------------------------------DISPOSITIVO
-    $.ajax({
-      type: "GET",
-      url: 'https://sol-anthonyprz.c9users.io/dispositivoscompletos',
-      dataType: "json",
-      success: function(data) {
-        var arrayDisp = [];
-        for (var i = 0; i < data.length; i++) {
-          arrayDisp.push(data[i].dispositivo);
-        }
-        $("#IdDispositivo").autocomplete({
-          source: arrayDisp
-        });
-        $("#numDispositivos").text(arrayDisp.length);
-
-
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        console.log("Status: " + textStatus);
-        console.log("Error: " + errorThrown);
-      }
-    });
-
-    $(document).ready(function() {
-      $("#boton2").click(function() {
-        var dispositivo = $('#IdDispositivo').val();
-        $.get("/dispositivo/" + dispositivo, {
-          dispositivo: dispositivo
-        }, function(dispositivoC) {
-          $('#ddispositivo').val(dispositivoC.dispositivo);
-          $('#ciudad').val(dispositivoC.ciudad);
-
-        });
-      });
-
-    });
-  </script>
-
 </head>
-
 <body>
   <header class="jumbotron">
     <div class="container">
@@ -189,17 +55,23 @@
             </div>
           </div>
 
-
           <div class=" col-md-offset-2 col-md-4" id="formusuario">
             <label for="formusuario">Datos del usuario</label>
 
             <form id="formusuario" method="POST" data-toggle="validator" onsubmit="return confirm('¿Seguro que quieres modificar el usuario?');">
               <input type="text" class="form-control" name="usuario" id="usuario" readonly placeholder="Usuario">
-
               <div class="form-group  has-feedback">
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" data-error="Ese email no es válido" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors">
+                  {{#if errore}}
+
+                  <div data-ix="error-1" id="fadde" class="alert alert-danger">
+                    <button type="button" id="eqis" class="close" data-ix="error-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span>{{errore}}</span>
+                  </div>
+                  {{/if}}
+                </div>
               </div>
               <input type="text" class="form-control" name="dispositivo" id="dispositivo" placeholder="Dispositivo">
               <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
@@ -240,7 +112,7 @@
           <div class=" col-md-offset-2 col-md-4" id="formusuario">
             <label for="formusuario">Datos del Dispositivo</label>
 
-            <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el Dispositivo?');">
+            <form id="formusuario" method="POST" onsubmit="return confirm('¿Seguro que quieres modificar el dispositivo?');">
               <input type="text" class="form-control" name="ddispositivo" id="ddispositivo" placeholder="ID del dispositivo">
               <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad">
 

@@ -1,0 +1,42 @@
+.lista {
+      list-style-type: none;
+      background-color: #F4F7F8;
+      display: none;
+      cursor: pointer;
+    }
+    
+    #listaa {
+      margin-top: -20px;
+      margin-left: 25px;
+    }
+    
+    legend {
+      border-bottom: none;
+    }
+    
+    ul {
+      max-height: 200px;
+      overflow: hidden;
+      overflow-y: auto;
+    }
+    
+    input {
+      margin-top: 10px;
+    }
+    
+    button {
+      margin-top: 10px;
+    }
+    
+    #logout {
+      float: right;
+    }
+    
+    checkbox {
+      cursor: pointer;
+    }
+    
+    .bloque {
+      margin-top: 30px;
+      margin-left: 25px;
+    }

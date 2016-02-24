@@ -61,10 +61,10 @@ exports.registro = function(req, res) {
                 console.log(anadirusuario);
 
                 var data = {
-                  from: 'Sunit <SunBand@zubirimanteo.com>',
+                  from: 'Sunit <sunit@gmail.com>',
                   to: emailv,
                   subject: 'Es hora de cuidar su piel',
-                  text: 'Activación de la cuenta: http://sunit.zubirimanteoweb.com/activacion/' + codigov
+                  html: 'Gracias por registrarte en Sunit'+'<br>'+' Para activar la cuenta en SunIT, pincha en el siguiente link: http://sunit.zubirimanteoweb.com/activacion/' + codigov
                 };
 
                 mailgun.messages().send(data, function(error, body) {

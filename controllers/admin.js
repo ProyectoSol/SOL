@@ -122,27 +122,33 @@ exports.modificarusu = function(req, res) {
     var admin = req.body.admin;
     var confirmado = req.body.confirmado;
     console.log(user + email + disp + " aaaaaaaaaa");
-    
+
     schema.findOne({
-        'email': email    
-    },function(usu){
-       console.log('daatoos::' +usu);
-       // console.log('usuario:: ' + usu.usuario + ' --  email:: ' + usu.email);
-        
-    });
-    schema.update({
-        'usuario': user
-    }, {
-        email: email,
-        dispositivo: disp,
-        admin: admin,
-        confirmado: confirmado
-    }, function(user) {
+        'email': email
+    }, function(err, usu) {
+        console.log('usuario:: ' + usu.usuario + ' --  email:: ' + usu.email);
 
-        console.log("usuario actualizado");
-        res.redirect('/admin');
-    });
+        if (usu.usuario == user && email == usu.email) {
+            schema.update({
+                'usuario': user
+            }, {
+                email: email,
+                dispositivo: disp,
+                admin: admin,
+                confirmado: confirmado
+            }, function(user) {
 
+                console.log("usuario actualizado");
+                res.redirect('/admin');
+            });
+        }
+        else {
+            res.render('admin', {
+                errore: "Ese email no está disponible"
+
+            });
+        }
+    });
 };
 
 exports.eliminardisp = function(req, res) {

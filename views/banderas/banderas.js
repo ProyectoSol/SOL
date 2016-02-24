@@ -14,7 +14,7 @@
    else if(radiacion >= 10 && radiacion <=11){
       document.getElementById("banderaimg").src = "/banderas/rojo.png"
      }
-    else if(radiacion = 12){
+    else if(radiacion == 12){
       document.getElementById("banderaimg").src = "/banderas/lila.png"
      }
      

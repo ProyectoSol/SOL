@@ -34,95 +34,7 @@
       }
     });
   </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-
-      var cont = 1;
-      var mensajes = [" ", "Color de piel", "Color de ojos", "Cantidad de lunares", "Frecuencia de enrojecimiento", "Frecuencia de bronceado"];
-      var Arrayfototipo = [];
-      var pelo = fototipo[0];
-      var piel = fototipo[1];
-      var ojos = fototipo[2];
-      var pecas = fototipo[3];
-      var enro = fototipo[4];
-      var bronceado = fototipo[5];
-
-      var bar = 0;
-
-
-      $("#f1").click(function() {
-        bar = bar + 16.667;
-        cont = cont + 1;
-    
-        $("#mensaje").html(mensajes[cont - 1]);
-        Arrayfototipo.push(1);
-        for (var i = 1; i < 7; i++) {
-          $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
-        }
-         $(".progress-bar").css('width',bar+'%');
-        if (cont == 7) {
-          $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
-
-          $.get("/fototipo/" + Arrayfototipo, {}, function(usuarioc) {});
-
-
-        }
-
-      });
-      $("#f2").click(function() {
-        bar = bar + 16.667;
-        cont = cont + 1;
-
-        $("#mensaje").html(mensajes[cont - 1]);
-        Arrayfototipo.push(2);
-        for (var i = 1; i < 7; i++) {
-
-          $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
-        }
-        $(".progress-bar").css('width',bar+'%');
-        if (cont == 7) {
-          $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
-          $.get("/fototipo/" + Arrayfototipo, {}, function(usuarioc) {});
-
-        }
-      });
-      $("#f3").click(function() {
-        cont = cont + 1;
-        bar = bar + 16.667;
-
-        $("#mensaje").html(mensajes[cont - 1]);
-        Arrayfototipo.push(3);
-        for (var i = 1; i < 7; i++) {
-          $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
-        }
-         $(".progress-bar").css('width',bar+'%');
-        if (cont == 7) {
-          $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
-          $.get("/fototipo/" + Arrayfototipo, {}, function(usuarioc) {});
-
-        }
-      });
-      $("#f4").click(function() {
-        cont = cont + 1;
-        bar = bar + 16.667;
-        $("#mensaje").html(mensajes[cont - 1]);
-        Arrayfototipo.push(4);
-        for (var i = 1; i < 7; i++) {
-          $('#f' + i + '').css('background-image', 'url(images/' + cont + '' + i + '.jpg)');
-        }
-         $(".progress-bar").css('width',bar+'%');
-        if (cont == 7) {
-          $("#mensaje").html("<h1>Has terminado la seleccion de fototipo</h1>");
-          $.get("/fototipo/" + Arrayfototipo);
-
-        }
-      });
-
-
-
-
-    });
-  </script>
+  <script type="text/javascript" src="js/fototipo.js"></script>
   <script type="text/javascript" src="js/modernizr.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="images/solicon.png">
   <link rel="apple-touch-icon" href="images/solicon.png">
@@ -159,11 +71,15 @@
         <!-- formulario de perfil------------class="col-md-2 col-md-offset-5"------------>
         <div class="col-lg-8 col-md-offset-2">
           <br>
-          <form id="email-form" name="email-form" data-name="Email Form" method="POST" action="/informacion">
-            <input id="name" type="text" value="{{nombre}}" placeholder="Nombre" name="name" data-name="Name" class="w-input redondeado">
-            <input id="apellidos" type="text" value="{{apellido}}" placeholder="Apellidos" name="apellidos" data-name="apellidos" class="w-input redondeado">
-            <input id="fecha" value="{{Fecha}}" type="text" placeholder="dd/mm/aaaa" name="fecha" data-name="fecha" class="w-input fecha redondeado">
-            <select id="sexo" name="sexo" data-name="sexo" class="w-select sexo redondeado">
+          <form id="email-form" name="email-form" data-toggle="validator" data-name="Email Form" method="POST" action="/informacion">
+            <input id="name" type="text" class="form-control" value="{{nombre}}" placeholder="Nombre" name="name" data-name="Name" class="w-input redondeado">
+            <input id="apellidos" type="text" class="form-control" value="{{apellido}}" placeholder="Apellidos" name="apellidos" data-name="apellidos" class="w-input redondeado">
+            <div class="form-group has-feedback">
+              <input type="text" class="form-control" name="fechaNac" id="fechaNac" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
+              placeholder="Fecha de nacimiento"> <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+              <div class="help-block with-errors"></div>
+            </div>
+            <select id="sexo" name="sexo" class="form-control" data-name="sexo" class="w-select sexo redondeado">
               <option value="mujer">Mujer</option>
               <option value="hombre">Hombre</option>
             </select>
@@ -181,81 +97,24 @@
 
       </div>
       <div id="fototipo" class="tab-pane fade">
-        <!-- formulario de fototipo------------------------>
 
-        <!--
-          <div class="col-lg-8 col-md-offset-2">
-           <div class="w-form ">
-              <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="POST" action="/fototipo">
-                <label for="field">Color del cabello</label>
-                <select id="cabello" name="cabello" class="w-select redondeado">
-                  <option value="0">selecciona uno</option>
-                  <option value="1">Rubio/pelirrojo</option>
-                  <option value="2">Castaño</option>
-                  <option value="3">Moreno</option>
-                  <option value="4">Negro</option>
-                </select>
-                <label for="field-2">Color de ojos</label>
-                <select id="ojos" name="ojos" data-name="Field 2" class="w-select redondeado">
-                  <option value="">Selecciona uno</option>
-                  <option value="1">Azules/verdes claros</option>
-                  <option value="2">Azules/verdes oscuros</option>
-                  <option value="3">Marrones</option>
-                  <option value="4">Negros</option>
-                </select>
-                <label for="field-3">Tono de piel</label>
-                <select id="piel" name="piel" data-name="Field 3" class="w-select redondeado">
-                  <option value="">selecciona uno</option>
-                  <option value="1">Blanca o muy blanca</option>
-                  <option value="2">Dorada</option>
-                  <option value="3">Morena</option>
-                  <option value="4">Muy morena</option>
-                </select>
-                <label for="field-4">Pecas/lunares</label>
-                <select id="pecas" name="pecas" data-name="Field 4" class="w-select redondeado">
-                  <option value="">selecciona uno</option>
-                  <option value="1">Muchos</option>
-                  <option value="2">Bastantes</option>
-                  <option value="3">Algunos</option>
-                   <option value="4">Ninguno</option>
-                </select>
-                <label for="field-5">Eritema/Enrojecimiento</label>
-                <select id="eritema" name="eritema" data-name="Field 5" class="w-select redondeado">
-                  <option value="">selecciona uno</option>
-                  <option value="1">Casi siempre</option>
-                  <option value="2">A veces</option>
-                  <option value="3">Casi nunca</option>
-                  <option value="4">Nunca</option>
-                </select>
-                <label for="field-6">Bronceado</label>
-                <select id="bronceado" name="bronceado" data-name="Field 6" class="w-select redondeado">
-                  <option value="">selecciona uno</option>
-                  <option value="1">Nunca</option>
-                  <option value="2">Casi nunca</option>
-                  <option value="3">A veces</option>
-                  <option value="4">Siempre</option>
-                </select>
-                <input type="submit" value="Enviar" data-wait="Please wait..." class="btn btn-primary">
-              </form>
-            </div>
-               </div> >
-
-                    <!-- formulario de fototipo-------------fin----------->
 
         <div class="container" id="fototipo">
-          <div class="row">
-            <h1 id="mensaje">color de pelo</h1>
+          <h1 id="mensaje">color de pelo</h1>
+          <div class="eliminar">
+            <div class="row">
 
-            <div id="f1" value="1" class="col-md-4"></div>
-            <div id="f2" value="2" class="col-md-4"></div>
-          </div>
-          <div class="row">
-            <div id="f3" value="3" class="col-md-4"></div>
-            <div id="f4" value="4" class="col-md-4"></div>
-          </div>
 
-          <div id="barra" class="progress row" width="500px">
-            <div class="progress-bar" role="progressbar" width="500px" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+              <div id="f1" value="1" class="col-md-4 col-xs-4"></div>
+              <div id="f2" value="2" class="col-md-4 col-xs-4"></div>
+            </div>
+            <div class="row">
+              <div id="f3" value="3" class="col-md-4 col-xs-4"></div>
+              <div id="f4" value="4" class="col-md-4 col-xs-4"></div>
+            </div>
+          </div>
+          <div id="barra" class="progress row eliminar" width="500px">
+            <div class="progress-bar " role="progressbar" width="500px" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%">
               <span class="sr-only">70% Complete</span>
             </div>
           </div>
