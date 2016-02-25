@@ -1,7 +1,7 @@
  $(document).ready(function() {
 
       var cont = 1;
-      var mensajes = [" ", "Selecciona color de piel", "Selecciona color de ojos", "Selecciona cantidad de lunares", "Selecciona frecuencia de enrojecimiento", "Selecciona frecuencia de bronceado"];
+      var mensajes = [" ", "Selecciona color de piel", "Selecciona color de ojos", "Selecciona cantidad de lunares", "Selecciona frecuencia de enrojecimiento", "Selecciona fecuencia de bronceado"];
       var Arrayfototipo = [];
    
 
