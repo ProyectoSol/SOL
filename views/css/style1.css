@@ -22,6 +22,8 @@
   position: fixed;
   right: 0;
   z-index: 99;
+  color: gray;
+
   
 }
 .hamburgerMenu span {
@@ -75,7 +77,8 @@
 }
 
 .menu {
-   position: fixed;
+  color: gray;
+  position: fixed;
   right: -30px;
   top: 70px;
   -moz-transition: all 0.2s ease;
@@ -186,6 +189,6 @@ option:disabled{
   width:500px;
 }
 #box1{
-  margin-top:150px;
+  margin-top:50px;
   
 }

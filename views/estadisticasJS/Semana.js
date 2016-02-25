@@ -17,7 +17,7 @@
 
        var data = {
           
-           labels: diaSemana,
+           labels: diaSemanaI,
            datasets: [{
               
                label: "My First dataset",
@@ -28,7 +28,7 @@
                
                pointHighlightFill: "#fff",
                pointHighlightStroke: "rgba(220,220,220,1)",
-               data: semana
+               data: invertido
            }]
        };
        var myLineChart = new Chart(ctx).Line(data,{

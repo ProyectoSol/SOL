@@ -1216,6 +1216,8 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
   }
   .sectionestadisticas {
     height: auto;
+    background-color: #d9d9d9;
+    border-radius: 5px;
   }
   .column1 {
     height: auto;

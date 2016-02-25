@@ -14,6 +14,7 @@
 
       var data = {
           labels: HoraSplit,
+
           datasets: [{
               label: "My 2 dataset",
               fillColor: "rgb(92,214,92)", // "rgba(220,220,220,0.2)"
