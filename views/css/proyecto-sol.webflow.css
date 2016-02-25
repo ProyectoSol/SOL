@@ -56,6 +56,9 @@
   border-radius: 32px;
   color: white;
   text-align: center;
+ 
+       
+  
 }
 
 .titulo2 {
@@ -619,11 +622,11 @@
   float: none;
 }
 #max{
-  color:#f9cddd;
+  color:black;
 
 }
 #min{
-  color:#cdddf9;
+  color:black;
 }
 .fotoreco1 {
   display: block;
@@ -803,14 +806,7 @@
   margin-bottom: 0px;
   float: none;
   clear: none;
-  /*background-color: #EFEFEF;
-  background-image: none;
-  background-size: auto;
-  background: #92c7d6;
-  background-image: -webkit-radial-gradient(top, circle cover, #FFFFFF, #C7C7C7 80%);
-  background-image: -moz-radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
-  background-image: -o-radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);
-  background-image: radial-gradient(top, circle cover, #FFFFFF,  #C7C7C7 80%);*/
+
 }
 
 
@@ -827,7 +823,7 @@
 }
 
 .columnaestadistica3 {
-  min-height: 300px;
+  min-height: 500px;
   margin-top: 50px;
   padding-top: 10px;
 }
@@ -1207,6 +1203,8 @@ html.w-mod-js *[data-ix="new-interaction-2"] {
   }
   .titulo1 {
     display: block;
+    
+   
   }
   .titulo2 {
     text-align: center;

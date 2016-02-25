@@ -27,7 +27,7 @@ exports.insert = function(req, res) {
             uvNuevo.save(function(err, anadirUv, numberAffected) {
                 if (err) {
                     console.error(err);
-                    res.send('Error');
+                    res.send('Error Inserccion de radiaccion');
                 }
                 else {
                     console.log('Radiación registrada');

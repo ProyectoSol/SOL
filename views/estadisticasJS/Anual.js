@@ -26,7 +26,9 @@
              data: RadiacionAnual
          }]
      };
-     var myLineChart = new Chart(ctx).Line(data);
+     var myLineChart = new Chart(ctx).Line(data,{
+          responsive:true
+       });
 
 
      //banderas

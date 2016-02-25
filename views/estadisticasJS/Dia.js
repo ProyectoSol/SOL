@@ -14,7 +14,6 @@
 
       var data = {
           labels: HoraSplit,
-
           datasets: [{
               label: "My 2 dataset",
               fillColor: "rgb(92,214,92)", // "rgba(220,220,220,0.2)"
@@ -27,7 +26,9 @@
               data: RadiacionHorasplit
           }]
       };
-      var myLineChart = new Chart(ctx2).Line(data);
+      var myLineChart = new Chart(ctx2).Line(data,{
+          responsive:true
+       });
 
 
   })

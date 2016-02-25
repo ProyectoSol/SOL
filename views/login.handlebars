@@ -36,6 +36,9 @@
       }
     });
   </script>
+  <style>
+   
+  </style>
 
   <script type="text/javascript" src="/js/modernizr.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="/images/solicon.png">
@@ -93,9 +96,9 @@
 
   <div class="w-section sectionestadisticas">
     <div class="w-row estadisticas">
-      <div class="  col-md-4 col-sm-3 col-xs-10 columnaestadistica1">
+      <div class=" col-lg-8 col-lg-offset-2 columnaestadistica1">
+         <!------------estadistica DIA-------------->
         <div class="divestadisticas">
-          <!------------estadistica DIA-------------->
             <script src="/banderas/banderas.js"></script>
           <h3 class="tituloestadistica">Día</h3>
           <div id="HoraR" hidden>{{HoraR}}</div>
@@ -107,28 +110,30 @@
 
         </div>
       </div>
-      <div class=" col-md-4 col-sm-3 col-xs-10 columnaestadistica2">
+      <div class="col-lg-8 col-lg-offset-2 columnaestadistica2">
         <div class="divestadisticas">
           <h3 class="tituloestadistica">Semana</h3>
           <!--    <div>-->
 
           <div id="radioA" hidden>{{Esemana}}</div>
           <div id="SemanaDia" hidden>{{EsemanaDia}}</div>
+          
           <canvas id="mycanvas" class="imagenestadistica">
             <script src="/estadisticasJS/Semana.js"></script>
-
           </canvas>
 
           <!-- </div>-->
         </div>
       </div>
-      <div class=" col-md-4 col-sm-3 col-xs-10 columnaestadistica3">
+      <div class=" col-lg-8 col-lg-offset-2 columnaestadistica3">
         <div class="divestadisticas">
           <h3 class="tituloestadistica">Año</h3>
           <div id="RadiacionAnual" hidden>{{RadiacionAnual}}</div>
           <div id="fechaAnual" hidden>{{mesA}}</div>
-          <script src="/estadisticasJS/Anual.js"></script>
-          <canvas id="mycanvas3" class="imagenestadistica"></canvas>
+          
+          <canvas id="mycanvas3" class="imagenestadistica">
+            <script src="/estadisticasJS/Anual.js"></script>
+          </canvas>
         </div>
       </div>
 

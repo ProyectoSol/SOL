@@ -13,7 +13,6 @@ Características
 - **Local Authentication** using Email and Password
 - Handlebars notifications
 - MVC Project Structure
-- Node.js clusters support
 - Bootstrap 3 + Webflow.io
 - Contact Form (powered by Mailgun)
 - **Account Management**
