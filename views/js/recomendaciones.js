@@ -20,19 +20,19 @@ var radfot = radiacion * fototipo;
 
         if(radfot >= 1 && radfot <= 4){
             
-             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 2P.T o 4P.T";
+             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 2FPS o 4FPS";
         }
         else if(radfot >=5  && radfot <= 10){
-             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 6P.T o 10P.T";
+             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 6FPS o 10FPS";
         }
          else if(radfot >=11 && radfot <= 25){
-             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 20P.T o 25P.T";
+             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 20FPS o 25FPS";
         }
           else if(radfot >=26  && radfot <= 50){
-             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 30P.T o 50P.T";
+             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 30FPS o 50FPS";
         }
           else if(radfot > 50){
-             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 50P.T";
+             document.getElementById("seRecomienda").innerHTML = "Según tu nivel de radiación y tu tonalidad de piel te recomiendo utilizar una crema de 50FPS";
         }
         
         
